@@ -53,7 +53,7 @@ export default function TextToolsPage() {
   const removeExtraSpaces = () => inputText.replace(/\s+/g, ' ').trim()
   const removeDuplicateLines = () => {
     const lines = inputText.split('\n')
-    const uniqueLines = [...new Set(lines)]
+    const uniqueLines = Array.from(new Set(lines))
     return uniqueLines.join('\n')
   }
   const sortLines = () => inputText.split('\n').sort().join('\n')
