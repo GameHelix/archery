@@ -17,6 +17,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
+      { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'SwissKnife - Essential Online Tools',
     description: 'A comprehensive collection of essential online tools including password generator, QR code generator, document converter, and more. Free, fast, and secure.',
@@ -24,9 +35,9 @@ export const metadata: Metadata = {
     siteName: 'SwissKnife',
     images: [
       {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
+        url: '/icon-512.png',
+        width: 512,
+        height: 512,
         alt: 'SwissKnife - Essential Online Tools',
       },
     ],
@@ -37,7 +48,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'SwissKnife - Essential Online Tools',
     description: 'A comprehensive collection of essential online tools including password generator, QR code generator, document converter, and more. Free, fast, and secure.',
-    images: ['/og-image.png'],
+    images: ['/icon-512.png'],
   },
   robots: {
     index: true,
@@ -60,10 +71,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
       <body className="min-h-screen bg-gray-50">
