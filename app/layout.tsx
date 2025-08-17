@@ -74,11 +74,29 @@ export default function RootLayout({
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/site.webmanifest" />
+        
+        {/* Google AdSense */}
         <script 
           async 
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3427635222854268"
           crossOrigin="anonymous"
         ></script>
+        
+        {/* Google Analytics */}
+        <script 
+          async 
+          src="https://www.googletagmanager.com/gtag/js?id=G-4KTEVKY2W0"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-4KTEVKY2W0');
+            `,
+          }}
+        />
       </head>
       <body className="min-h-screen bg-gray-50">
         {children}
