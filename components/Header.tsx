@@ -20,7 +20,6 @@ export default function Header() {
     { name: 'Color Palette', href: '/color-palette' },
     { name: 'Image Converter', href: '/image-converter' },
     { name: 'Time Zone Converter', href: '/timezone-converter' },
-    { name: 'Drawing Tool', href: '/drawing-tool' },
     { name: 'Media Converter', href: '/media-converter' },
   ]
 

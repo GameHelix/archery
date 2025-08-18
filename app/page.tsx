@@ -12,7 +12,6 @@ import {
   Palette, 
   Image, 
   Clock, 
-  PenTool, 
   Play 
 } from 'lucide-react'
 import Header from '@/components/Header'
@@ -102,13 +101,6 @@ const tools = [
     icon: Clock,
     href: '/timezone-converter',
     color: 'bg-lime-500'
-  },
-  {
-    name: 'Simple Drawing Tool',
-    description: 'Draw and sketch with simple tools',
-    icon: PenTool,
-    href: '/drawing-tool',
-    color: 'bg-violet-500'
   },
   {
     name: 'Media Converter',
