@@ -10,7 +10,7 @@ export default function Header() {
   const tools = [
     { name: 'Password Generator', href: '/password-generator' },
     { name: 'QR Code Generator', href: '/qr-generator' },
-    { name: 'Document Converter', href: '/document-converter' },
+    { name: 'PDF Converter', href: '/pdf-converter' },
     { name: 'Spreadsheet Converter', href: '/spreadsheet-converter' },
     { name: 'Text Tools', href: '/text-tools' },
     { name: 'Tip Calculator', href: '/tip-calculator' },

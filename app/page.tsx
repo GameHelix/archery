@@ -33,10 +33,10 @@ const tools = [
     color: 'bg-blue-500'
   },
   {
-    name: 'Document Converter',
-    description: 'Convert between different document formats',
+    name: 'PDF Converter',
+    description: 'Convert documents to PDF format instantly',
     icon: FileText,
-    href: '/document-converter',
+    href: '/pdf-converter',
     color: 'bg-green-500'
   },
   {

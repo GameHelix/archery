@@ -53,10 +53,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     
     // Coming soon tools - lower priority but still indexed
     {
-      url: `${baseUrl}/document-converter`,
+      url: `${baseUrl}/pdf-converter`,
       lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.6,
+      changeFrequency: 'weekly',
+      priority: 0.8,
     },
     {
       url: `${baseUrl}/spreadsheet-converter`,

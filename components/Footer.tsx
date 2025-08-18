@@ -32,8 +32,8 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="/document-converter" className="text-gray-400 hover:text-white transition-colors">
-                  Document Converter
+                <a href="/pdf-converter" className="text-gray-400 hover:text-white transition-colors">
+                  PDF Converter
                 </a>
               </li>
               <li>
