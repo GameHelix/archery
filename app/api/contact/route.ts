@@ -5,7 +5,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 
 export async function POST(request: NextRequest) {
   try {
-    if (!process.env.RESEND_API_KEY) {
+    if (!process.env.RESEND_API_KEY || !process.env.CONTACT_EMAIL) {
       return NextResponse.json(
         { error: 'Email service is not configured' },
         { status: 500 }
@@ -31,7 +31,7 @@ export async function POST(request: NextRequest) {
 
     const data = await resend.emails.send({
       from: 'SwissKnife Contact <contact@swissknife.site>',
-      to: ['contact@swissknife.site'],
+      to: [process.env.CONTACT_EMAIL!],
       subject: `Contact Form: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
