@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useId } from 'react'
 import { Video, Upload, Download, X, CheckCircle, AlertCircle, Settings, Zap, FileVideo, Play, Pause, RotateCcw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -36,6 +36,8 @@ export default function MediaConverterPage() {
   const [isConverting, setIsConverting] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const baseId = useId()
+  const [idCounter, setIdCounter] = useState(0)
 
   const toolStructuredData = {
     "@context": "https://schema.org",
@@ -82,12 +84,14 @@ export default function MediaConverterPage() {
   // Simulated conversion function (in real implementation, this would use FFmpeg.js)
   const convertGifToMp4 = useCallback((file: File, settings: ConversionSettings): Promise<ConvertedVideo> => {
     return new Promise((resolve, reject) => {
-      const videoId = Date.now().toString() + Math.random()
+      const currentCounter = idCounter
+      setIdCounter(prev => prev + 1)
+      const videoId = `${baseId}-video-${currentCounter}`
       
       // Simulate conversion process
       let progress = 0
       const interval = setInterval(() => {
-        progress += Math.random() * 15
+        progress += 10 + Math.random() * 5
         
         setVideos(prev => prev.map(video => 
           video.id === videoId ? { ...video, progress: Math.min(progress, 95) } : video

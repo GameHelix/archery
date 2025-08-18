@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback, useRef } from 'react'
+import { useState, useCallback, useRef, useId } from 'react'
 import { Image as ImageIcon, Upload, Download, X, CheckCircle, AlertCircle, Settings, Zap, Shield, Smartphone } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -22,6 +22,8 @@ export default function ImageConverterPage() {
   const [quality, setQuality] = useState(95)
   const [isConverting, setIsConverting] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const baseId = useId()
+  const [idCounter, setIdCounter] = useState(0)
 
   const toolStructuredData = {
     "@context": "https://schema.org",
@@ -83,8 +85,10 @@ export default function ImageConverterPage() {
           canvas.toBlob((blob) => {
             if (blob) {
               const convertedUrl = URL.createObjectURL(blob)
+              const currentCounter = idCounter
+              setIdCounter(prev => prev + 1)
               const convertedImage: ConvertedImage = {
-                id: Date.now().toString() + Math.random(),
+                id: `${baseId}-image-${currentCounter}`,
                 name: file.name.replace(/\.(jpg|jpeg)$/i, '.png'),
                 originalSize: file.size,
                 convertedSize: blob.size,
@@ -124,16 +128,20 @@ export default function ImageConverterPage() {
     setIsConverting(true)
     
     // Add placeholder images with converting status
-    const placeholderImages = jpegFiles.map(file => ({
-      id: Date.now().toString() + Math.random(),
+    const placeholderImages = jpegFiles.map((file, index) => {
+      const currentCounter = idCounter + index
+      setIdCounter(prev => prev + jpegFiles.length)
+      return {
+        id: `${baseId}-placeholder-${currentCounter}`,
       name: file.name.replace(/\.(jpg|jpeg)$/i, '.png'),
       originalSize: file.size,
       convertedSize: 0,
       originalUrl: URL.createObjectURL(file),
-      convertedUrl: '',
-      status: 'converting' as const,
-      quality
-    }))
+        convertedUrl: '',
+        status: 'converting' as const,
+        quality
+      }
+    })
     
     setImages(prev => [...prev, ...placeholderImages])
     

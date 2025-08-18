@@ -138,10 +138,12 @@ export default function RootLayout({
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-4KTEVKY2W0');
+              if (typeof window !== 'undefined') {
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){window.dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-4KTEVKY2W0');
+              }
             `,
           }}
         />

@@ -63,7 +63,9 @@ export default function TextToolsPage() {
   const shuffleLines = () => {
     const lines = inputText.split('\n')
     for (let i = lines.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1))
+      const array = new Uint32Array(1)
+      crypto.getRandomValues(array)
+      const j = array[0] % (i + 1)
       ;[lines[i], lines[j]] = [lines[j], lines[i]]
     }
     return lines.join('\n')

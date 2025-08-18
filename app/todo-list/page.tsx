@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useId } from 'react'
 import { CheckSquare, Plus, Trash2, Edit3, Calendar, Clock, Star, Filter, Search, BarChart3, Target, Zap, Settings, CheckCircle, Circle, Square } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -29,6 +29,8 @@ export default function TodoListPage() {
   const [newTodoPriority, setNewTodoPriority] = useState<'low' | 'medium' | 'high'>('medium')
   const [newTodoCategory, setNewTodoCategory] = useState('General')
   const [showCompleted, setShowCompleted] = useState(true)
+  const baseId = useId()
+  const [idCounter, setIdCounter] = useState(0)
 
   // Load todos from localStorage on mount
   useEffect(() => {
@@ -53,8 +55,11 @@ export default function TodoListPage() {
   const addTodo = () => {
     if (inputText.trim() === '') return
 
+    const currentCounter = idCounter
+    setIdCounter(prev => prev + 1)
+    
     const newTodo: Todo = {
-      id: Date.now().toString(),
+      id: `${baseId}-todo-${currentCounter}`,
       text: inputText.trim(),
       completed: false,
       priority: newTodoPriority,

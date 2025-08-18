@@ -87,7 +87,10 @@ export default function ColorPalettePage() {
   }
 
   const generateRandomColor = (): string => {
-    return `#${Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0')}`
+    // Use crypto.getRandomValues for consistent random generation
+    const array = new Uint32Array(1)
+    crypto.getRandomValues(array)
+    return `#${(array[0] % 16777215).toString(16).padStart(6, '0')}`
   }
 
   const createColor = (hex: string): Color => {
@@ -190,7 +193,8 @@ export default function ColorPalettePage() {
     const dataStr = JSON.stringify(paletteData, null, 2)
     const dataUri = 'data:application/json;charset=utf-8,'+ encodeURIComponent(dataStr)
     
-    const exportFileDefaultName = `color-palette-${Date.now()}.json`
+    const timestamp = new Date().toISOString().replace(/[:.]/g, '-').split('T')[0]
+    const exportFileDefaultName = `color-palette-${timestamp}.json`
     
     const linkElement = document.createElement('a')
     linkElement.setAttribute('href', dataUri)

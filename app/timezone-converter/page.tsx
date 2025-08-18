@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useId } from 'react'
 import { Clock, Globe, CalendarClock, MapPin, Plus, X, Users, Zap, Shield, Search } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -50,7 +50,10 @@ export default function TimezoneConverterPage() {
   const [selectedTime, setSelectedTime] = useState('')
   const [selectedTimezone, setSelectedTimezone] = useState<TimeZone>(popularTimezones[0])
   const [searchQuery, setSearchQuery] = useState('')
-  const [currentTime, setCurrentTime] = useState(new Date())
+  const [currentTime, setCurrentTime] = useState<Date | null>(null)
+  const [isClient, setIsClient] = useState(false)
+  const baseId = useId()
+  const [idCounter, setIdCounter] = useState(0)
 
   const toolStructuredData = {
     "@context": "https://schema.org",
@@ -94,14 +97,22 @@ export default function TimezoneConverterPage() {
     }
   }
 
+  // Initialize client-side state
+  useEffect(() => {
+    setIsClient(true)
+    setCurrentTime(new Date())
+  }, [])
+
   // Update current time every second
   useEffect(() => {
+    if (!isClient) return
+    
     const timer = setInterval(() => {
       setCurrentTime(new Date())
     }, 1000)
 
     return () => clearInterval(timer)
-  }, [])
+  }, [isClient])
 
   // Initialize with some default world clocks
   useEffect(() => {
@@ -113,7 +124,7 @@ export default function TimezoneConverterPage() {
     ]
     
     setWorldClocks(defaultClocks.map((timezone, index) => ({
-      id: `default-${index}`,
+      id: `${baseId}-default-${index}`,
       timezone,
       time: '',
       date: '',
@@ -175,6 +186,8 @@ export default function TimezoneConverterPage() {
 
   // Update world clocks
   useEffect(() => {
+    if (!currentTime) return
+    
     setWorldClocks(prev => prev.map(clock => {
       const timeInfo = formatTimeInTimezone(currentTime, clock.timezone.name)
       return {
@@ -185,8 +198,11 @@ export default function TimezoneConverterPage() {
   }, [currentTime, formatTimeInTimezone])
 
   const addWorldClock = useCallback((timezone: TimeZone) => {
+    const currentCounter = idCounter
+    setIdCounter(prev => prev + 1)
+    
     const newClock: WorldClock = {
-      id: `clock-${Date.now()}`,
+      id: `${baseId}-clock-${currentCounter}`,
       timezone,
       time: '',
       date: '',
@@ -207,15 +223,31 @@ export default function TimezoneConverterPage() {
   )
 
   const getTimeDifference = (timezone1: string, timezone2: string) => {
-    const now = new Date()
-    const time1 = new Date(now.toLocaleString("en-US", { timeZone: timezone1 }))
-    const time2 = new Date(now.toLocaleString("en-US", { timeZone: timezone2 }))
+    if (!currentTime) return 'Loading...'
+    
+    const time1 = new Date(currentTime.toLocaleString("en-US", { timeZone: timezone1 }))
+    const time2 = new Date(currentTime.toLocaleString("en-US", { timeZone: timezone2 }))
     const diffMs = time2.getTime() - time1.getTime()
     const diffHours = Math.round(diffMs / (1000 * 60 * 60))
     
     if (diffHours === 0) return 'Same time'
     if (diffHours > 0) return `+${diffHours}h ahead`
     return `${Math.abs(diffHours)}h behind`
+  }
+
+  if (!isClient || !currentTime) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-100">
+        <Header />
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          <div className="text-center">
+            <Clock className="w-12 h-12 mx-auto mb-4 text-indigo-600 animate-spin" />
+            <p className="text-gray-600">Loading timezone data...</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    )
   }
 
   return (

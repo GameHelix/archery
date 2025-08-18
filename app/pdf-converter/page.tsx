@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useId } from 'react'
 import { FileText, Upload, Download, X, Check, AlertCircle, File, Image, FileUp, Zap } from 'lucide-react'
 import jsPDF from 'jspdf'
 import Header from '@/components/Header'
@@ -22,6 +22,8 @@ export default function PDFConverterPage() {
   const [isDragging, setIsDragging] = useState(false)
   const [isProcessing, setIsProcessing] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const baseId = useId()
+  const [idCounter, setIdCounter] = useState(0)
 
   const supportedTypes = {
     'text/plain': { name: 'Text Files', extensions: '.txt', icon: FileText },
@@ -34,14 +36,17 @@ export default function PDFConverterPage() {
   }
 
   const handleFileSelect = useCallback((selectedFiles: FileList) => {
-    const newFiles: FileItem[] = Array.from(selectedFiles).map(file => ({
-      id: Math.random().toString(36).substr(2, 9),
+    const newFiles: FileItem[] = Array.from(selectedFiles).map((file, index) => {
+      const currentCounter = idCounter + index
+      return {
+        id: `${baseId}-pdf-${currentCounter}`,
       file,
       name: file.name,
       size: file.size,
-      type: file.type,
-      status: 'pending' as const
-    })).filter(fileItem => {
+        type: file.type,
+        status: 'pending' as const
+      }
+    }).filter(fileItem => {
       if (!Object.keys(supportedTypes).includes(fileItem.type)) {
         alert(`File type "${fileItem.type}" is not supported. Please select text files or images.`)
         return false
@@ -49,6 +54,7 @@ export default function PDFConverterPage() {
       return true
     })
 
+    setIdCounter(prev => prev + selectedFiles.length)
     setFiles(prev => [...prev, ...newFiles])
   }, [])
 

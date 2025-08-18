@@ -47,7 +47,9 @@ export default function PasswordGeneratorPage() {
 
     let result = ''
     for (let i = 0; i < length; i++) {
-      result += charset.charAt(Math.floor(Math.random() * charset.length))
+      const array = new Uint32Array(1)
+      crypto.getRandomValues(array)
+      result += charset.charAt(array[0] % charset.length)
     }
 
     setPassword(result)

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, useCallback } from 'react'
+import { useState, useRef, useCallback, useId } from 'react'
 import { Table, Upload, Download, X, Check, AlertCircle, FileSpreadsheet, FileText, RefreshCw, Eye, Settings } from 'lucide-react'
 import * as XLSX from 'xlsx'
 import Papa from 'papaparse'
@@ -30,6 +30,8 @@ export default function CSVExcelConverterPage() {
   const [conversionMode, setConversionMode] = useState<ConversionDirection>('auto')
   const [showPreview, setShowPreview] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const baseId = useId()
+  const [idCounter, setIdCounter] = useState(0)
 
   const supportedFormats = {
     'csv': { name: 'CSV Files', extensions: '.csv', icon: FileText, description: 'Comma Separated Values' },
@@ -78,8 +80,10 @@ export default function CSVExcelConverterPage() {
 
       const preview = await generatePreview(file, format)
       
+      const currentCounter = idCounter + newFiles.length
+      
       newFiles.push({
-        id: Math.random().toString(36).substr(2, 9),
+        id: `${baseId}-file-${currentCounter}`,
         file,
         name: file.name,
         size: file.size,
@@ -90,6 +94,7 @@ export default function CSVExcelConverterPage() {
       })
     }
 
+    setIdCounter(prev => prev + newFiles.length)
     setFiles(prev => [...prev, ...newFiles])
   }, [])
 
