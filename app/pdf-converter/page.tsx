@@ -2,6 +2,7 @@
 
 import { useState, useRef, useCallback } from 'react'
 import { FileText, Upload, Download, X, Check, AlertCircle, File, Image, FileUp, Zap } from 'lucide-react'
+import jsPDF from 'jspdf'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -85,13 +86,96 @@ export default function PDFConverterPage() {
     ))
 
     try {
-      // Simulate PDF conversion process
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      
-      // For demo purposes, we'll create a simple text-based PDF
-      // In a real implementation, you'd use a library like jsPDF or pdf-lib
-      const mockPdfBlob = new Blob(['%PDF-1.4 Mock PDF content'], { type: 'application/pdf' })
-      const pdfUrl = URL.createObjectURL(mockPdfBlob)
+      const pdf = new jsPDF()
+      let pdfUrl: string
+
+      if (fileItem.type.startsWith('text/') || fileItem.type === 'text/html') {
+        // Handle text files
+        const text = await fileItem.file.text()
+        
+        // Clean HTML if needed
+        let cleanText = text
+        if (fileItem.type === 'text/html') {
+          const tempDiv = document.createElement('div')
+          tempDiv.innerHTML = text
+          cleanText = tempDiv.textContent || tempDiv.innerText || ''
+        }
+
+        // Add text to PDF with proper line wrapping
+        const pageWidth = pdf.internal.pageSize.width
+        const margin = 20
+        const maxWidth = pageWidth - (margin * 2)
+        
+        // Split text into lines that fit the page width
+        const lines = pdf.splitTextToSize(cleanText, maxWidth)
+        
+        // Add title
+        pdf.setFontSize(16)
+        pdf.text(`Converted from: ${fileItem.name}`, margin, 20)
+        
+        // Add content
+        pdf.setFontSize(12)
+        let yPosition = 40
+        
+        for (const line of lines) {
+          if (yPosition > pdf.internal.pageSize.height - margin) {
+            pdf.addPage()
+            yPosition = margin
+          }
+          pdf.text(line, margin, yPosition)
+          yPosition += 7
+        }
+
+        // Create blob and URL
+        const pdfBlob = pdf.output('blob')
+        pdfUrl = URL.createObjectURL(pdfBlob)
+
+      } else if (fileItem.type.startsWith('image/')) {
+        // Handle image files
+        const imageUrl = URL.createObjectURL(fileItem.file)
+        
+        return new Promise<void>((resolve) => {
+          const img = new globalThis.Image()
+          img.onload = () => {
+            const imgWidth = pdf.internal.pageSize.width - 40
+            const imgHeight = (img.height * imgWidth) / img.width
+            
+            // Add title
+            pdf.setFontSize(16)
+            pdf.text(`Image: ${fileItem.name}`, 20, 20)
+            
+            // Add image
+            pdf.addImage(img, 'JPEG', 20, 30, imgWidth, imgHeight)
+            
+            // Create blob and URL
+            const pdfBlob = pdf.output('blob')
+            const pdfUrl = URL.createObjectURL(pdfBlob)
+            
+            setFiles(prev => prev.map(f => 
+              f.id === fileItem.id ? { 
+                ...f, 
+                status: 'completed',
+                pdfUrl 
+              } : f
+            ))
+            
+            URL.revokeObjectURL(imageUrl)
+            resolve(undefined)
+          }
+          img.onerror = () => {
+            setFiles(prev => prev.map(f => 
+              f.id === fileItem.id ? { 
+                ...f, 
+                status: 'error',
+                error: 'Failed to load image for conversion.'
+              } : f
+            ))
+            URL.revokeObjectURL(imageUrl)
+            resolve(undefined)
+          }
+          img.src = imageUrl
+        })
+      }
 
       setFiles(prev => prev.map(f => 
         f.id === fileItem.id ? { 
@@ -101,6 +185,7 @@ export default function PDFConverterPage() {
         } : f
       ))
     } catch (error) {
+      console.error('PDF conversion error:', error)
       setFiles(prev => prev.map(f => 
         f.id === fileItem.id ? { 
           ...f, 
