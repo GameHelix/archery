@@ -5,14 +5,12 @@ import {
   FileText, 
   Table, 
   Type, 
-  Quote, 
   Calculator, 
   Activity, 
   CheckSquare, 
   Gauge, 
   Palette, 
   Image, 
-  Laugh, 
   Clock, 
   PenTool, 
   Play 
@@ -57,13 +55,6 @@ const tools = [
     color: 'bg-yellow-500'
   },
   {
-    name: 'Random Quote Generator',
-    description: 'Get inspired with random quotes',
-    icon: Quote,
-    href: '/quote-generator',
-    color: 'bg-pink-500'
-  },
-  {
     name: 'Tip Calculator',
     description: 'Calculate tips and split bills easily',
     icon: Calculator,
@@ -104,13 +95,6 @@ const tools = [
     icon: Image,
     href: '/image-converter',
     color: 'bg-emerald-500'
-  },
-  {
-    name: 'Meme Generator',
-    description: 'Create memes with custom text',
-    icon: Laugh,
-    href: '/meme-generator',
-    color: 'bg-amber-500'
   },
   {
     name: 'Time Zone Converter',
