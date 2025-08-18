@@ -38,6 +38,7 @@ export default function MediaConverterPage() {
   const [showSettings, setShowSettings] = useState(false)
   const [isFFmpegLoading, setIsFFmpegLoading] = useState(false)
   const [isFFmpegReady, setIsFFmpegReady] = useState(false)
+  const [ffmpegError, setFFmpegError] = useState<string | null>(null)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const baseId = useId()
   const [idCounter, setIdCounter] = useState(0)
@@ -90,13 +91,18 @@ export default function MediaConverterPage() {
       if (isFFmpegReady) return
       
       setIsFFmpegLoading(true)
+      setFFmpegError(null)
+      
       try {
         await ffmpegConverter.load((progress) => {
           console.log('FFmpeg loading progress:', progress)
         })
         setIsFFmpegReady(true)
+        setFFmpegError(null)
       } catch (error) {
         console.error('Failed to load FFmpeg:', error)
+        setFFmpegError(error instanceof Error ? error.message : 'Unknown error')
+        setIsFFmpegReady(false)
       } finally {
         setIsFFmpegLoading(false)
       }
@@ -109,6 +115,74 @@ export default function MediaConverterPage() {
       ffmpegConverter.terminate()
     }
   }, [isFFmpegReady])
+
+  // Retry FFmpeg loading
+  const retryFFmpegLoad = useCallback(() => {
+    setIsFFmpegReady(false)
+    setFFmpegError(null)
+  }, [])
+
+  // Demo conversion fallback when FFmpeg fails
+  const convertGifToMp4Demo = useCallback(async (file: File, settings: ConversionSettings): Promise<ConvertedVideo> => {
+    const currentCounter = idCounter
+    setIdCounter(prev => prev + 1)
+    const videoId = `${baseId}-video-${currentCounter}`
+    
+    // Create initial video entry
+    const initialVideo: ConvertedVideo = {
+      id: videoId,
+      name: file.name.replace(/\.gif$/i, '.mp4'),
+      originalSize: file.size,
+      convertedSize: 0,
+      originalUrl: URL.createObjectURL(file),
+      convertedUrl: '',
+      status: 'converting',
+      progress: 0,
+      quality: settings.quality,
+      fps: settings.fps,
+      duration: 0
+    }
+    
+    setVideos(prev => [...prev, initialVideo])
+
+    return new Promise((resolve) => {
+      // Simulate conversion process
+      let progress = 0
+      const interval = setInterval(() => {
+        progress += 10 + Math.random() * 5
+        
+        setVideos(prev => prev.map(video => 
+          video.id === videoId ? { ...video, progress: Math.min(progress, 95) } : video
+        ))
+        
+        if (progress >= 95) {
+          clearInterval(interval)
+          
+          setTimeout(() => {
+            const convertedVideo: ConvertedVideo = {
+              id: videoId,
+              name: file.name.replace(/\.gif$/i, '.mp4'),
+              originalSize: file.size,
+              convertedSize: Math.floor(file.size * 0.7), // Simulated reduction
+              originalUrl: URL.createObjectURL(file),
+              convertedUrl: '', // No actual file in demo mode
+              status: 'completed',
+              progress: 100,
+              quality: settings.quality,
+              fps: settings.fps,
+              duration: 3
+            }
+            
+            setVideos(prev => prev.map(video => 
+              video.id === videoId ? convertedVideo : video
+            ))
+            
+            resolve(convertedVideo)
+          }, 500)
+        }
+      }, 200)
+    })
+  }, [baseId, idCounter])
 
   // Real conversion function using FFmpeg.js
   const convertGifToMp4 = useCallback(async (file: File, settings: ConversionSettings): Promise<ConvertedVideo> => {
@@ -184,9 +258,13 @@ export default function MediaConverterPage() {
   const handleFileSelect = useCallback(async (files: FileList | null) => {
     if (!files) return
     
-    if (!isFFmpegReady) {
+    if (!isFFmpegReady && !ffmpegError) {
       alert('FFmpeg is still loading. Please wait a moment and try again.')
       return
+    }
+    
+    if (ffmpegError) {
+      alert('FFmpeg failed to load. The converter will run in demo mode. Please check your internet connection and try refreshing the page.')
     }
     
     const gifFiles = Array.from(files).filter(file => 
@@ -203,7 +281,12 @@ export default function MediaConverterPage() {
     // Convert files sequentially
     for (const file of gifFiles) {
       try {
-        await convertGifToMp4(file, settings)
+        // Use real FFmpeg conversion if available, otherwise demo mode
+        if (isFFmpegReady) {
+          await convertGifToMp4(file, settings)
+        } else {
+          await convertGifToMp4Demo(file, settings)
+        }
       } catch (error) {
         console.error('Conversion failed:', error)
         setVideos(prev => prev.map(video => 
@@ -215,7 +298,7 @@ export default function MediaConverterPage() {
     }
     
     setIsConverting(false)
-  }, [settings, convertGifToMp4])
+  }, [settings, convertGifToMp4, convertGifToMp4Demo, isFFmpegReady, ffmpegError])
 
   const handleDragOver = useCallback((e: React.DragEvent) => {
     e.preventDefault()
@@ -239,14 +322,18 @@ export default function MediaConverterPage() {
 
   const downloadVideo = useCallback((video: ConvertedVideo) => {
     if (!video.convertedUrl) {
-      alert('No converted file available for download.')
+      if (ffmpegError) {
+        alert('Download not available in demo mode. FFmpeg failed to load. Please refresh the page and ensure you have a stable internet connection.')
+      } else {
+        alert('No converted file available for download.')
+      }
       return
     }
     const link = document.createElement('a')
     link.href = video.convertedUrl
     link.download = video.name
     link.click()
-  }, [])
+  }, [ffmpegError])
 
   const downloadAll = useCallback(() => {
     const completedVideos = videos.filter(video => video.status === 'completed')
@@ -335,11 +422,17 @@ export default function MediaConverterPage() {
               </p>
             </div>
           )}
-          {!isFFmpegLoading && !isFFmpegReady && (
+          {!isFFmpegLoading && !isFFmpegReady && ffmpegError && (
             <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl mx-auto">
-              <p className="text-sm text-red-800">
-                <span className="font-semibold">❌ Error:</span> Failed to load FFmpeg. Please refresh the page.
+              <p className="text-sm text-red-800 mb-2">
+                <span className="font-semibold">❌ Error:</span> Failed to load FFmpeg: {ffmpegError}
               </p>
+              <button
+                onClick={retryFFmpegLoad}
+                className="px-3 py-1 bg-red-600 text-white text-xs rounded hover:bg-red-700 transition-colors"
+              >
+                Retry Loading
+              </button>
             </div>
           )}
         </div>

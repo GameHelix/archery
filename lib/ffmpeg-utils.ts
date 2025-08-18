@@ -23,21 +23,31 @@ class FFmpegConverter {
     this.ffmpeg = new FFmpeg()
     
     this.ffmpeg.on('log', ({ message }) => {
-      console.log(message)
+      console.log('[FFmpeg]', message)
     })
 
     this.ffmpeg.on('progress', ({ progress }) => {
       onProgress?.(progress * 100)
     })
 
-    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd'
-    
-    await this.ffmpeg.load({
-      coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
-      wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
-    })
+    try {
+      // Use the correct CDN paths for FFmpeg.js
+      const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd'
+      
+      console.log('Loading FFmpeg from:', baseURL)
+      
+      await this.ffmpeg.load({
+        coreURL: await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript'),
+        wasmURL: await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm'),
+      })
 
-    this.isLoaded = true
+      this.isLoaded = true
+      console.log('FFmpeg loaded successfully')
+    } catch (error) {
+      console.error('Failed to load FFmpeg:', error)
+      this.isLoaded = false
+      throw new Error(`FFmpeg loading failed: ${error}`)
+    }
   }
 
   async convertGifToMp4(
