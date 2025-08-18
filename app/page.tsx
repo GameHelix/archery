@@ -129,7 +129,7 @@ export default function HomePage() {
         "description": "Your ultimate collection of essential online tools. Fast, secure, and completely free.",
         "foundingDate": "2024",
         "sameAs": [
-          "https://github.com/Ismat-Samadov/swissknife"
+          "https://swissknife.site"
         ]
       },
       {

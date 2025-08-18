@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { Wrench, Shield, Zap, Heart, Users, Code } from 'lucide-react'
+import { Wrench, Shield, Zap, Heart, Users } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -46,7 +46,7 @@ export default function AboutPage() {
       color: 'bg-green-500'
     },
     {
-      icon: Code,
+      icon: Users,
       title: 'Open & Transparent',
       description: 'Clean, modern code. No tracking, no analytics beyond basic usage statistics.',
       color: 'bg-purple-500'
@@ -211,7 +211,7 @@ export default function AboutPage() {
                   </li>
                   <li className="flex items-center">
                     <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
-                    Open source friendly
+                    Privacy-focused architecture
                   </li>
                 </ul>
               </div>
@@ -228,22 +228,13 @@ export default function AboutPage() {
               document converters, image manipulation tools, and much more.
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex justify-center">
               <Link 
                 href="/contact"
                 className="inline-flex items-center px-6 py-3 bg-primary-600 text-white font-semibold rounded-xl hover:bg-primary-700 transition-colors duration-200"
               >
                 Suggest a Tool
                 <Users className="ml-2 h-5 w-5" />
-              </Link>
-              <Link 
-                href="https://github.com/Ismat-Samadov/swissknife"
-                className="inline-flex items-center px-6 py-3 bg-gray-800 text-white font-semibold rounded-xl hover:bg-gray-900 transition-colors duration-200"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View on GitHub
-                <Code className="ml-2 h-5 w-5" />
               </Link>
             </div>
           </div>

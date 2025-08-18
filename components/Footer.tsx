@@ -1,4 +1,4 @@
-import { Wrench, Github, Twitter, Mail } from 'lucide-react'
+import { Wrench, Twitter, Mail } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -18,9 +18,6 @@ export default function Footer() {
             <div className="flex space-x-4">
               <a href="mailto:contact@swissknife.site" className="text-gray-400 hover:text-white transition-colors">
                 <Mail className="h-5 w-5" />
-              </a>
-              <a href="https://github.com" className="text-gray-400 hover:text-white transition-colors">
-                <Github className="h-5 w-5" />
               </a>
               <a href="https://twitter.com" className="text-gray-400 hover:text-white transition-colors">
                 <Twitter className="h-5 w-5" />

@@ -99,9 +99,9 @@ export default function ContactPage() {
             </div>
             
             <div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Is SwissKnife open source?</h3>
+              <h3 className="text-lg font-semibold text-gray-800 mb-2">Is SwissKnife secure?</h3>
               <p className="text-gray-600 text-sm">
-                We're working towards open-sourcing parts of our codebase. Follow us for updates on this initiative.
+                Yes! All processing happens in your browser locally. We use HTTPS encryption and follow security best practices.
               </p>
             </div>
           </div>
