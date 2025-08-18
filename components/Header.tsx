@@ -55,6 +55,12 @@ export default function Header() {
                 </div>
               </div>
             </div>
+            <Link href="/about" className="text-gray-700 hover:text-primary-600 transition-colors">
+              About
+            </Link>
+            <Link href="/contact" className="text-gray-700 hover:text-primary-600 transition-colors">
+              Contact
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -92,6 +98,20 @@ export default function Header() {
                   </Link>
                 ))}
               </div>
+              <Link
+                href="/about"
+                className="block px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-100 rounded transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                About
+              </Link>
+              <Link
+                href="/contact"
+                className="block px-3 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-100 rounded transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                Contact
+              </Link>
             </div>
           </div>
         )}
