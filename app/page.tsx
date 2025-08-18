@@ -11,8 +11,7 @@ import {
   Gauge, 
   Palette, 
   Image, 
-  Clock, 
-  Play 
+  Clock 
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -102,13 +101,6 @@ const tools = [
     href: '/timezone-converter',
     color: 'bg-lime-500'
   },
-  {
-    name: 'Media Converter',
-    description: 'Convert audio and video files',
-    icon: Play,
-    href: '/media-converter',
-    color: 'bg-slate-500'
-  }
 ]
 
 export default function HomePage() {
