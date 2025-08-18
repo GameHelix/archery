@@ -389,6 +389,203 @@ export default function HomePage() {
             </div>
           </div>
         </section>
+
+        {/* Educational Content Section */}
+        <section className="py-16 sm:py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Learn & Stay Secure Online
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Master digital security and productivity with our comprehensive guides and tips
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {/* Password Security Guide */}
+              <div className="bg-gradient-to-br from-red-50 to-red-100 rounded-2xl p-6 border border-red-200">
+                <div className="w-12 h-12 bg-red-500 rounded-xl flex items-center justify-center mb-4">
+                  <Key className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-red-900 mb-3">Password Security 101</h3>
+                <p className="text-red-800 mb-4 leading-relaxed">
+                  Learn how to create strong, unique passwords and protect your digital accounts from hackers.
+                </p>
+                <ul className="space-y-2 text-sm text-red-800">
+                  <li>• Use 12+ character passwords</li>
+                  <li>• Never reuse passwords</li>
+                  <li>• Enable two-factor authentication</li>
+                  <li>• Use a password manager</li>
+                </ul>
+              </div>
+
+              {/* QR Code Best Practices */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 border border-blue-200">
+                <div className="w-12 h-12 bg-blue-500 rounded-xl flex items-center justify-center mb-4">
+                  <QrCode className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-blue-900 mb-3">QR Code Guidelines</h3>
+                <p className="text-blue-800 mb-4 leading-relaxed">
+                  Discover how to create effective QR codes for business, marketing, and personal use.
+                </p>
+                <ul className="space-y-2 text-sm text-blue-800">
+                  <li>• Keep URLs short and clean</li>
+                  <li>• Test before printing</li>
+                  <li>• Use high contrast colors</li>
+                  <li>• Include clear instructions</li>
+                </ul>
+              </div>
+
+              {/* Privacy Tips */}
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 border border-green-200">
+                <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center mb-4">
+                  <Activity className="h-6 w-6 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-green-900 mb-3">Privacy Protection</h3>
+                <p className="text-green-800 mb-4 leading-relaxed">
+                  Essential tips to protect your personal data and maintain privacy online.
+                </p>
+                <ul className="space-y-2 text-sm text-green-800">
+                  <li>• Use client-side tools only</li>
+                  <li>• Avoid uploading sensitive data</li>
+                  <li>• Clear browser data regularly</li>
+                  <li>• Use HTTPS websites only</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Tool Comparison Section */}
+        <section className="py-16 sm:py-20 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Why Choose Our Tools?
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Compare our privacy-first approach with other online tools
+              </p>
+            </div>
+
+            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-primary-600 text-white">
+                    <tr>
+                      <th className="px-6 py-4 text-left font-semibold">Features</th>
+                      <th className="px-6 py-4 text-center font-semibold">SwissKnife</th>
+                      <th className="px-6 py-4 text-center font-semibold">Other Tools</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200">
+                    <tr>
+                      <td className="px-6 py-4 font-medium text-gray-900">Privacy Protection</td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                          ✓ Client-side only
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                          ✗ Server processing
+                        </span>
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="px-6 py-4 font-medium text-gray-900">Cost</td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                          ✓ Completely Free
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                          ✗ Premium features
+                        </span>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="px-6 py-4 font-medium text-gray-900">Speed</td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                          ✓ Instant processing
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                          ~ Server delays
+                        </span>
+                      </td>
+                    </tr>
+                    <tr className="bg-gray-50">
+                      <td className="px-6 py-4 font-medium text-gray-900">Registration</td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                          ✓ No signup required
+                        </span>
+                      </td>
+                      <td className="px-6 py-4 text-center">
+                        <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                          ✗ Account required
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 sm:py-20 bg-white">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-lg text-gray-600">
+                Everything you need to know about our tools and services
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              {[
+                {
+                  question: "Are your tools really free to use?",
+                  answer: "Yes, absolutely! All our tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+                },
+                {
+                  question: "How do you protect my privacy?",
+                  answer: "All processing happens locally in your browser. We never store, transmit, or access your data. Your files and information stay on your device at all times, ensuring complete privacy protection."
+                },
+                {
+                  question: "Do I need to create an account?",
+                  answer: "No registration is required. Simply visit any tool and start using it immediately. We designed our tools to be as friction-free as possible while maintaining full functionality."
+                },
+                {
+                  question: "How accurate are your tools?",
+                  answer: "Our tools use industry-standard algorithms and are thoroughly tested for accuracy. We regularly update and improve our tools based on user feedback and best practices."
+                },
+                {
+                  question: "Can I use these tools on mobile devices?",
+                  answer: "Yes! All our tools are fully responsive and optimized for mobile devices, tablets, and desktops. You can access them from any device with a modern web browser."
+                },
+                {
+                  question: "How can I suggest new tools or report issues?",
+                  answer: "We welcome feedback! Use our contact form to suggest new tools, report bugs, or share your ideas. We actively consider user suggestions for our development roadmap."
+                }
+              ].map((faq, index) => (
+                <div key={index} className="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-3">{faq.question}</h3>
+                  <p className="text-gray-700 leading-relaxed">{faq.answer}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />

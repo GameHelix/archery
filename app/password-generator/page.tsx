@@ -347,6 +347,143 @@ export default function PasswordGeneratorPage() {
             </div>
           </div>
         </div>
+
+        {/* Educational Content */}
+        <section className="py-16 bg-white">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Complete Password Security Guide
+              </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+                Learn everything you need to know about creating and managing secure passwords
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+              {/* Password Strength Guide */}
+              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-8 border border-green-200">
+                <h3 className="text-2xl font-bold text-green-900 mb-6">What Makes a Strong Password?</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                      <span className="text-white font-bold">12+</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-green-900">Length Matters Most</h4>
+                      <p className="text-green-800 text-sm">Use at least 12 characters. Each additional character exponentially increases security.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                      <span className="text-white font-bold">Aa</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-green-900">Mix Character Types</h4>
+                      <p className="text-green-800 text-sm">Combine uppercase, lowercase, numbers, and symbols for maximum entropy.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                      <span className="text-white font-bold">🚫</span>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-green-900">Avoid Common Patterns</h4>
+                      <p className="text-green-800 text-sm">No dictionary words, personal info, or predictable sequences like "123" or "abc".</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Password Manager Guide */}
+              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 border border-blue-200">
+                <h3 className="text-2xl font-bold text-blue-900 mb-6">Using Password Managers</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                      <Shield className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-900">One Master Password</h4>
+                      <p className="text-blue-800 text-sm">Remember only one strong master password to secure all others.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                      <RefreshCw className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-900">Auto-Generate Unique Passwords</h4>
+                      <p className="text-blue-800 text-sm">Create different strong passwords for every account automatically.</p>
+                    </div>
+                  </div>
+                  <div className="flex items-start">
+                    <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                      <Eye className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-900">Monitor for Breaches</h4>
+                      <p className="text-blue-800 text-sm">Get alerts when your passwords appear in data breaches.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Common Mistakes */}
+            <div className="bg-red-50 rounded-2xl p-8 border border-red-200 mb-12">
+              <h3 className="text-2xl font-bold text-red-900 mb-6 text-center">Common Password Mistakes to Avoid</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                  { mistake: "Using personal information", example: "john1985, sarah_smith", risk: "Easily guessed from social media" },
+                  { mistake: "Reusing passwords", example: "Same password for email & banking", risk: "One breach compromises all accounts" },
+                  { mistake: "Simple substitutions", example: "password → p@ssw0rd", risk: "Hackers know these patterns" },
+                  { mistake: "Short passwords", example: "cat123, hello", risk: "Cracked in seconds by computers" },
+                  { mistake: "Dictionary words", example: "elephant, basketball", risk: "Vulnerable to dictionary attacks" },
+                  { mistake: "Keyboard patterns", example: "qwerty, 123456", risk: "Among first passwords tried" }
+                ].map((item, index) => (
+                  <div key={index} className="bg-white rounded-xl p-4 border border-red-200">
+                    <h4 className="font-semibold text-red-900 mb-2">{item.mistake}</h4>
+                    <p className="text-sm text-red-700 mb-2 font-mono bg-red-100 px-2 py-1 rounded">{item.example}</p>
+                    <p className="text-xs text-red-600">{item.risk}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Two-Factor Authentication */}
+            <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-8 border border-purple-200">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-purple-900 mb-4">Enable Two-Factor Authentication (2FA)</h3>
+                <p className="text-purple-800">Add an extra layer of security beyond just passwords</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">📱</span>
+                  </div>
+                  <h4 className="font-semibold text-purple-900 mb-2">Authenticator Apps</h4>
+                  <p className="text-sm text-purple-800">Google Authenticator, Authy, or Microsoft Authenticator</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">💬</span>
+                  </div>
+                  <h4 className="font-semibold text-purple-900 mb-2">SMS Codes</h4>
+                  <p className="text-sm text-purple-800">Text messages with verification codes (less secure)</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-purple-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <span className="text-2xl">🔑</span>
+                  </div>
+                  <h4 className="font-semibold text-purple-900 mb-2">Hardware Keys</h4>
+                  <p className="text-sm text-purple-800">YubiKey or other FIDO2 security keys (most secure)</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
 
       <Footer />
