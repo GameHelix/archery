@@ -78,8 +78,40 @@ export default function PasswordGeneratorPage() {
 
   const strengthInfo = getPasswordStrength()
 
+  const toolStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Password Generator Tool",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "Web Browser", 
+    "url": "https://swissknife.site/password-generator",
+    "description": "Generate strong, secure passwords with customizable length and character options. Free online password generator tool.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "@priceCurrency": "USD"
+    },
+    "featureList": [
+      "Customizable password length",
+      "Include/exclude character types",
+      "Password strength indicator", 
+      "Copy to clipboard functionality",
+      "No data storage or tracking"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "SwissKnife",
+      "url": "https://swissknife.site"
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
+      />
+      
       <Header />
       
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

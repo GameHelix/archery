@@ -2,49 +2,97 @@ import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://swissknife.site'
+  const currentDate = new Date()
   
   return [
+    // Homepage - highest priority
     {
       url: baseUrl,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'daily',
-      priority: 1,
+      priority: 1.0,
     },
+    
+    // Main implemented tools - high priority
     {
       url: `${baseUrl}/password-generator`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/qr-generator`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.9,
     },
     {
       url: `${baseUrl}/text-tools`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/unit-converter`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
-      priority: 0.8,
+      priority: 0.85,
     },
     {
       url: `${baseUrl}/bmi-calculator`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
     },
     {
       url: `${baseUrl}/color-palette`,
-      lastModified: new Date(),
+      lastModified: currentDate,
       changeFrequency: 'weekly',
       priority: 0.8,
+    },
+    
+    // Coming soon tools - lower priority but still indexed
+    {
+      url: `${baseUrl}/document-converter`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/spreadsheet-converter`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.6,
+    },
+    {
+      url: `${baseUrl}/tip-calculator`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/todo-list`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/image-converter`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/timezone-converter`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
+    },
+    {
+      url: `${baseUrl}/media-converter`,
+      lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.5,
     },
   ]
 }

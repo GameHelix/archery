@@ -112,8 +112,102 @@ const tools = [
 ]
 
 export default function HomePage() {
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://swissknife.site/#organization",
+        "name": "SwissKnife",
+        "url": "https://swissknife.site",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://swissknife.site/icon-512.png",
+          "width": 512,
+          "height": 512
+        },
+        "description": "Your ultimate collection of essential online tools. Fast, secure, and completely free.",
+        "foundingDate": "2024",
+        "sameAs": [
+          "https://github.com/Ismat-Samadov/swissknife"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://swissknife.site/#website",
+        "url": "https://swissknife.site",
+        "name": "SwissKnife - Essential Online Tools",
+        "description": "A comprehensive collection of essential online tools including password generator, QR code generator, text tools, unit converter, BMI calculator, and color palette generator.",
+        "publisher": {
+          "@id": "https://swissknife.site/#organization"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://swissknife.site/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://swissknife.site/#webpage",
+        "url": "https://swissknife.site",
+        "name": "SwissKnife - Essential Online Tools",
+        "isPartOf": {
+          "@id": "https://swissknife.site/#website"
+        },
+        "about": {
+          "@id": "https://swissknife.site/#organization"
+        },
+        "description": "Free online tools for password generation, QR codes, text manipulation, unit conversion, BMI calculation, and color palettes. No registration required.",
+        "breadcrumb": {
+          "@id": "https://swissknife.site/#breadcrumb"
+        },
+        "inLanguage": "en-US"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://swissknife.site/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://swissknife.site"
+          }
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "SwissKnife Tools",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web Browser",
+        "url": "https://swissknife.site",
+        "description": "Collection of essential online tools for developers, designers, and everyday users.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "featureList": [
+          "Password Generator",
+          "QR Code Generator", 
+          "Text Tools Suite",
+          "Unit Converter",
+          "BMI Calculator",
+          "Color Palette Generator"
+        ]
+      }
+    ]
+  }
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      
       <Header />
       
       <main>

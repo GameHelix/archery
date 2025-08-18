@@ -2,12 +2,35 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'SwissKnife - Essential Online Tools',
-  description: 'A comprehensive collection of essential online tools including password generator, QR code generator, document converter, and more. Free, fast, and secure.',
-  keywords: 'online tools, password generator, QR code, document converter, text tools, calculator, utilities',
-  authors: [{ name: 'SwissKnife' }],
+  title: {
+    default: 'SwissKnife - Essential Online Tools | Free Web Utilities',
+    template: '%s | SwissKnife - Free Online Tools'
+  },
+  description: 'Free online tools for developers, designers & everyone. Password generator, QR codes, text tools, unit converter, BMI calculator & more. No registration required, privacy-first design.',
+  keywords: [
+    'online tools',
+    'web utilities',
+    'password generator',
+    'QR code generator', 
+    'text tools',
+    'unit converter',
+    'BMI calculator',
+    'color palette generator',
+    'free tools',
+    'web applications',
+    'developer tools',
+    'productivity tools',
+    'browser tools',
+    'online utilities',
+    'text converter',
+    'measurement converter'
+  ],
+  authors: [{ name: 'SwissKnife', url: 'https://swissknife.site' }],
   creator: 'SwissKnife',
   publisher: 'SwissKnife',
+  applicationName: 'SwissKnife',
+  generator: 'Next.js',
+  referrer: 'origin-when-cross-origin',
   formatDetection: {
     email: false,
     address: false,
@@ -16,21 +39,31 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://swissknife.site'),
   alternates: {
     canonical: '/',
+    languages: {
+      'en-US': '/',
+    },
   },
   icons: {
     icon: [
-      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/favicon.ico', sizes: 'any', type: 'image/x-icon' },
       { url: '/icon-192.png', type: 'image/png', sizes: '192x192' },
       { url: '/icon-512.png', type: 'image/png', sizes: '512x512' },
     ],
     apple: [
       { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
+    other: [
+      {
+        rel: 'mask-icon',
+        url: '/icon-512.png',
+        color: '#3B82F6',
+      },
+    ],
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'SwissKnife - Essential Online Tools',
-    description: 'A comprehensive collection of essential online tools including password generator, QR code generator, document converter, and more. Free, fast, and secure.',
+    title: 'SwissKnife - Essential Online Tools | Free Web Utilities',
+    description: 'Free online tools for developers, designers & everyone. Password generator, QR codes, text tools, unit converter, BMI calculator & more. No registration required.',
     url: 'https://swissknife.site',
     siteName: 'SwissKnife',
     images: [
@@ -38,7 +71,8 @@ export const metadata: Metadata = {
         url: '/icon-512.png',
         width: 512,
         height: 512,
-        alt: 'SwissKnife - Essential Online Tools',
+        alt: 'SwissKnife - Essential Online Tools Logo',
+        type: 'image/png',
       },
     ],
     locale: 'en_US',
@@ -47,19 +81,33 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'SwissKnife - Essential Online Tools',
-    description: 'A comprehensive collection of essential online tools including password generator, QR code generator, document converter, and more. Free, fast, and secure.',
+    description: 'Free online tools for developers, designers & everyone. Password generator, QR codes, text tools, unit converter & more. No registration required.',
     images: ['/icon-512.png'],
+    creator: '@swissknife_tools',
+    site: '@swissknife_tools',
   },
   robots: {
     index: true,
     follow: true,
+    nocache: true,
     googleBot: {
       index: true,
       follow: true,
+      noimageindex: false,
       'max-video-preview': -1,
       'max-image-preview': 'large',
       'max-snippet': -1,
     },
+  },
+  category: 'technology',
+  classification: 'Web Utilities',
+  other: {
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'default',
+    'apple-mobile-web-app-title': 'SwissKnife',
+    'mobile-web-app-capable': 'yes',
+    'msapplication-TileColor': '#3B82F6',
+    'msapplication-config': '/browserconfig.xml',
   },
 }
 
