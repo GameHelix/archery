@@ -107,13 +107,18 @@ export default function MediaConverterPage() {
                                   settings.optimization === 'quality' ? 0.70 : 0.85
             const convertedSize = Math.floor(file.size * (1 - reductionFactor))
             
+            // Note: This is a demo simulation. In a real implementation, 
+            // you would use FFmpeg.js to actually convert GIF to MP4
+            // For now, we'll mark this as completed but without a real download
+            const convertedUrl = ''  // No actual file for demo
+            
             const convertedVideo: ConvertedVideo = {
               id: videoId,
               name: file.name.replace(/\.gif$/i, '.mp4'),
               originalSize: file.size,
               convertedSize,
               originalUrl: URL.createObjectURL(file),
-              convertedUrl: URL.createObjectURL(file), // In real implementation, this would be the converted MP4
+              convertedUrl,
               status: 'completed',
               progress: 100,
               quality: settings.quality,
@@ -202,6 +207,10 @@ export default function MediaConverterPage() {
   }, [handleFileSelect])
 
   const downloadVideo = useCallback((video: ConvertedVideo) => {
+    if (!video.convertedUrl) {
+      alert('This is a demo version. In a real implementation, you would integrate FFmpeg.js or a similar library to perform actual GIF to MP4 conversion.')
+      return
+    }
     const link = document.createElement('a')
     link.href = video.convertedUrl
     link.download = video.name
@@ -280,6 +289,12 @@ export default function MediaConverterPage() {
               📹 Video Optimization • 🗜️ Size Reduction • ⚡ Batch Processing • 🔒 Privacy-First
             </span>
           </p>
+          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg max-w-2xl mx-auto">
+            <p className="text-sm text-blue-800">
+              <span className="font-semibold">Demo Version:</span> This is a demonstration interface. 
+              Real implementation would require FFmpeg.js integration for actual GIF to MP4 conversion.
+            </p>
+          </div>
         </div>
 
         {/* Upload Section */}
@@ -437,10 +452,11 @@ export default function MediaConverterPage() {
                     </div>
                     <button
                       onClick={downloadAll}
-                      className="px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-200 min-h-[40px] touch-manipulation flex items-center"
+                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 min-h-[40px] touch-manipulation flex items-center"
+                      title="Demo only - click for implementation info"
                     >
                       <Download className="h-4 w-4 mr-2" />
-                      Download All
+                      Demo Download All
                     </button>
                   </>
                 )}
@@ -534,9 +550,11 @@ export default function MediaConverterPage() {
                         <CheckCircle className="h-5 w-5 text-green-600" />
                         <button
                           onClick={() => downloadVideo(video)}
-                          className="px-3 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors min-h-[40px] touch-manipulation"
+                          className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[40px] touch-manipulation flex items-center gap-2"
+                          title="Demo only - click for implementation info"
                         >
                           <Download className="h-4 w-4" />
+                          <span className="text-xs">Demo</span>
                         </button>
                       </>
                     )}
