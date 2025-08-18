@@ -121,6 +121,11 @@ export default function MediaConverterPage() {
               duration: 3 // Simulated duration
             }
             
+            // Update the video in state
+            setVideos(prev => prev.map(video => 
+              video.id === videoId ? convertedVideo : video
+            ))
+            
             resolve(convertedVideo)
           }, 500)
         }
@@ -143,7 +148,7 @@ export default function MediaConverterPage() {
       
       setVideos(prev => [...prev, initialVideo])
     })
-  }, [])
+  }, [baseId, idCounter])
 
   const handleFileSelect = useCallback(async (files: FileList | null) => {
     if (!files) return
@@ -166,8 +171,8 @@ export default function MediaConverterPage() {
       } catch (error) {
         console.error('Conversion failed:', error)
         setVideos(prev => prev.map(video => 
-          video.originalUrl === URL.createObjectURL(file) 
-            ? { ...video, status: 'error' } 
+          video.name === file.name.replace(/\.gif$/i, '.mp4') 
+            ? { ...video, status: 'error' as const } 
             : video
         ))
       }
