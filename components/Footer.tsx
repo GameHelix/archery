@@ -1,4 +1,4 @@
-import { Wrench, Twitter, Mail } from 'lucide-react'
+import { Wrench } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -15,14 +15,6 @@ export default function Footer() {
               Your ultimate collection of essential online tools. Fast, secure, and completely free. 
               No registration required.
             </p>
-            <div className="flex space-x-4">
-              <a href="mailto:contact@swissknife.site" className="text-gray-400 hover:text-white transition-colors">
-                <Mail className="h-5 w-5" />
-              </a>
-              <a href="https://twitter.com" className="text-gray-400 hover:text-white transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-            </div>
           </div>
 
           {/* Tools */}
