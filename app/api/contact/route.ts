@@ -30,9 +30,10 @@ export async function POST(request: NextRequest) {
     }
 
     const data = await resend.emails.send({
-      from: 'SwissKnife Contact <contact@swissknife.site>',
+      from: 'SwissKnife <onboarding@resend.dev>',
       to: [process.env.CONTACT_EMAIL!],
-      subject: `Contact Form: ${subject}`,
+      replyTo: [email],
+      subject: `SwissKnife Contact: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #3B82F6; border-bottom: 2px solid #E5E7EB; padding-bottom: 10px;">
@@ -51,8 +52,8 @@ export async function POST(request: NextRequest) {
           </div>
           
           <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #E5E7EB; color: #6B7280; font-size: 14px;">
-            <p>This message was sent via the SwissKnife contact form.</p>
-            <p>Reply directly to this email to respond to ${name}.</p>
+            <p>This message was sent via the SwissKnife contact form at swissknife.site</p>
+            <p><strong>Reply directly to this email to respond to ${name} at ${email}</strong></p>
           </div>
         </div>
       `,
