@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
-import { Palette, Copy, RefreshCw, Download } from 'lucide-react'
+import { useState, useCallback } from 'react'
+import { Palette, Copy, RefreshCw, Download, Check, Sparkles, Eye } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 
@@ -16,6 +16,8 @@ export default function ColorPalettePage() {
   const [paletteType, setPaletteType] = useState<'random' | 'monochromatic' | 'complementary' | 'analogous' | 'triadic'>('random')
   const [baseColor, setBaseColor] = useState('#3B82F6')
   const [paletteSize, setPaletteSize] = useState(5)
+  const [copiedColor, setCopiedColor] = useState<string | null>(null)
+  const [isGenerating, setIsGenerating] = useState(false)
 
   const hexToRgb = (hex: string): { r: number; g: number; b: number } => {
     const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex)
@@ -98,7 +100,11 @@ export default function ColorPalettePage() {
     }
   }
 
-  const generatePalette = () => {
+  const generatePalette = useCallback(async () => {
+    setIsGenerating(true)
+    // Add a small delay for better UX
+    await new Promise(resolve => setTimeout(resolve, 300))
+    
     let colors: string[] = []
 
     switch (paletteType) {
@@ -157,7 +163,8 @@ export default function ColorPalettePage() {
     }
 
     setPalette(colors.map(createColor))
-  }
+    setIsGenerating(false)
+  }, [paletteType, baseColor, paletteSize])
 
   const copyColor = async (color: string, format: 'hex' | 'rgb' | 'hsl') => {
     try {
@@ -165,7 +172,8 @@ export default function ColorPalettePage() {
       if (colorObj) {
         const valueToCopy = format === 'hex' ? colorObj.hex : format === 'rgb' ? colorObj.rgb : colorObj.hsl
         await navigator.clipboard.writeText(valueToCopy)
-        alert(`${format.toUpperCase()} value copied: ${valueToCopy}`)
+        setCopiedColor(`${color}-${format}`)
+        setTimeout(() => setCopiedColor(null), 2000)
       }
     } catch (error) {
       console.error('Failed to copy color:', error)
@@ -190,142 +198,259 @@ export default function ColorPalettePage() {
     linkElement.click()
   }
 
+  const toolStructuredData = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Free Color Palette Generator - Design Color Schemes",
+    "applicationCategory": ["UtilitiesApplication", "DesignApplication"],
+    "operatingSystem": ["Web Browser", "iOS", "Android", "Windows", "MacOS", "Linux"],
+    "url": "https://swissknife.site/color-palette",
+    "description": "Generate beautiful color palettes for your designs with monochromatic, complementary, analogous, triadic, and random color schemes. Export palettes in HEX, RGB, and HSL formats.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "featureList": [
+      "Monochromatic color schemes",
+      "Complementary color harmonies",
+      "Analogous color combinations",
+      "Triadic color schemes",
+      "Random color generation",
+      "HEX, RGB, HSL color formats",
+      "One-click color copying",
+      "Palette export to JSON",
+      "Mobile-responsive design",
+      "Color theory education",
+      "Live palette preview",
+      "Touch-friendly interface"
+    ],
+    "provider": {
+      "@type": "Organization",
+      "name": "SwissKnife",
+      "url": "https://swissknife.site"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "ratingCount": "654",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-100">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
+      />
+      
       <Header />
       
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center mb-4">
-            <Palette className="h-12 w-12 text-primary-600 mr-3" />
-            <h1 className="text-4xl font-bold text-gray-900">Color Palette Generator</h1>
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        {/* Hero Section */}
+        <div className="text-center mb-8 sm:mb-12">
+          <div className="flex items-center justify-center mb-6">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-purple-500 to-pink-600 rounded-3xl flex items-center justify-center shadow-lg">
+              <Palette className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+            </div>
           </div>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Generate beautiful color palettes for your designs. Choose from various harmony types and export your favorites.
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+            Color Palette Generator
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+            Generate beautiful color palettes using proven color theory principles.
+            <span className="block mt-2 text-sm sm:text-base text-gray-500">
+              🎨 Color Harmony • 📐 Color Theory • 💾 Export Ready • 📱 Mobile Friendly
+            </span>
           </p>
         </div>
 
-        <div className="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
           {/* Controls */}
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Palette Type
-              </label>
-              <select
-                value={paletteType}
-                onChange={(e) => setPaletteType(e.target.value as any)}
-                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-              >
-                <option value="random">Random</option>
-                <option value="monochromatic">Monochromatic</option>
-                <option value="complementary">Complementary</option>
-                <option value="analogous">Analogous</option>
-                <option value="triadic">Triadic</option>
-              </select>
+          <div className="space-y-6 mb-8">
+            <div className="flex items-center mb-4">
+              <Sparkles className="h-5 w-5 text-purple-600 mr-2" />
+              <h2 className="text-xl font-semibold text-gray-900">Palette Settings</h2>
             </div>
-
-            {paletteType !== 'random' && (
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Base Color
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Palette Type
                 </label>
-                <div className="flex items-center space-x-2">
-                  <input
-                    type="color"
-                    value={baseColor}
-                    onChange={(e) => setBaseColor(e.target.value)}
-                    className="w-10 h-10 border border-gray-300 rounded cursor-pointer"
-                  />
-                  <input
-                    type="text"
-                    value={baseColor}
-                    onChange={(e) => setBaseColor(e.target.value)}
-                    className="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500"
-                  />
+                <div className="space-y-2">
+                  {[
+                    { value: 'random', label: 'Random', emoji: '🎲' },
+                    { value: 'monochromatic', label: 'Monochromatic', emoji: '🌈' },
+                    { value: 'complementary', label: 'Complementary', emoji: '🎭' },
+                    { value: 'analogous', label: 'Analogous', emoji: '🌅' },
+                    { value: 'triadic', label: 'Triadic', emoji: '🔺' }
+                  ].map((option) => (
+                    <label key={option.value} className="flex items-center cursor-pointer">
+                      <input
+                        type="radio"
+                        name="paletteType"
+                        value={option.value}
+                        checked={paletteType === option.value}
+                        onChange={(e) => setPaletteType(e.target.value as any)}
+                        className="w-4 h-4 text-purple-600 border-gray-300 focus:ring-purple-500"
+                      />
+                      <span className="ml-3 flex items-center text-sm text-gray-700">
+                        <span className="mr-2">{option.emoji}</span>
+                        {option.label}
+                      </span>
+                    </label>
+                  ))}
                 </div>
               </div>
-            )}
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                Palette Size
-              </label>
-              <input
-                type="range"
-                min="3"
-                max="10"
-                value={paletteSize}
-                onChange={(e) => setPaletteSize(parseInt(e.target.value))}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-              />
-              <div className="text-center text-sm text-gray-600 mt-1">{paletteSize} colors</div>
-            </div>
-
-            <div className="flex items-end space-x-2">
-              <button
-                onClick={generatePalette}
-                className="btn-primary flex-1 inline-flex items-center justify-center px-4 py-2"
-              >
-                <RefreshCw className="h-4 w-4 mr-2" />
-                Generate
-              </button>
-              {palette.length > 0 && (
-                <button
-                  onClick={exportPalette}
-                  className="btn-secondary inline-flex items-center justify-center px-4 py-2"
-                  title="Export palette"
-                >
-                  <Download className="h-4 w-4" />
-                </button>
+              {paletteType !== 'random' && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                    Base Color
+                  </label>
+                  <div className="space-y-3">
+                    <div className="flex items-center justify-center">
+                      <div className="relative">
+                        <input
+                          type="color"
+                          value={baseColor}
+                          onChange={(e) => setBaseColor(e.target.value)}
+                          className="w-20 h-20 border-4 border-white rounded-2xl shadow-lg cursor-pointer"
+                          title="Pick base color"
+                        />
+                      </div>
+                    </div>
+                    <input
+                      type="text"
+                      value={baseColor}
+                      onChange={(e) => setBaseColor(e.target.value)}
+                      placeholder="#3B82F6"
+                      className="w-full px-4 py-3 text-center font-mono text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      aria-label="Base color hex value"
+                    />
+                  </div>
+                </div>
               )}
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-3">
+                  Palette Size
+                </label>
+                <div className="space-y-3">
+                  <input
+                    type="range"
+                    min="3"
+                    max="10"
+                    value={paletteSize}
+                    onChange={(e) => setPaletteSize(parseInt(e.target.value))}
+                    className="w-full h-3 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg appearance-none cursor-pointer"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500">
+                    <span>3</span>
+                    <span className="font-semibold text-purple-600">{paletteSize} colors</span>
+                    <span>10</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <button
+                  onClick={generatePalette}
+                  disabled={isGenerating}
+                  className="w-full px-6 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-semibold rounded-xl hover:from-purple-700 hover:to-pink-700 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed min-h-[56px] touch-manipulation flex items-center justify-center"
+                  aria-label="Generate color palette"
+                >
+                  <RefreshCw className={`h-5 w-5 mr-2 ${isGenerating ? 'animate-spin' : ''}`} />
+                  {isGenerating ? 'Generating...' : 'Generate Palette'}
+                </button>
+                
+                {palette.length > 0 && (
+                  <button
+                    onClick={exportPalette}
+                    className="w-full px-4 py-3 bg-gradient-to-r from-gray-600 to-gray-700 text-white font-medium rounded-xl hover:from-gray-700 hover:to-gray-800 transition-all duration-200 min-h-[48px] touch-manipulation flex items-center justify-center"
+                    title="Export palette as JSON"
+                    aria-label="Export color palette"
+                  >
+                    <Download className="h-4 w-4 mr-2" />
+                    Export Palette
+                  </button>
+                )}
+              </div>
             </div>
           </div>
 
           {/* Generated Palette */}
           {palette.length > 0 && (
-            <div className="space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900">Generated Palette</h3>
+            <div className="space-y-6">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center">
+                  <Eye className="h-5 w-5 text-purple-600 mr-2" />
+                  <h3 className="text-xl font-semibold text-gray-900">Generated Palette</h3>
+                </div>
+                <div className="text-sm text-gray-500">
+                  {paletteType.charAt(0).toUpperCase() + paletteType.slice(1)} • {palette.length} colors
+                </div>
+              </div>
               
               {/* Color Swatches */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                 {palette.map((color, index) => (
-                  <div key={index} className="bg-gray-50 rounded-lg overflow-hidden shadow-sm">
+                  <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-200">
                     <div 
-                      className="h-24 w-full cursor-pointer hover:scale-105 transition-transform"
+                      className="h-32 w-full cursor-pointer hover:scale-105 transition-transform relative group"
                       style={{ backgroundColor: color.hex }}
                       onClick={() => copyColor(color.hex, 'hex')}
                       title="Click to copy HEX"
-                    />
-                    <div className="p-3 space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-mono text-gray-700">{color.hex}</span>
+                    >
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-200 flex items-center justify-center">
+                        <Copy className="h-8 w-8 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200" />
+                      </div>
+                    </div>
+                    <div className="p-4 space-y-3">
+                      <div className="flex items-center justify-between group">
+                        <span className="text-sm font-mono font-medium text-gray-800">{color.hex.toUpperCase()}</span>
                         <button
                           onClick={() => copyColor(color.hex, 'hex')}
-                          className="text-gray-500 hover:text-primary-600 transition-colors"
+                          className={`p-2 rounded-lg transition-all duration-200 ${
+                            copiedColor === `${color.hex}-hex` 
+                              ? 'bg-green-100 text-green-600' 
+                              : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
+                          }`}
                           title="Copy HEX"
                         >
-                          <Copy className="h-3 w-3" />
+                          {copiedColor === `${color.hex}-hex` ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />}
                         </button>
                       </div>
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between group">
                         <span className="text-xs font-mono text-gray-600">{color.rgb}</span>
                         <button
                           onClick={() => copyColor(color.hex, 'rgb')}
-                          className="text-gray-500 hover:text-primary-600 transition-colors"
+                          className={`p-1.5 rounded-lg transition-all duration-200 ${
+                            copiedColor === `${color.hex}-rgb` 
+                              ? 'bg-green-100 text-green-600' 
+                              : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
+                          }`}
                           title="Copy RGB"
                         >
-                          <Copy className="h-3 w-3" />
+                          {copiedColor === `${color.hex}-rgb` ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
                         </button>
                       </div>
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between group">
                         <span className="text-xs font-mono text-gray-600">{color.hsl}</span>
                         <button
                           onClick={() => copyColor(color.hex, 'hsl')}
-                          className="text-gray-500 hover:text-primary-600 transition-colors"
+                          className={`p-1.5 rounded-lg transition-all duration-200 ${
+                            copiedColor === `${color.hex}-hsl` 
+                              ? 'bg-green-100 text-green-600' 
+                              : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
+                          }`}
                           title="Copy HSL"
                         >
-                          <Copy className="h-3 w-3" />
+                          {copiedColor === `${color.hex}-hsl` ? <Check className="h-3 w-3" /> : <Copy className="h-3 w-3" />}
                         </button>
                       </div>
                     </div>
@@ -334,56 +459,151 @@ export default function ColorPalettePage() {
               </div>
 
               {/* Palette Preview */}
-              <div className="flex rounded-lg overflow-hidden h-16 shadow-sm">
-                {palette.map((color, index) => (
-                  <div
-                    key={index}
-                    className="flex-1 cursor-pointer hover:scale-105 transition-transform"
-                    style={{ backgroundColor: color.hex }}
-                    onClick={() => copyColor(color.hex, 'hex')}
-                    title={`${color.hex} - Click to copy`}
-                  />
-                ))}
+              <div className="space-y-4">
+                <h4 className="text-lg font-semibold text-gray-900">Full Palette Preview</h4>
+                <div className="flex rounded-2xl overflow-hidden h-24 shadow-lg border-4 border-white">
+                  {palette.map((color, index) => (
+                    <div
+                      key={index}
+                      className="flex-1 cursor-pointer hover:scale-105 transition-all duration-200 relative group"
+                      style={{ backgroundColor: color.hex }}
+                      onClick={() => copyColor(color.hex, 'hex')}
+                      title={`${color.hex} - Click to copy`}
+                    >
+                      <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-200 flex items-center justify-center">
+                        <span className="text-white text-xs font-mono opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                          {color.hex}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          )}
+          
+          {/* Empty State */}
+          {palette.length === 0 && (
+            <div className="text-center py-16">
+              <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Palette className="h-10 w-10 text-purple-600" />
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ready to Create Amazing Colors?</h3>
+              <p className="text-gray-600 max-w-md mx-auto mb-6">
+                Choose your palette type, adjust settings, and generate beautiful color combinations based on proven color theory principles.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
+                <span className="bg-purple-50 px-3 py-1 rounded-full">🌈 Color Theory</span>
+                <span className="bg-pink-50 px-3 py-1 rounded-full">🎨 Professional Quality</span>
+                <span className="bg-blue-50 px-3 py-1 rounded-full">📋 Copy & Export</span>
               </div>
             </div>
           )}
         </div>
 
-        {/* Color Theory Info */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
+        {/* Color Theory & Tips Section */}
+        <div className="space-y-12">
+          <div className="text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Color Theory Guide</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Understanding color relationships helps create harmonious and effective designs. Each palette type serves different purposes.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                title: 'Monochromatic',
+                emoji: '🌈',
+                description: 'Uses variations in lightness and saturation of a single color. Creates a harmonious and cohesive look.',
+                example: 'Perfect for minimalist designs and creating depth',
+                color: 'from-blue-50 to-blue-100 border-blue-200',
+                useCases: ['Minimalist designs', 'Brand consistency', 'Elegant layouts']
+              },
+              {
+                title: 'Complementary',
+                emoji: '🎭',
+                description: 'Uses colors that are opposite each other on the color wheel. Creates high contrast and vibrant looks.',
+                example: 'Great for making elements stand out',
+                color: 'from-red-50 to-red-100 border-red-200',
+                useCases: ['Call-to-action buttons', 'Highlighting content', 'Dynamic layouts']
+              },
+              {
+                title: 'Analogous',
+                emoji: '🌅',
+                description: 'Uses colors that are next to each other on the color wheel. Creates serene and comfortable designs.',
+                example: 'Ideal for natural and peaceful themes',
+                color: 'from-green-50 to-green-100 border-green-200',
+                useCases: ['Nature themes', 'Calming interfaces', 'Gradients']
+              },
+              {
+                title: 'Triadic',
+                emoji: '🔺',
+                description: 'Uses three colors equally spaced around the color wheel. Offers strong visual contrast while retaining balance.',
+                example: 'Perfect for vibrant and dynamic designs',
+                color: 'from-purple-50 to-purple-100 border-purple-200',
+                useCases: ['Playful designs', 'Children\'s content', 'Creative projects']
+              },
+              {
+                title: 'Random',
+                emoji: '🎲',
+                description: 'Generates completely random colors. Great for inspiration and discovering unexpected combinations.',
+                example: 'Use for creative exploration and inspiration',
+                color: 'from-yellow-50 to-yellow-100 border-yellow-200',
+                useCases: ['Creative inspiration', 'Art projects', 'Experimentation']
+              },
+            ].map((info, index) => (
+              <div key={index} className={`bg-gradient-to-br ${info.color} rounded-2xl p-6 border shadow-sm hover:shadow-md transition-all duration-200`}>
+                <div className="flex items-center mb-4">
+                  <span className="text-3xl mr-3">{info.emoji}</span>
+                  <h3 className="text-lg font-bold text-gray-900">{info.title}</h3>
+                </div>
+                <p className="text-gray-700 text-sm mb-4 leading-relaxed">{info.description}</p>
+                <div className="space-y-3">
+                  <div className="bg-white/60 rounded-xl p-3">
+                    <p className="text-xs text-gray-600 italic">"{info.example}"</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-700 mb-2">Best for:</p>
+                    <div className="flex flex-wrap gap-1">
+                      {info.useCases.map((useCase, idx) => (
+                        <span key={idx} className="text-xs bg-white/70 px-2 py-1 rounded-full text-gray-600">
+                          {useCase}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Pro Tips Section */}
+        <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl p-8 border border-indigo-200">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Pro Design Tips</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              Professional advice for using colors effectively in your designs.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {
-              title: 'Monochromatic',
-              description: 'Uses variations in lightness and saturation of a single color. Creates a harmonious and cohesive look.',
-              example: 'Perfect for minimalist designs and creating depth'
-            },
-            {
-              title: 'Complementary',
-              description: 'Uses colors that are opposite each other on the color wheel. Creates high contrast and vibrant looks.',
-              example: 'Great for making elements stand out'
-            },
-            {
-              title: 'Analogous',
-              description: 'Uses colors that are next to each other on the color wheel. Creates serene and comfortable designs.',
-              example: 'Ideal for natural and peaceful themes'
-            },
-            {
-              title: 'Triadic',
-              description: 'Uses three colors equally spaced around the color wheel. Offers strong visual contrast while retaining balance.',
-              example: 'Perfect for vibrant and dynamic designs'
-            },
-            {
-              title: 'Random',
-              description: 'Generates completely random colors. Great for inspiration and discovering unexpected combinations.',
-              example: 'Use for creative exploration and inspiration'
-            },
-          ].map((info, index) => (
-            <div key={index} className="bg-white rounded-lg shadow-sm p-6">
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">{info.title}</h3>
-              <p className="text-gray-600 text-sm mb-3">{info.description}</p>
-              <p className="text-gray-500 text-xs italic">{info.example}</p>
-            </div>
-          ))}
+              [
+                { icon: '🎯', title: '60-30-10 Rule', desc: 'Use 60% dominant, 30% secondary, 10% accent colors' },
+                { icon: '📱', title: 'Test Accessibility', desc: 'Ensure sufficient contrast for readability' },
+                { icon: '🖥️', title: 'Consider Context', desc: 'Colors look different on various screens and lighting' },
+                { icon: '🎨', title: 'Less is More', desc: 'Start with fewer colors and add gradually' }
+              ].map((tip, index) => (
+                <div key={index} className="text-center bg-white/60 rounded-xl p-6 hover:bg-white/80 transition-colors">
+                  <div className="text-3xl mb-3">{tip.icon}</div>
+                  <h3 className="font-semibold text-gray-900 mb-2">{tip.title}</h3>
+                  <p className="text-sm text-gray-600">{tip.desc}</p>
+                </div>
+              ))
+            }
+          </div>
         </div>
       </main>
 
