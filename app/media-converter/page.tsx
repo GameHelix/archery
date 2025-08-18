@@ -1,9 +1,10 @@
 'use client'
 
-import { useState, useCallback, useRef, useId } from 'react'
+import { useState, useCallback, useRef, useId, useEffect } from 'react'
 import { Video, Upload, Download, X, CheckCircle, AlertCircle, Settings, Zap, FileVideo, Play, Pause, RotateCcw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import { ffmpegConverter, ConversionProgress } from '@/lib/ffmpeg-utils'
 
 interface ConvertedVideo {
   id: string
@@ -35,6 +36,8 @@ export default function MediaConverterPage() {
   })
   const [isConverting, setIsConverting] = useState(false)
   const [showSettings, setShowSettings] = useState(false)
+  const [isFFmpegLoading, setIsFFmpegLoading] = useState(false)
+  const [isFFmpegReady, setIsFFmpegReady] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
   const baseId = useId()
   const [idCounter, setIdCounter] = useState(0)
@@ -81,82 +84,110 @@ export default function MediaConverterPage() {
     }
   }
 
-  // Simulated conversion function (in real implementation, this would use FFmpeg.js)
-  const convertGifToMp4 = useCallback((file: File, settings: ConversionSettings): Promise<ConvertedVideo> => {
-    return new Promise((resolve, reject) => {
-      const currentCounter = idCounter
-      setIdCounter(prev => prev + 1)
-      const videoId = `${baseId}-video-${currentCounter}`
+  // Initialize FFmpeg on component mount
+  useEffect(() => {
+    const initFFmpeg = async () => {
+      if (isFFmpegReady) return
       
-      // Simulate conversion process
-      let progress = 0
-      const interval = setInterval(() => {
-        progress += 10 + Math.random() * 5
-        
-        setVideos(prev => prev.map(video => 
-          video.id === videoId ? { ...video, progress: Math.min(progress, 95) } : video
-        ))
-        
-        if (progress >= 95) {
-          clearInterval(interval)
-          
-          // Simulate final conversion
-          setTimeout(() => {
-            // Calculate estimated file size reduction
-            const reductionFactor = settings.optimization === 'size' ? 0.95 : 
-                                  settings.optimization === 'quality' ? 0.70 : 0.85
-            const convertedSize = Math.floor(file.size * (1 - reductionFactor))
-            
-            // Note: This is a demo simulation. In a real implementation, 
-            // you would use FFmpeg.js to actually convert GIF to MP4
-            // For now, we'll mark this as completed but without a real download
-            const convertedUrl = ''  // No actual file for demo
-            
-            const convertedVideo: ConvertedVideo = {
-              id: videoId,
-              name: file.name.replace(/\.gif$/i, '.mp4'),
-              originalSize: file.size,
-              convertedSize,
-              originalUrl: URL.createObjectURL(file),
-              convertedUrl,
-              status: 'completed',
-              progress: 100,
-              quality: settings.quality,
-              fps: settings.fps,
-              duration: 3 // Simulated duration
-            }
-            
-            // Update the video in state
-            setVideos(prev => prev.map(video => 
-              video.id === videoId ? convertedVideo : video
-            ))
-            
-            resolve(convertedVideo)
-          }, 500)
+      setIsFFmpegLoading(true)
+      try {
+        await ffmpegConverter.load((progress) => {
+          console.log('FFmpeg loading progress:', progress)
+        })
+        setIsFFmpegReady(true)
+      } catch (error) {
+        console.error('Failed to load FFmpeg:', error)
+      } finally {
+        setIsFFmpegLoading(false)
+      }
+    }
+
+    initFFmpeg()
+
+    return () => {
+      // Cleanup FFmpeg on unmount
+      ffmpegConverter.terminate()
+    }
+  }, [isFFmpegReady])
+
+  // Real conversion function using FFmpeg.js
+  const convertGifToMp4 = useCallback(async (file: File, settings: ConversionSettings): Promise<ConvertedVideo> => {
+    if (!isFFmpegReady) {
+      throw new Error('FFmpeg is not ready yet')
+    }
+
+    const currentCounter = idCounter
+    setIdCounter(prev => prev + 1)
+    const videoId = `${baseId}-video-${currentCounter}`
+    
+    // Create initial video entry
+    const initialVideo: ConvertedVideo = {
+      id: videoId,
+      name: file.name.replace(/\.gif$/i, '.mp4'),
+      originalSize: file.size,
+      convertedSize: 0,
+      originalUrl: URL.createObjectURL(file),
+      convertedUrl: '',
+      status: 'converting',
+      progress: 0,
+      quality: settings.quality,
+      fps: settings.fps,
+      duration: 0
+    }
+    
+    setVideos(prev => [...prev, initialVideo])
+
+    try {
+      // Perform real conversion with FFmpeg
+      const { blob, size } = await ffmpegConverter.convertGifToMp4(
+        file,
+        settings,
+        (progress: ConversionProgress) => {
+          // Update progress in real-time
+          setVideos(prev => prev.map(video => 
+            video.id === videoId ? { ...video, progress: progress.progress } : video
+          ))
         }
-      }, 200)
+      )
+
+      const convertedUrl = URL.createObjectURL(blob)
       
-      // Create initial video entry
-      const initialVideo: ConvertedVideo = {
+      const convertedVideo: ConvertedVideo = {
         id: videoId,
         name: file.name.replace(/\.gif$/i, '.mp4'),
         originalSize: file.size,
-        convertedSize: 0,
+        convertedSize: size,
         originalUrl: URL.createObjectURL(file),
-        convertedUrl: '',
-        status: 'converting',
-        progress: 0,
+        convertedUrl,
+        status: 'completed',
+        progress: 100,
         quality: settings.quality,
         fps: settings.fps,
-        duration: 0
+        duration: 3 // Could be calculated from actual video if needed
       }
       
-      setVideos(prev => [...prev, initialVideo])
-    })
-  }, [baseId, idCounter])
+      // Update the video in state
+      setVideos(prev => prev.map(video => 
+        video.id === videoId ? convertedVideo : video
+      ))
+      
+      return convertedVideo
+    } catch (error) {
+      // Mark video as error
+      setVideos(prev => prev.map(video => 
+        video.id === videoId ? { ...video, status: 'error' as const } : video
+      ))
+      throw error
+    }
+  }, [baseId, idCounter, isFFmpegReady])
 
   const handleFileSelect = useCallback(async (files: FileList | null) => {
     if (!files) return
+    
+    if (!isFFmpegReady) {
+      alert('FFmpeg is still loading. Please wait a moment and try again.')
+      return
+    }
     
     const gifFiles = Array.from(files).filter(file => 
       file.type === 'image/gif' || file.name.toLowerCase().endsWith('.gif')
@@ -208,7 +239,7 @@ export default function MediaConverterPage() {
 
   const downloadVideo = useCallback((video: ConvertedVideo) => {
     if (!video.convertedUrl) {
-      alert('This is a demo version. In a real implementation, you would integrate FFmpeg.js or a similar library to perform actual GIF to MP4 conversion.')
+      alert('No converted file available for download.')
       return
     }
     const link = document.createElement('a')
@@ -289,12 +320,28 @@ export default function MediaConverterPage() {
               📹 Video Optimization • 🗜️ Size Reduction • ⚡ Batch Processing • 🔒 Privacy-First
             </span>
           </p>
-          <div className="mt-4 p-3 bg-blue-50 border border-blue-200 rounded-lg max-w-2xl mx-auto">
-            <p className="text-sm text-blue-800">
-              <span className="font-semibold">Demo Version:</span> This is a demonstration interface. 
-              Real implementation would require FFmpeg.js integration for actual GIF to MP4 conversion.
-            </p>
-          </div>
+          {isFFmpegLoading && (
+            <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg max-w-2xl mx-auto">
+              <p className="text-sm text-yellow-800 flex items-center">
+                <div className="w-4 h-4 border-2 border-yellow-600 border-t-transparent rounded-full animate-spin mr-2"></div>
+                <span className="font-semibold">Loading FFmpeg...</span> This may take a moment on first visit.
+              </p>
+            </div>
+          )}
+          {!isFFmpegLoading && isFFmpegReady && (
+            <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg max-w-2xl mx-auto">
+              <p className="text-sm text-green-800">
+                <span className="font-semibold">✅ Ready:</span> FFmpeg is loaded and ready for real GIF to MP4 conversion.
+              </p>
+            </div>
+          )}
+          {!isFFmpegLoading && !isFFmpegReady && (
+            <div className="mt-4 p-3 bg-red-50 border border-red-200 rounded-lg max-w-2xl mx-auto">
+              <p className="text-sm text-red-800">
+                <span className="font-semibold">❌ Error:</span> Failed to load FFmpeg. Please refresh the page.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Upload Section */}
@@ -452,11 +499,11 @@ export default function MediaConverterPage() {
                     </div>
                     <button
                       onClick={downloadAll}
-                      className="px-4 py-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all duration-200 min-h-[40px] touch-manipulation flex items-center"
-                      title="Demo only - click for implementation info"
+                      className="px-4 py-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all duration-200 min-h-[40px] touch-manipulation flex items-center"
+                      title="Download all converted MP4 files"
                     >
                       <Download className="h-4 w-4 mr-2" />
-                      Demo Download All
+                      Download All
                     </button>
                   </>
                 )}
@@ -550,11 +597,10 @@ export default function MediaConverterPage() {
                         <CheckCircle className="h-5 w-5 text-green-600" />
                         <button
                           onClick={() => downloadVideo(video)}
-                          className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[40px] touch-manipulation flex items-center gap-2"
-                          title="Demo only - click for implementation info"
+                          className="px-3 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors min-h-[40px] touch-manipulation"
+                          title="Download converted MP4 file"
                         >
                           <Download className="h-4 w-4" />
-                          <span className="text-xs">Demo</span>
                         </button>
                       </>
                     )}
