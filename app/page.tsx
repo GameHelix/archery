@@ -40,10 +40,10 @@ const tools = [
     color: 'bg-green-500'
   },
   {
-    name: 'Spreadsheet Converter',
-    description: 'Convert CSV, Excel, and other spreadsheet formats',
+    name: 'CSV/Excel Converter',
+    description: 'Convert between CSV and Excel formats seamlessly',
     icon: Table,
-    href: '/spreadsheet-converter',
+    href: '/csv-excel-converter',
     color: 'bg-purple-500'
   },
   {
