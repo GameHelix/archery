@@ -311,24 +311,24 @@ export default function HomePage() {
                 No registration required. All processing happens locally in your browser for maximum privacy.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center px-4 animate-slide-up">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-stretch sm:items-center px-4 animate-slide-up max-w-lg sm:max-w-none mx-auto">
                 <Link 
                   href="#tools" 
-                  className="w-full sm:w-auto bg-white text-primary-600 hover:bg-primary-50 hover:scale-105 transition-all duration-200 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl"
+                  className="w-full sm:w-auto bg-white text-primary-600 hover:bg-primary-50 active:bg-primary-100 hover:scale-105 active:scale-95 transition-all duration-200 inline-flex items-center justify-center px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl touch-manipulation"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
                   </svg>
-                  Explore Tools
+                  <span className="truncate">Explore Tools</span>
                 </Link>
                 <Link 
                   href="/password-generator" 
-                  className="w-full sm:w-auto bg-primary-500 hover:bg-primary-400 text-white border-2 border-primary-400 hover:border-primary-300 hover:scale-105 transition-all duration-200 inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl"
+                  className="w-full sm:w-auto bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-white border-2 border-primary-400 hover:border-primary-300 hover:scale-105 active:scale-95 transition-all duration-200 inline-flex items-center justify-center px-6 sm:px-8 py-4 text-base sm:text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl touch-manipulation"
                 >
-                  <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
                   </svg>
-                  Start Now
+                  <span className="truncate">Start Now</span>
                 </Link>
               </div>
 
@@ -416,31 +416,34 @@ export default function HomePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
               {tools.map((tool, index) => (
                 <Link
                   key={tool.href}
                   href={tool.href}
-                  className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl border border-gray-100 hover:border-primary-200 transition-all duration-300 transform hover:-translate-y-2 p-6 sm:p-8 animate-slide-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl active:shadow-md border border-gray-100 hover:border-primary-200 active:border-primary-300 transition-all duration-300 transform hover:-translate-y-2 active:translate-y-0 p-5 sm:p-6 lg:p-8 animate-slide-up touch-manipulation"
+                  style={{ animationDelay: `${index * 75}ms` }}
                 >
-                  <div className="flex items-center justify-center mb-4 sm:mb-6">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 ${tool.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                      <tool.icon className="h-7 w-7 sm:h-8 sm:w-8 text-white" />
+                  <div className="flex items-center justify-center mb-4 sm:mb-5">
+                    <div className={`w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 ${tool.color} rounded-2xl flex items-center justify-center group-hover:scale-110 group-active:scale-95 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
+                      <tool.icon className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-white" />
                     </div>
                   </div>
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 mb-2 sm:mb-3 text-center group-hover:text-primary-600 transition-colors duration-300">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 mb-2 sm:mb-3 text-center group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
                     {tool.name}
                   </h3>
-                  <p className="text-xs sm:text-sm text-gray-600 text-center leading-relaxed">
+                  <p className="text-sm sm:text-sm lg:text-base text-gray-600 text-center leading-relaxed line-clamp-3">
                     {tool.description}
                   </p>
                   
-                  {/* Hover indicator */}
-                  <div className="mt-4 flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                    </svg>
+                  {/* Touch-friendly hover indicator */}
+                  <div className="mt-4 sm:mt-5 flex justify-center opacity-0 group-hover:opacity-100 sm:group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="flex items-center gap-2 text-primary-600 text-sm font-medium">
+                      <span className="hidden sm:inline">Try it now</span>
+                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                      </svg>
+                    </div>
                   </div>
                 </Link>
               ))}

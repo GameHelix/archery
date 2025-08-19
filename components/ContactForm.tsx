@@ -49,15 +49,15 @@ export default function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="text-center py-8">
-        <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent Successfully!</h3>
-        <p className="text-gray-600 mb-6">
+      <div className="text-center py-6 sm:py-8 px-4">
+        <CheckCircle className="h-12 w-12 sm:h-16 sm:w-16 text-green-500 mx-auto mb-4" />
+        <h3 className="text-lg sm:text-xl font-semibold text-gray-900 mb-3">Message Sent Successfully!</h3>
+        <p className="text-sm sm:text-base text-gray-600 mb-6 leading-relaxed">
           Thank you for reaching out. We'll get back to you within 24-48 hours.
         </p>
         <button
           onClick={() => setStatus('idle')}
-          className="px-6 py-2 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 transition-colors duration-200"
+          className="px-6 py-3 bg-primary-600 text-white font-medium rounded-lg hover:bg-primary-700 active:bg-primary-800 transition-colors duration-200 touch-manipulation focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
         >
           Send Another Message
         </button>
@@ -66,11 +66,11 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
       {status === 'error' && (
-        <div className="flex items-center p-4 bg-red-50 border border-red-200 rounded-lg">
-          <AlertCircle className="h-5 w-5 text-red-500 mr-3" />
-          <p className="text-red-700 text-sm">{errorMessage}</p>
+        <div className="flex items-start p-3 sm:p-4 bg-red-50 border border-red-200 rounded-lg">
+          <AlertCircle className="h-5 w-5 text-red-500 mr-3 mt-0.5 flex-shrink-0" />
+          <p className="text-red-700 text-sm leading-relaxed">{errorMessage}</p>
         </div>
       )}
 
@@ -87,8 +87,9 @@ export default function ContactForm() {
             onChange={handleInputChange}
             required
             disabled={status === 'loading'}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200 disabled:bg-gray-100"
+            className="w-full px-3 sm:px-4 py-3 sm:py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed touch-manipulation"
             placeholder="Your full name"
+            autoComplete="name"
           />
         </div>
 
@@ -104,8 +105,9 @@ export default function ContactForm() {
             onChange={handleInputChange}
             required
             disabled={status === 'loading'}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200 disabled:bg-gray-100"
+            className="w-full px-3 sm:px-4 py-3 sm:py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed touch-manipulation"
             placeholder="your.email@example.com"
+            autoComplete="email"
           />
         </div>
       </div>
@@ -122,8 +124,9 @@ export default function ContactForm() {
           onChange={handleInputChange}
           required
           disabled={status === 'loading'}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200 disabled:bg-gray-100"
+          className="w-full px-3 sm:px-4 py-3 sm:py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed touch-manipulation"
           placeholder="What is this regarding?"
+          autoComplete="off"
         />
       </div>
 
@@ -137,17 +140,18 @@ export default function ContactForm() {
           value={formData.message}
           onChange={handleInputChange}
           required
-          rows={6}
+          rows={5}
           disabled={status === 'loading'}
-          className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors duration-200 disabled:bg-gray-100 resize-vertical"
+          className="w-full px-3 sm:px-4 py-3 sm:py-3.5 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed resize-vertical min-h-[120px] touch-manipulation"
           placeholder="Please provide details about your inquiry, feedback, or question..."
+          autoComplete="off"
         />
       </div>
 
       <button
         type="submit"
         disabled={status === 'loading'}
-        className="w-full bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-primary-700 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+        className="w-full bg-primary-600 text-white font-semibold py-3.5 px-6 text-base rounded-lg hover:bg-primary-700 active:bg-primary-800 focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center touch-manipulation"
       >
         {status === 'loading' ? (
           <>
@@ -157,12 +161,12 @@ export default function ContactForm() {
         ) : (
           <>
             Send Message
-            <Send className="ml-2 h-5 w-5" />
+            <Send className="ml-2 h-4 w-4 sm:h-5 sm:w-5" />
           </>
         )}
       </button>
 
-      <p className="text-sm text-gray-500 text-center">
+      <p className="text-xs sm:text-sm text-gray-500 text-center leading-relaxed px-2">
         * Required fields. We'll never share your email with anyone else.
       </p>
     </form>

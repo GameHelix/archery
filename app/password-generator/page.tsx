@@ -125,18 +125,18 @@ export default function PasswordGeneratorPage() {
       
       <Header />
       
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+      <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
         {/* Hero Section */}
-        <div className="text-center mb-8 sm:mb-12">
-          <div className="flex items-center justify-center mb-6">
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center shadow-lg">
-              <Shield className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
+        <div className="text-center mb-6 sm:mb-8 lg:mb-12">
+          <div className="flex items-center justify-center mb-4 sm:mb-6">
+            <div className="w-14 h-14 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-3xl flex items-center justify-center shadow-lg">
+              <Shield className="h-7 w-7 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-3 sm:mb-4">
             Password Generator
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
             Create ultra-secure passwords in seconds. Fully customizable with real-time strength analysis.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🔒 Generated locally in your browser • No data stored • Completely private
