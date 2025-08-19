@@ -20,6 +20,7 @@ export default function Header() {
     { name: 'Color Palette', href: '/color-palette' },
     { name: 'Image Converter', href: '/image-converter' },
     { name: 'Time Zone Converter', href: '/timezone-converter' },
+    { name: 'Quote Generator', href: '/quote-generator' },
   ]
 
   return (
