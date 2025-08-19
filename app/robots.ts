@@ -12,8 +12,32 @@ export default function robots(): MetadataRoute.Robots {
           '/private/',
           '/_next/',
           '/static/',
+          '/.well-known/',
+          '/temp/',
+        ],
+        crawlDelay: 1,
+      },
+      {
+        userAgent: 'Googlebot',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/admin/',
+          '/private/',
+          '/_next/static/',
         ],
       },
+      {
+        userAgent: 'Bingbot',
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/admin/',
+          '/private/',
+          '/_next/static/',
+        ],
+      },
+      // Block AI training bots
       {
         userAgent: 'GPTBot',
         disallow: '/',
@@ -32,6 +56,14 @@ export default function robots(): MetadataRoute.Robots {
       },
       {
         userAgent: 'Claude-Web',
+        disallow: '/',
+      },
+      {
+        userAgent: 'FacebookBot',
+        disallow: '/',
+      },
+      {
+        userAgent: 'Meta-ExternalAgent',
         disallow: '/',
       }
     ],

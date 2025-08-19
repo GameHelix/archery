@@ -4,6 +4,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://swissknife.site'
   const currentDate = new Date()
   
+  const tools = [
+    // High priority core tools
+    { path: '/password-generator', priority: 0.95, changeFreq: 'weekly' as const },
+    { path: '/qr-generator', priority: 0.95, changeFreq: 'weekly' as const },
+    { path: '/text-tools', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/unit-converter', priority: 0.9, changeFreq: 'weekly' as const },
+    { path: '/bmi-calculator', priority: 0.85, changeFreq: 'weekly' as const },
+    { path: '/color-palette', priority: 0.85, changeFreq: 'weekly' as const },
+    
+    // Medium priority tools
+    { path: '/pdf-converter', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/csv-excel-converter', priority: 0.8, changeFreq: 'weekly' as const },
+    { path: '/tip-calculator', priority: 0.75, changeFreq: 'weekly' as const },
+    { path: '/todo-list', priority: 0.75, changeFreq: 'weekly' as const },
+    { path: '/image-converter', priority: 0.75, changeFreq: 'weekly' as const },
+    { path: '/timezone-converter', priority: 0.75, changeFreq: 'weekly' as const },
+  ]
+  
+  const staticPages = [
+    { path: '/about', priority: 0.6, changeFreq: 'monthly' as const },
+    { path: '/contact', priority: 0.6, changeFreq: 'monthly' as const },
+    { path: '/privacy', priority: 0.4, changeFreq: 'yearly' as const },
+    { path: '/terms', priority: 0.4, changeFreq: 'yearly' as const },
+  ]
+  
   return [
     // Homepage - highest priority
     {
@@ -13,80 +38,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1.0,
     },
     
-    // Main implemented tools - high priority
-    {
-      url: `${baseUrl}/password-generator`,
+    // Tools
+    ...tools.map(tool => ({
+      url: `${baseUrl}${tool.path}`,
       lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/qr-generator`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/text-tools`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/unit-converter`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/bmi-calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/color-palette`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
+      changeFrequency: tool.changeFreq,
+      priority: tool.priority,
+    })),
     
-    // Coming soon tools - lower priority but still indexed
-    {
-      url: `${baseUrl}/pdf-converter`,
+    // Static pages
+    ...staticPages.map(page => ({
+      url: `${baseUrl}${page.path}`,
       lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/csv-excel-converter`,
-      lastModified: currentDate,
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/tip-calculator`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/todo-list`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/image-converter`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
-    {
-      url: `${baseUrl}/timezone-converter`,
-      lastModified: currentDate,
-      changeFrequency: 'monthly',
-      priority: 0.5,
-    },
+      changeFrequency: page.changeFreq,
+      priority: page.priority,
+    })),
   ]
 }

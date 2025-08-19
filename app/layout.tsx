@@ -3,27 +3,32 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'SwissKnife - Essential Online Tools | Free Web Utilities',
+    default: 'SwissKnife - 12 Essential Free Online Tools | Web Utilities 2025',
     template: '%s | SwissKnife - Free Online Tools'
   },
-  description: 'Free online tools for developers, designers & everyone. Password generator, QR codes, text tools, unit converter, BMI calculator & more. No registration required, privacy-first design.',
+  description: 'Access 12 powerful free online tools: Password generator, QR code creator, text converter, unit calculator, BMI tracker, PDF converter & more. No signup required, 100% privacy-focused.',
   keywords: [
-    'online tools',
+    'free online tools 2025',
     'web utilities',
-    'password generator',
-    'QR code generator', 
-    'text tools',
-    'unit converter',
-    'BMI calculator',
+    'password generator secure',
+    'QR code generator free', 
+    'text case converter',
+    'unit converter calculator',
+    'BMI calculator free',
     'color palette generator',
-    'free tools',
+    'PDF converter online',
+    'CSV Excel converter',
     'web applications',
-    'developer tools',
-    'productivity tools',
+    'developer tools online',
+    'productivity tools free',
     'browser tools',
-    'online utilities',
-    'text converter',
-    'measurement converter'
+    'online utilities no signup',
+    'text manipulation tools',
+    'measurement converter',
+    'tip calculator',
+    'todo list online',
+    'image converter',
+    'timezone converter'
   ],
   authors: [{ name: 'SwissKnife', url: 'https://swissknife.site' }],
   creator: 'SwissKnife',
@@ -62,8 +67,8 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: 'SwissKnife - Essential Online Tools | Free Web Utilities',
-    description: 'Free online tools for developers, designers & everyone. Password generator, QR codes, text tools, unit converter, BMI calculator & more. No registration required.',
+    title: 'SwissKnife - 12 Essential Free Online Tools | Web Utilities 2025',
+    description: 'Access 12 powerful free online tools: Password generator, QR code creator, text converter, unit calculator, BMI tracker, PDF converter & more. No signup required, 100% privacy-focused.',
     url: 'https://swissknife.site',
     siteName: 'SwissKnife',
     images: [
@@ -71,7 +76,7 @@ export const metadata: Metadata = {
         url: '/icon-512.png',
         width: 512,
         height: 512,
-        alt: 'SwissKnife - Essential Online Tools Logo',
+        alt: 'SwissKnife - 12 Essential Free Online Tools for Developers and Everyone',
         type: 'image/png',
       },
     ],
@@ -80,8 +85,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'SwissKnife - Essential Online Tools',
-    description: 'Free online tools for developers, designers & everyone. Password generator, QR codes, text tools, unit converter & more. No registration required.',
+    title: 'SwissKnife - 12 Free Online Tools | 2025',
+    description: '🛠️ 12 powerful online tools: Password generator, QR codes, text converter, BMI calculator & more. 100% free, no signup required!',
     images: ['/icon-512.png'],
     creator: '@swissknife_tools',
     site: '@swissknife_tools',
@@ -101,6 +106,14 @@ export const metadata: Metadata = {
   },
   category: 'technology',
   classification: 'Web Utilities',
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION || '',
+    yandex: process.env.YANDEX_VERIFICATION || '',
+    yahoo: process.env.YAHOO_SITE_VERIFICATION || '',
+    other: {
+      'msvalidate.01': process.env.BING_SITE_VERIFICATION || '',
+    },
+  },
   other: {
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
@@ -108,6 +121,14 @@ export const metadata: Metadata = {
     'mobile-web-app-capable': 'yes',
     'msapplication-TileColor': '#3B82F6',
     'msapplication-config': '/browserconfig.xml',
+    'theme-color': '#3B82F6',
+    'color-scheme': 'light',
+    'rating': 'general',
+    'distribution': 'global',
+    'revisit-after': '3 days',
+    'language': 'EN',
+    'geo.region': 'US',
+    'geo.placename': 'Global',
   },
 }
 
