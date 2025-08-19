@@ -13,11 +13,12 @@ interface Quote {
 
 export default function QuoteGenerator() {
   const [quote, setQuote] = useState<Quote | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true); // Start with loading true
   const [categories, setCategories] = useState<string[]>([]);
   const [selectedCategory, setSelectedCategory] = useState('');
   const [copied, setCopied] = useState(false);
   const [liked, setLiked] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   useEffect(() => {
     fetchCategories();
@@ -27,31 +28,54 @@ export default function QuoteGenerator() {
   const fetchCategories = async () => {
     try {
       const response = await fetch('/api/quotes?action=categories');
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       setCategories(data.categories || []);
     } catch (error) {
       console.error('Error fetching categories:', error);
+      setCategories([]); // Set empty array on error
     }
   };
 
   const fetchRandomQuote = async (category?: string) => {
-    setLoading(true);
+    if (!initialLoad) {
+      setLoading(true);
+    }
+    
     try {
       const url = category 
         ? `/api/quotes?category=${encodeURIComponent(category)}`
         : '/api/quotes';
       
       const response = await fetch(url);
+      
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
       const data = await response.json();
       
       if (data.quote) {
         setQuote(data.quote);
         setLiked(false);
+      } else {
+        console.error('No quote found in response:', data);
       }
     } catch (error) {
       console.error('Error fetching quote:', error);
+      // Show user-friendly error without alert popup
+      setQuote({
+        quote: "Sorry, we couldn't fetch a quote right now. Please try again.",
+        author: "System",
+        category: "error"
+      });
     } finally {
       setLoading(false);
+      setInitialLoad(false);
     }
   };
 
@@ -135,12 +159,16 @@ export default function QuoteGenerator() {
               </select>
               
               <button
-                onClick={() => fetchRandomQuote(selectedCategory || undefined)}
+                onClick={() => {
+                  if (!loading) {
+                    fetchRandomQuote(selectedCategory || undefined);
+                  }
+                }}
                 disabled={loading}
                 className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2 font-medium shadow-lg hover:shadow-xl"
               >
                 <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-                New Quote
+                {loading ? 'Loading...' : 'New Quote'}
               </button>
             </div>
 
@@ -214,8 +242,17 @@ export default function QuoteGenerator() {
                     <span className="text-gray-600">Loading inspiration...</span>
                   </div>
                 ) : (
-                  <div className="text-gray-500">
-                    Click "New Quote" to get started!
+                  <div className="space-y-4">
+                    <div className="text-gray-500">
+                      Click "New Quote" to get started!
+                    </div>
+                    <button
+                      onClick={() => fetchRandomQuote()}
+                      className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-200 flex items-center gap-2 font-medium shadow-lg hover:shadow-xl mx-auto"
+                    >
+                      <Sparkles className="w-5 h-5" />
+                      Get Your First Quote
+                    </button>
                   </div>
                 )}
               </div>
