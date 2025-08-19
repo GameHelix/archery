@@ -11,7 +11,8 @@ import {
   Gauge, 
   Palette, 
   Image, 
-  Clock 
+  Clock,
+  Quote 
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -100,6 +101,13 @@ const tools = [
     icon: Clock,
     href: '/timezone-converter',
     color: 'bg-lime-500'
+  },
+  {
+    name: 'Quote Generator',
+    description: 'Discover inspiring quotes from famous authors and thinkers',
+    icon: Quote,
+    href: '/quote-generator',
+    color: 'bg-violet-500'
   },
 ]
 
@@ -261,7 +269,7 @@ export default function HomePage() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 sm:mt-16 px-4">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">6+</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">13</div>
                   <div className="text-xs sm:text-sm text-primary-200">Active Tools</div>
                 </div>
                 <div className="text-center">
