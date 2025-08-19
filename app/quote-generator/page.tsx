@@ -19,6 +19,8 @@ export default function QuoteGenerator() {
   const [copied, setCopied] = useState(false);
   const [liked, setLiked] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true);
+  const [lastRequestTime, setLastRequestTime] = useState(0);
+  const [cooldownActive, setCooldownActive] = useState(false);
 
   useEffect(() => {
     fetchCategories();
@@ -42,16 +44,44 @@ export default function QuoteGenerator() {
   };
 
   const fetchRandomQuote = async (category?: string) => {
+    // Debounce requests - prevent multiple rapid requests
+    const now = Date.now();
+    const timeSinceLastRequest = now - lastRequestTime;
+    const minInterval = 1000; // Minimum 1 second between requests
+    
+    if (timeSinceLastRequest < minInterval && !initialLoad) {
+      console.log('Request throttled - too frequent');
+      return;
+    }
+    
+    setLastRequestTime(now);
+    setCooldownActive(true);
+    
     if (!initialLoad) {
       setLoading(true);
     }
+    
+    // Clear cooldown after minimum interval
+    setTimeout(() => {
+      setCooldownActive(false);
+    }, minInterval);
     
     try {
       const url = category 
         ? `/api/quotes?category=${encodeURIComponent(category)}`
         : '/api/quotes';
       
-      const response = await fetch(url);
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000); // 15 second timeout
+      
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: {
+          'Cache-Control': 'no-cache',
+        },
+      });
+      
+      clearTimeout(timeoutId);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -64,15 +94,27 @@ export default function QuoteGenerator() {
         setLiked(false);
       } else {
         console.error('No quote found in response:', data);
+        setQuote({
+          quote: "No quotes available for this category.",
+          author: "System",
+          category: "info"
+        });
       }
     } catch (error) {
       console.error('Error fetching quote:', error);
-      // Show user-friendly error without alert popup
-      setQuote({
-        quote: "Sorry, we couldn't fetch a quote right now. Please try again.",
-        author: "System",
-        category: "error"
-      });
+      if (error instanceof Error && error.name === 'AbortError') {
+        setQuote({
+          quote: "Request timed out. Please try again.",
+          author: "System",
+          category: "timeout"
+        });
+      } else {
+        setQuote({
+          quote: "Sorry, we couldn't fetch a quote right now. Please try again in a moment.",
+          author: "System",
+          category: "error"
+        });
+      }
     } finally {
       setLoading(false);
       setInitialLoad(false);
@@ -160,15 +202,19 @@ export default function QuoteGenerator() {
               
               <button
                 onClick={() => {
-                  if (!loading) {
+                  const now = Date.now();
+                  const timeSinceLastRequest = now - lastRequestTime;
+                  const minInterval = 1000;
+                  
+                  if (timeSinceLastRequest >= minInterval || initialLoad) {
                     fetchRandomQuote(selectedCategory || undefined);
                   }
                 }}
-                disabled={loading}
+                disabled={loading || cooldownActive}
                 className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-xl hover:from-purple-700 hover:to-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center gap-2 font-medium shadow-lg hover:shadow-xl"
               >
                 <RefreshCw className={`w-5 h-5 ${loading ? 'animate-spin' : ''}`} />
-                {loading ? 'Loading...' : 'New Quote'}
+                {loading ? 'Loading...' : cooldownActive ? 'Please wait...' : 'New Quote'}
               </button>
             </div>
 
