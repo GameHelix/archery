@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Braces, Copy, Check, AlertCircle, Minimize2, Maximize2, FileText, RefreshCw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -153,7 +153,7 @@ export default function JSONFormatterPage() {
   }
 
   // Process JSON whenever input or settings change
-  useState(() => {
+  useEffect(() => {
     const timeoutId = setTimeout(() => {
       processJSON()
     }, 300) // Debounce processing

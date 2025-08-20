@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Code, Copy, Check, AlertCircle, ArrowRightLeft, FileText, RefreshCw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -76,7 +76,7 @@ export default function Base64EncoderPage() {
   }
 
   // Process text whenever input or mode changes
-  useState(() => {
+  useEffect(() => {
     processText()
   }, [processText])
 

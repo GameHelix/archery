@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { FileText, Copy, Check, RefreshCw, Settings, Shuffle } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -120,7 +120,7 @@ export default function LoremGeneratorPage() {
   }
 
   // Generate initial text on component mount
-  useState(() => {
+  useEffect(() => {
     generateText()
   }, [])
 

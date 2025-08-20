@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useEffect } from 'react'
 import { Link, Copy, Check, AlertCircle, ArrowRightLeft, Globe, RefreshCw } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
@@ -99,7 +99,7 @@ export default function URLEncoderPage() {
   }
 
   // Process URL whenever input or mode changes
-  useState(() => {
+  useEffect(() => {
     processURL()
   }, [processURL])
 
