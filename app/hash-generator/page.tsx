@@ -58,7 +58,7 @@ export default function HashGeneratorPage() {
     }
   }, [password, saltRounds])
 
-  const compareHash = useCallback(async () => {
+  const handleCompareHash = useCallback(async () => {
     if (!comparePassword.trim() || !compareHash.trim()) return
 
     setIsComparing(true)
@@ -276,7 +276,7 @@ export default function HashGeneratorPage() {
                 </div>
 
                 <button
-                  onClick={compareHash}
+                  onClick={handleCompareHash}
                   disabled={!comparePassword.trim() || !compareHash.trim() || isComparing}
                   className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold py-3 px-6 rounded-xl hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200 flex items-center justify-center space-x-2"
                 >
