@@ -60,7 +60,7 @@ export default function AboutPage() {
   ]
 
   const stats = [
-    { number: '6+', label: 'Active Tools', description: 'Fully functional tools ready to use' },
+    { number: '10+', label: 'Active Tools', description: 'Fully functional tools ready to use' },
     { number: '100%', label: 'Free', description: 'No costs, subscriptions, or limitations' },
     { number: '0', label: 'Data Stored', description: 'Your privacy is completely protected' },
     { number: '24/7', label: 'Available', description: 'Access tools anytime, anywhere' }
