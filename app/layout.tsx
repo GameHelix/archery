@@ -6,29 +6,43 @@ export const metadata: Metadata = {
     default: 'SwissKnife - 12 Essential Free Online Tools | Web Utilities 2025',
     template: '%s | SwissKnife - Free Online Tools'
   },
-  description: 'Access 12 powerful free online tools: Password generator, QR code creator, text converter, unit calculator, BMI tracker, PDF converter & more. No signup required, 100% privacy-focused.',
+  description: 'Access 12 powerful free online tools: Password generator, QR code creator, text converter, unit calculator, BMI tracker, PDF converter & more. No signup required, 100% privacy-focused web utilities for developers, students, and professionals.',
   keywords: [
+    // Primary keywords
     'free online tools 2025',
-    'web utilities',
-    'password generator secure',
-    'QR code generator free', 
-    'text case converter',
-    'unit converter calculator',
-    'BMI calculator free',
-    'color palette generator',
-    'PDF converter online',
-    'CSV Excel converter',
-    'web applications',
+    'web utilities collection',
+    'online productivity tools',
+    'browser-based utilities',
+    'no registration tools',
+    
+    // Tool-specific keywords
+    'secure password generator online',
+    'QR code generator free custom',
+    'text case converter uppercase lowercase',
+    'unit converter metric imperial',
+    'BMI calculator body mass index',
+    'color palette generator hex codes',
+    'PDF converter documents online',
+    'CSV Excel converter free',
+    'tip calculator bill splitter',
+    'todo list task manager',
+    'image format converter',
+    'timezone converter world clock',
+    
+    // Target audience keywords
     'developer tools online',
-    'productivity tools free',
-    'browser tools',
-    'online utilities no signup',
-    'text manipulation tools',
-    'measurement converter',
-    'tip calculator',
-    'todo list online',
-    'image converter',
-    'timezone converter'
+    'student utility tools',
+    'business productivity tools',
+    'design tools online',
+    'calculation tools free',
+    
+    // Feature keywords
+    'privacy focused tools',
+    'no download required',
+    'mobile friendly tools',
+    'instant online tools',
+    'secure web utilities',
+    'professional grade tools'
   ],
   authors: [{ name: 'SwissKnife', url: 'https://swissknife.site' }],
   creator: 'SwissKnife',
@@ -68,7 +82,7 @@ export const metadata: Metadata = {
   manifest: '/site.webmanifest',
   openGraph: {
     title: 'SwissKnife - 12 Essential Free Online Tools | Web Utilities 2025',
-    description: 'Access 12 powerful free online tools: Password generator, QR code creator, text converter, unit calculator, BMI tracker, PDF converter & more. No signup required, 100% privacy-focused.',
+    description: 'Access 12 powerful free online tools: Password generator, QR code creator, text converter, unit calculator, BMI tracker, PDF converter & more. No signup required, 100% privacy-focused web utilities for developers, students, and professionals.',
     url: 'https://swissknife.site',
     siteName: 'SwissKnife',
     images: [
@@ -125,10 +139,29 @@ export const metadata: Metadata = {
     'color-scheme': 'light',
     'rating': 'general',
     'distribution': 'global',
-    'revisit-after': '3 days',
+    'revisit-after': '1 days',
     'language': 'EN',
     'geo.region': 'US',
     'geo.placename': 'Global',
+    // Advanced SEO meta tags
+    'content-language': 'en-US',
+    'audience': 'all',
+    'doc-type': 'Web Page',
+    'doc-rights': 'Copywritten Work',
+    'doc-class': 'Living Document',
+    'copyright': 'SwissKnife 2025',
+    'pragma': 'no-cache',
+    'cache-control': 'no-cache',
+    'expires': '0',
+    // Rich snippets optimization
+    'og:see_also': 'https://swissknife.site/about',
+    'article:author': 'SwissKnife',
+    'article:publisher': 'https://swissknife.site',
+    // Performance hints
+    'dns-prefetch-control': 'on',
+    'preconnect': 'https://fonts.googleapis.com',
+    // Security headers
+    'referrer': 'strict-origin-when-cross-origin',
   },
 }
 

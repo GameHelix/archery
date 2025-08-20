@@ -4,8 +4,48 @@ import { useState, useCallback } from 'react'
 import { Copy, RefreshCw, Shield, Eye, EyeOff, Check } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import AdvancedSchema from '@/components/AdvancedSchema'
+import SEOBreadcrumbs from '@/components/SEOBreadcrumbs'
+import RelatedContent, { getToolCategory } from '@/components/RelatedContent'
 
 export default function PasswordGeneratorPage() {
+  const currentTool = '/password-generator';
+  const toolCategory = getToolCategory('password-generator');
+  
+  const breadcrumbs = [
+    { name: 'Password Generator', href: '/password-generator', current: true }
+  ];
+  
+  const schemaBreadcrumbs = [
+    { name: 'Password Generator', url: '/password-generator' }
+  ];
+  
+  const instructions = [
+    { step: 1, text: 'Choose your desired password length using the slider (4-128 characters)' },
+    { step: 2, text: 'Select character types: uppercase, lowercase, numbers, and symbols' },
+    { step: 3, text: 'Optionally exclude similar characters (i, l, 1, L, o, 0, O)' },
+    { step: 4, text: 'Click "Generate Secure Password" to create your password' },
+    { step: 5, text: 'Copy the password using the copy button or toggle visibility' }
+  ];
+  
+  const faqs = [
+    {
+      question: "How secure are the passwords generated?",
+      answer: "Our password generator uses cryptographically secure random number generation (crypto.getRandomValues()) to ensure maximum entropy and unpredictability. Longer passwords with mixed character types provide exponentially stronger security."
+    },
+    {
+      question: "Are my generated passwords stored anywhere?",
+      answer: "No, absolutely not. All password generation happens locally in your browser using JavaScript. We never store, transmit, or have access to any passwords you generate. Your passwords remain completely private."
+    },
+    {
+      question: "What makes a password strong?",
+      answer: "Strong passwords are long (12+ characters), use mixed character types (uppercase, lowercase, numbers, symbols), avoid dictionary words and personal information, and are unique for each account."
+    },
+    {
+      question: "Should I exclude similar characters?",
+      answer: "Excluding similar characters (like i, l, 1, L, o, 0, O) can help prevent confusion when typing passwords manually, especially for accounts where you might need to enter the password by hand. However, it slightly reduces entropy."
+    }
+  ];
   const [password, setPassword] = useState('')
   const [length, setLength] = useState(16)
   const [includeUppercase, setIncludeUppercase] = useState(true)
@@ -118,14 +158,26 @@ export default function PasswordGeneratorPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
+      <AdvancedSchema
+        pageType="tool"
+        toolName="Password Generator Tool"
+        toolDescription="Generate ultra-secure passwords with customizable length, character types, and advanced security features. Cryptographically secure random generation."
+        toolUrl="https://swissknife.site/password-generator"
+        breadcrumbs={schemaBreadcrumbs}
+        instructions={instructions}
+        faqs={faqs}
+        lastModified={new Date().toISOString()}
       />
       
       <Header />
       
       <main className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-6 sm:py-8 lg:py-12">
+        {/* Breadcrumbs */}
+        <SEOBreadcrumbs 
+          items={breadcrumbs}
+          className="mb-6"
+        />
+        
         {/* Hero Section */}
         <div className="text-center mb-6 sm:mb-8 lg:mb-12">
           <div className="flex items-center justify-center mb-4 sm:mb-6">
@@ -483,6 +535,15 @@ export default function PasswordGeneratorPage() {
               </div>
             </div>
           </div>
+        </section>
+        
+        {/* Related Content */}
+        <section className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-8">
+          <RelatedContent 
+            currentTool={currentTool}
+            category={toolCategory}
+            maxItems={3}
+          />
         </section>
       </main>
 

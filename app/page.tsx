@@ -15,21 +15,26 @@ import {
 } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
+import AdvancedSchema from '@/components/AdvancedSchema'
 
 const tools = [
   {
     name: 'Password Generator',
-    description: 'Generate secure passwords with customizable options',
+    description: 'Generate ultra-secure passwords with customizable length, character types, and strength indicators. Perfect for protecting accounts.',
     icon: Key,
     href: '/password-generator',
-    color: 'bg-red-500'
+    color: 'bg-red-500',
+    category: 'security',
+    keywords: ['password', 'security', 'authentication', 'strong passwords']
   },
   {
     name: 'QR Code Generator',
-    description: 'Create QR codes for text, URLs, and more',
+    description: 'Create custom QR codes for URLs, WiFi passwords, contact info, and text. Support for colors, error correction, and multiple formats.',
     icon: QrCode,
     href: '/qr-generator',
-    color: 'bg-blue-500'
+    color: 'bg-blue-500',
+    category: 'productivity',
+    keywords: ['QR code', 'quick response', 'barcode', 'WiFi sharing']
   },
   {
     name: 'PDF Converter',
@@ -47,10 +52,12 @@ const tools = [
   },
   {
     name: 'Text Tools Suite',
-    description: 'Case conversion, word count, and text manipulation',
+    description: 'Comprehensive text manipulation toolkit: case conversion, word count, character analysis, whitespace removal, and formatting.',
     icon: Type,
     href: '/text-tools',
-    color: 'bg-yellow-500'
+    color: 'bg-yellow-500',
+    category: 'text',
+    keywords: ['text processing', 'case conversion', 'word count', 'text formatting']
   },
   {
     name: 'Tip Calculator',
@@ -61,10 +68,12 @@ const tools = [
   },
   {
     name: 'BMI Calculator',
-    description: 'Calculate your Body Mass Index',
+    description: 'Calculate Body Mass Index with health recommendations, ideal weight ranges, and detailed health insights for optimal wellness.',
     icon: Activity,
     href: '/bmi-calculator',
-    color: 'bg-orange-500'
+    color: 'bg-orange-500',
+    category: 'health',
+    keywords: ['BMI', 'body mass index', 'health calculator', 'weight assessment']
   },
   {
     name: 'Simple To-Do List',
@@ -104,6 +113,25 @@ const tools = [
 ]
 
 export default function HomePage() {
+  const faqs = [
+    {
+      question: "Are SwissKnife tools really free to use?",
+      answer: "Yes, absolutely! All 12 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+    },
+    {
+      question: "Do I need to create an account to use SwissKnife tools?",
+      answer: "No registration is required. Simply visit any tool and start using it immediately. We designed our tools to be as friction-free as possible while maintaining full functionality."
+    },
+    {
+      question: "How do SwissKnife tools protect my privacy?",
+      answer: "All processing happens locally in your browser. We never store, transmit, or access your data. Your files and information stay on your device at all times, ensuring complete privacy protection."
+    },
+    {
+      question: "Can I use SwissKnife tools on mobile devices?",
+      answer: "Yes! All our tools are fully responsive and optimized for mobile devices, tablets, and desktops. You can access them from any device with a modern web browser."
+    }
+  ];
+
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
@@ -269,9 +297,10 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      <AdvancedSchema
+        pageType="website"
+        faqs={faqs}
+        breadcrumbs={[]}
       />
       
       <Header />
