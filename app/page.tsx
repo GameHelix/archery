@@ -683,7 +683,7 @@ export default function HomePage() {
               {[
                 {
                   question: "Are your tools really free to use?",
-                  answer: "Yes, absolutely! All 13 tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+                  answer: "Yes, absolutely! All 14 tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
                 },
                 {
                   question: "How do you protect my privacy?",
