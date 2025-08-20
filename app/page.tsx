@@ -2,7 +2,11 @@ import Link from 'next/link'
 import { 
   Key, 
   Hash,
+  Code,
+  Fingerprint,
+  Link2,
   QrCode, 
+  Braces,
   FileText, 
   Table, 
   Database,
@@ -39,6 +43,33 @@ const tools = [
     keywords: ['bcrypt', 'hash generator', 'password hashing', 'salt rounds', 'password security', 'hash comparison']
   },
   {
+    name: 'Base64 Encoder/Decoder',
+    description: 'Encode and decode Base64 strings with UTF-8 support. Essential for data transmission, APIs, and web development.',
+    icon: Code,
+    href: '/base64-encoder',
+    color: 'bg-blue-500',
+    category: 'encoding',
+    keywords: ['base64', 'encoder', 'decoder', 'encoding', 'data transmission', 'api', 'utf-8']
+  },
+  {
+    name: 'UUID/GUID Generator',
+    description: 'Generate unique identifiers (UUID/GUID) with support for v1, v4, and nil UUID formats. Bulk generation available.',
+    icon: Fingerprint,
+    href: '/uuid-generator',
+    color: 'bg-purple-500',
+    category: 'generation',
+    keywords: ['uuid', 'guid', 'unique identifier', 'v4', 'random', 'database', 'primary key']
+  },
+  {
+    name: 'URL Encoder/Decoder',
+    description: 'Encode URLs for safe transmission or decode URL-encoded strings. Support for standard and component encoding.',
+    icon: Link2,
+    href: '/url-encoder',
+    color: 'bg-teal-500',
+    category: 'encoding',
+    keywords: ['url encoder', 'url decoder', 'percent encoding', 'web development', 'safe transmission']
+  },
+  {
     name: 'QR Code Generator',
     description: 'Create custom QR codes for URLs, WiFi passwords, contact info, and text. Support for colors, error correction, and multiple formats.',
     icon: QrCode,
@@ -48,11 +79,29 @@ const tools = [
     keywords: ['QR code', 'quick response', 'barcode', 'WiFi sharing']
   },
   {
+    name: 'JSON Formatter/Validator',
+    description: 'Format, validate, and minify JSON data with syntax highlighting. Real-time error detection and structure analysis.',
+    icon: Braces,
+    href: '/json-formatter',
+    color: 'bg-green-500',
+    category: 'development',
+    keywords: ['json', 'formatter', 'validator', 'pretty print', 'minify', 'syntax validation', 'api development']
+  },
+  {
+    name: 'Lorem Ipsum Generator',
+    description: 'Generate placeholder text for designs and mockups. Create words, sentences, or paragraphs of Lorem Ipsum content.',
+    icon: FileText,
+    href: '/lorem-generator',
+    color: 'bg-yellow-500',
+    category: 'content',
+    keywords: ['lorem ipsum', 'placeholder text', 'dummy text', 'design', 'mockup', 'content planning']
+  },
+  {
     name: 'PDF Converter',
     description: 'Convert documents to PDF format instantly',
     icon: FileText,
     href: '/pdf-converter',
-    color: 'bg-green-500'
+    color: 'bg-emerald-600'
   },
   {
     name: 'CSV/Excel Converter',
@@ -136,7 +185,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "Are SwissKnife tools really free to use?",
-      answer: "Yes, absolutely! All 14 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+      answer: "Yes, absolutely! All 19 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
     },
     {
       question: "Do I need to create an account to use SwissKnife tools?",
@@ -168,7 +217,7 @@ export default function HomePage() {
           "height": 512,
           "caption": "SwissKnife - Free Online Tools"
         },
-        "description": "SwissKnife offers 14 essential free online tools including password generator, bcrypt hash generator, QR code creator, CSV to SQL converter, and more. No registration required, 100% privacy-focused.",
+        "description": "SwissKnife offers 19 essential free online tools including password generator, bcrypt hash generator, Base64 encoder, UUID generator, JSON formatter, and more. No registration required, 100% privacy-focused.",
         "foundingDate": "2024",
         "keywords": "online tools, web utilities, password generator, QR code generator, free tools",
         "contactPoint": {
@@ -231,7 +280,7 @@ export default function HomePage() {
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Web Browser",
         "url": "https://swissknife.site",
-        "description": "Collection of 14 essential online tools for developers, designers, and everyday users. Completely free with no registration required.",
+        "description": "Collection of 19 essential online tools for developers, designers, and everyday users. Completely free with no registration required.",
         "author": {
           "@id": "https://swissknife.site/#organization"
         },
@@ -267,6 +316,11 @@ export default function HomePage() {
           "CSV Excel File Converter",
           "CSV to SQL Converter",
           "Bcrypt Hash Generator",
+          "Base64 Encoder/Decoder",
+          "UUID/GUID Generator",
+          "URL Encoder/Decoder",
+          "JSON Formatter/Validator",
+          "Lorem Ipsum Generator",
           "Tip Calculator",
           "Online Todo List Manager",
           "Image Format Converter",
@@ -285,7 +339,7 @@ export default function HomePage() {
             "name": "Are SwissKnife tools really free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, absolutely! All 14 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+              "text": "Yes, absolutely! All 19 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
             }
           },
           {
@@ -386,7 +440,7 @@ export default function HomePage() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 sm:mt-16 px-4">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">14</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">19</div>
                   <div className="text-xs sm:text-sm text-primary-200">Active Tools</div>
                 </div>
                 <div className="text-center">
@@ -683,7 +737,7 @@ export default function HomePage() {
               {[
                 {
                   question: "Are your tools really free to use?",
-                  answer: "Yes, absolutely! All 14 tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+                  answer: "Yes, absolutely! All 19 tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
                 },
                 {
                   question: "How do you protect my privacy?",
