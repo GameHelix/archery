@@ -43,6 +43,15 @@ const tools = [
     keywords: ['bcrypt', 'hash generator', 'password hashing', 'salt rounds', 'password security', 'hash comparison']
   },
   {
+    name: 'MD5/SHA Hash Generator',
+    description: 'Generate MD5, SHA-1, SHA-256, and SHA-512 hashes for text and files. Compare hash values and verify file integrity with multiple algorithms.',
+    icon: Hash,
+    href: '/hash-tools',
+    color: 'bg-slate-600',
+    category: 'security',
+    keywords: ['MD5', 'SHA-1', 'SHA-256', 'SHA-512', 'hash generator', 'checksum', 'file integrity', 'cryptographic hash']
+  },
+  {
     name: 'Base64 Encoder/Decoder',
     description: 'Encode and decode Base64 strings with UTF-8 support. Essential for data transmission, APIs, and web development.',
     icon: Code,
@@ -185,7 +194,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "Are SwissKnife tools really free to use?",
-      answer: "Yes, absolutely! All 19 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+      answer: "Yes, absolutely! All 20 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
     },
     {
       question: "Do I need to create an account to use SwissKnife tools?",
@@ -217,7 +226,7 @@ export default function HomePage() {
           "height": 512,
           "caption": "SwissKnife - Free Online Tools"
         },
-        "description": "SwissKnife offers 19 essential free online tools including password generator, bcrypt hash generator, Base64 encoder, UUID generator, JSON formatter, and more. No registration required, 100% privacy-focused.",
+        "description": "SwissKnife offers 20 essential free online tools including password generator, bcrypt hash generator, MD5/SHA hash generator, Base64 encoder, UUID generator, JSON formatter, and more. No registration required, 100% privacy-focused.",
         "foundingDate": "2024",
         "keywords": "online tools, web utilities, password generator, QR code generator, free tools",
         "contactPoint": {
@@ -280,7 +289,7 @@ export default function HomePage() {
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Web Browser",
         "url": "https://swissknife.site",
-        "description": "Collection of 19 essential online tools for developers, designers, and everyday users. Completely free with no registration required.",
+        "description": "Collection of 20 essential online tools for developers, designers, and everyday users. Completely free with no registration required.",
         "author": {
           "@id": "https://swissknife.site/#organization"
         },
@@ -339,7 +348,7 @@ export default function HomePage() {
             "name": "Are SwissKnife tools really free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, absolutely! All 19 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+              "text": "Yes, absolutely! All 20 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
             }
           },
           {
@@ -440,7 +449,7 @@ export default function HomePage() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 sm:mt-16 px-4">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">19</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">20</div>
                   <div className="text-xs sm:text-sm text-primary-200">Active Tools</div>
                 </div>
                 <div className="text-center">

@@ -10,6 +10,7 @@ export default function Header() {
   const tools = [
     { name: 'Password Generator', href: '/password-generator' },
     { name: 'Hash Generator (Bcrypt)', href: '/hash-generator' },
+    { name: 'MD5/SHA Hash Generator', href: '/hash-tools' },
     { name: 'Base64 Encoder/Decoder', href: '/base64-encoder' },
     { name: 'UUID/GUID Generator', href: '/uuid-generator' },
     { name: 'URL Encoder/Decoder', href: '/url-encoder' },
