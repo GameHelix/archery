@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { 
   Key, 
+  Hash,
   QrCode, 
   FileText, 
   Table, 
@@ -27,6 +28,15 @@ const tools = [
     color: 'bg-red-500',
     category: 'security',
     keywords: ['password', 'security', 'authentication', 'strong passwords']
+  },
+  {
+    name: 'Hash Generator (Bcrypt)',
+    description: 'Generate secure bcrypt password hashes with configurable salt rounds. Compare passwords with existing hashes for verification.',
+    icon: Hash,
+    href: '/hash-generator',
+    color: 'bg-red-600',
+    category: 'security',
+    keywords: ['bcrypt', 'hash generator', 'password hashing', 'salt rounds', 'password security', 'hash comparison']
   },
   {
     name: 'QR Code Generator',
@@ -126,7 +136,7 @@ export default function HomePage() {
   const faqs = [
     {
       question: "Are SwissKnife tools really free to use?",
-      answer: "Yes, absolutely! All 13 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+      answer: "Yes, absolutely! All 14 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
     },
     {
       question: "Do I need to create an account to use SwissKnife tools?",
@@ -158,7 +168,7 @@ export default function HomePage() {
           "height": 512,
           "caption": "SwissKnife - Free Online Tools"
         },
-        "description": "SwissKnife offers 13 essential free online tools including password generator, QR code creator, CSV to SQL converter, and more. No registration required, 100% privacy-focused.",
+        "description": "SwissKnife offers 14 essential free online tools including password generator, bcrypt hash generator, QR code creator, CSV to SQL converter, and more. No registration required, 100% privacy-focused.",
         "foundingDate": "2024",
         "keywords": "online tools, web utilities, password generator, QR code generator, free tools",
         "contactPoint": {
@@ -221,7 +231,7 @@ export default function HomePage() {
         "applicationCategory": "UtilitiesApplication",
         "operatingSystem": "Web Browser",
         "url": "https://swissknife.site",
-        "description": "Collection of 13 essential online tools for developers, designers, and everyday users. Completely free with no registration required.",
+        "description": "Collection of 14 essential online tools for developers, designers, and everyday users. Completely free with no registration required.",
         "author": {
           "@id": "https://swissknife.site/#organization"
         },
@@ -256,6 +266,7 @@ export default function HomePage() {
           "PDF Document Converter",
           "CSV Excel File Converter",
           "CSV to SQL Converter",
+          "Bcrypt Hash Generator",
           "Tip Calculator",
           "Online Todo List Manager",
           "Image Format Converter",
@@ -274,7 +285,7 @@ export default function HomePage() {
             "name": "Are SwissKnife tools really free to use?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Yes, absolutely! All 13 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
+              "text": "Yes, absolutely! All 14 SwissKnife tools are completely free with no hidden costs, premium features, or subscription requirements. We believe essential online tools should be accessible to everyone."
             }
           },
           {
@@ -375,7 +386,7 @@ export default function HomePage() {
               {/* Stats */}
               <div className="grid grid-cols-3 gap-4 sm:gap-8 max-w-lg mx-auto mt-12 sm:mt-16 px-4">
                 <div className="text-center">
-                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">13</div>
+                  <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">14</div>
                   <div className="text-xs sm:text-sm text-primary-200">Active Tools</div>
                 </div>
                 <div className="text-center">

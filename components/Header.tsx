@@ -9,6 +9,7 @@ export default function Header() {
 
   const tools = [
     { name: 'Password Generator', href: '/password-generator' },
+    { name: 'Hash Generator (Bcrypt)', href: '/hash-generator' },
     { name: 'QR Code Generator', href: '/qr-generator' },
     { name: 'PDF Converter', href: '/pdf-converter' },
     { name: 'CSV/Excel Converter', href: '/csv-excel-converter' },
