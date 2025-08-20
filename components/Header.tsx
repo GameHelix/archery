@@ -12,6 +12,7 @@ export default function Header() {
     { name: 'QR Code Generator', href: '/qr-generator' },
     { name: 'PDF Converter', href: '/pdf-converter' },
     { name: 'CSV/Excel Converter', href: '/csv-excel-converter' },
+    { name: 'CSV to SQL Converter', href: '/csv-to-sql' },
     { name: 'Text Tools', href: '/text-tools' },
     { name: 'Tip Calculator', href: '/tip-calculator' },
     { name: 'BMI Calculator', href: '/bmi-calculator' },
