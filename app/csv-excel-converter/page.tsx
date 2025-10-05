@@ -139,12 +139,32 @@ export default function CSVExcelConverterPage() {
       if (fileItem.format === 'csv') {
         // Convert CSV to Excel
         const csvText = await fileItem.file.text()
-        const parsed = Papa.parse(csvText, { header: false })
-        
-        const worksheet = XLSX.utils.aoa_to_sheet(parsed.data as any[][])
+        const parsed = Papa.parse(csvText, {
+          header: false,
+          skipEmptyLines: true,  // Skip empty lines
+          dynamicTyping: true,   // Convert numeric strings to numbers
+        })
+
+        // Filter out completely empty rows and clean data
+        const cleanedData = (parsed.data as any[][])
+          .filter(row => {
+            // Keep row if it has at least one non-empty, non-null value
+            return row.some(cell => cell !== null && cell !== undefined && cell !== '')
+          })
+          .map(row => {
+            // Replace null/undefined with empty string for Excel compatibility
+            return row.map(cell => cell ?? '')
+          })
+
+        // Only create worksheet if we have data
+        if (cleanedData.length === 0) {
+          throw new Error('No valid data found in CSV file')
+        }
+
+        const worksheet = XLSX.utils.aoa_to_sheet(cleanedData)
         const workbook = XLSX.utils.book_new()
         XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1')
-        
+
         const excelBuffer = XLSX.write(workbook, { type: 'array', bookType: 'xlsx' })
         blob = new Blob([excelBuffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' })
         fileName = fileItem.name.replace(/\.csv$/i, '.xlsx')
