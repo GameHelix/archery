@@ -174,7 +174,7 @@ export default function LoremGeneratorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-yellow-50 to-orange-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -189,10 +189,10 @@ export default function LoremGeneratorPage() {
               <FileText className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Lorem Ipsum Generator
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Generate placeholder text for your designs and content. Create words, sentences, or paragraphs of Lorem Ipsum text.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               📝 Classic Lorem Ipsum • 🎲 Randomized content • 📊 Word counting
@@ -202,16 +202,16 @@ export default function LoremGeneratorPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Generator Settings */}
               <div className="flex items-center mb-6">
                 <Settings className="h-6 w-6 text-yellow-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-gray-900">Generator Settings</h2>
+                <h2 className="text-2xl font-semibold text-white">Generator Settings</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-300 mb-3">
                     Generate Type
                   </label>
                   <div className="space-y-2">
@@ -226,7 +226,7 @@ export default function LoremGeneratorPage() {
                         className={`w-full p-3 rounded-xl border-2 transition-all duration-200 text-left ${
                           generationType === type.id
                             ? 'border-yellow-500 bg-yellow-50 text-yellow-700'
-                            : 'border-gray-200 bg-white hover:border-yellow-300 hover:bg-yellow-50/50 text-gray-700'
+                            : 'border-dark-700 bg-dark-800 hover:border-yellow-300 hover:bg-yellow-500/10 text-gray-300'
                         }`}
                       >
                         <div className="font-medium">{type.label}</div>
@@ -237,13 +237,13 @@ export default function LoremGeneratorPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Count
                   </label>
                   <select
                     value={count}
                     onChange={(e) => setCount(parseInt(e.target.value))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-yellow-500 focus:border-yellow-500 transition-colors"
                   >
                     {getCountOptions().map(option => (
                       <option key={option} value={option}>
@@ -258,11 +258,11 @@ export default function LoremGeneratorPage() {
                         type="checkbox"
                         checked={startWithLorem}
                         onChange={(e) => setStartWithLorem(e.target.checked)}
-                        className="rounded border-gray-300 text-yellow-600 focus:ring-yellow-500"
+                        className="rounded border-dark-600 text-yellow-600 focus:ring-yellow-500"
                       />
-                      <span className="text-sm text-gray-700">Start with "Lorem ipsum"</span>
+                      <span className="text-sm text-gray-300">Start with "Lorem ipsum"</span>
                     </label>
-                    <p className="text-xs text-gray-500 mt-1">
+                    <p className="text-xs text-gray-400 mt-1">
                       Begin with traditional Lorem Ipsum text
                     </p>
                   </div>
@@ -293,11 +293,11 @@ export default function LoremGeneratorPage() {
               {generatedText && (
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">Generated Text</h3>
+                    <h3 className="text-lg font-semibold text-white">Generated Text</h3>
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-4 py-2 bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-4 py-2 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -313,20 +313,20 @@ export default function LoremGeneratorPage() {
                       </button>
                       <button
                         onClick={clearText}
-                        className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+                        className="px-4 py-2 text-sm text-gray-400 hover:text-gray-100 hover:bg-dark-700 rounded-lg transition-colors"
                       >
                         Clear
                       </button>
                     </div>
                   </div>
 
-                  <div className="p-4 bg-gray-50 border border-gray-200 rounded-xl">
-                    <div className="whitespace-pre-wrap text-gray-800 leading-relaxed">
+                  <div className="p-4 bg-dark-800 border border-dark-700 rounded-xl">
+                    <div className="whitespace-pre-wrap text-gray-100 leading-relaxed">
                       {generatedText}
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between mt-4 text-sm text-gray-500">
+                  <div className="flex items-center justify-between mt-4 text-sm text-gray-400">
                     <span>{getWordCount(generatedText)} words</span>
                     <span>{getCharacterCount(generatedText)} characters</span>
                   </div>
@@ -338,19 +338,19 @@ export default function LoremGeneratorPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* About Lorem Ipsum */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <FileText className="h-6 w-6 text-yellow-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">About Lorem Ipsum</h3>
+                <h3 className="text-lg font-semibold text-white">About Lorem Ipsum</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <p>
                   Lorem Ipsum is simply dummy text used in the printing and typesetting industry since the 1500s.
                 </p>
                 <div>
-                  <div className="font-medium text-gray-900">Common Uses:</div>
-                  <div className="text-gray-600">
+                  <div className="font-medium text-white">Common Uses:</div>
+                  <div className="text-gray-400">
                     • Web design mockups<br/>
                     • Print design layouts<br/>
                     • Content planning<br/>
@@ -361,32 +361,32 @@ export default function LoremGeneratorPage() {
             </div>
 
             {/* Generator Options */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Settings className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Generator Options</h3>
+                <h3 className="text-lg font-semibold text-white">Generator Options</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
-                  <div className="font-medium text-gray-900">Words:</div>
-                  <div className="text-gray-600">Generate 5-500 individual words</div>
+                  <div className="font-medium text-white">Words:</div>
+                  <div className="text-gray-400">Generate 5-500 individual words</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Sentences:</div>
-                  <div className="text-gray-600">Generate 1-50 complete sentences</div>
+                  <div className="font-medium text-white">Sentences:</div>
+                  <div className="text-gray-400">Generate 1-50 complete sentences</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Paragraphs:</div>
-                  <div className="text-gray-600">Generate 1-15 full paragraphs</div>
+                  <div className="font-medium text-white">Paragraphs:</div>
+                  <div className="text-gray-400">Generate 1-15 full paragraphs</div>
                 </div>
               </div>
             </div>
 
             {/* Quick Facts */}
-            <div className="bg-gradient-to-br from-yellow-50 to-orange-100 rounded-2xl p-6 border border-yellow-200">
-              <h3 className="text-lg font-semibold text-yellow-900 mb-4">Quick Facts</h3>
-              <div className="space-y-2 text-sm text-yellow-800">
+            <div className="bg-gradient-to-br from-yellow-500/20 to-orange-500/20 rounded-2xl p-6 border border-yellow-500/30">
+              <h3 className="text-lg font-semibold text-yellow-300 mb-4">Quick Facts</h3>
+              <div className="space-y-2 text-sm text-gray-300">
                 <div>• Based on classical Latin literature</div>
                 <div>• Standard dummy text since 1960s</div>
                 <div>• Focuses on visual form over content</div>

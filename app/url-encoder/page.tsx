@@ -132,7 +132,7 @@ export default function URLEncoderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-cyan-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -147,10 +147,10 @@ export default function URLEncoderPage() {
               <Link className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             URL Encoder/Decoder
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Encode URLs for safe transmission or decode URL-encoded strings back to readable format. Support for standard and component encoding.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🔗 Safe URL transmission • ⚡ Instant processing • 🔄 Bidirectional conversion
@@ -160,10 +160,10 @@ export default function URLEncoderPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Mode and Settings */}
               <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-                <h2 className="text-2xl font-semibold text-gray-900">
+                <h2 className="text-2xl font-semibold text-white">
                   {mode === 'encode' ? 'URL Encoder' : 'URL Decoder'}
                 </h2>
                 
@@ -179,13 +179,13 @@ export default function URLEncoderPage() {
                   </button>
                   <button
                     onClick={loadSampleURL}
-                    className="px-4 py-2 text-sm text-blue-600 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                    className="px-4 py-2 text-sm text-blue-600 hover:text-blue-400 hover:bg-blue-500/20 rounded-lg transition-colors"
                   >
                     Load Sample
                   </button>
                   <button
                     onClick={clearAll}
-                    className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+                    className="px-4 py-2 text-sm text-gray-400 hover:text-gray-100 hover:bg-dark-700 rounded-lg transition-colors"
                   >
                     Clear All
                   </button>
@@ -195,7 +195,7 @@ export default function URLEncoderPage() {
               {/* Encoding Type Selection */}
               {mode === 'encode' && (
                 <div className="mb-6">
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-300 mb-3">
                     Encoding Type
                   </label>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -204,14 +204,14 @@ export default function URLEncoderPage() {
                       className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
                         encodingType === 'standard'
                           ? 'border-teal-500 bg-teal-50 text-teal-700'
-                          : 'border-gray-200 bg-white hover:border-teal-300 hover:bg-teal-50/50 text-gray-700'
+                          : 'border-dark-700 bg-dark-800 hover:border-teal-300 hover:bg-teal-50/50 text-gray-300'
                       }`}
                     >
                       <div className="font-medium mb-1">Standard (encodeURI)</div>
                       <div className="text-xs opacity-75">
                         Encodes entire URLs, preserves :/?#[]@
                       </div>
-                      <div className="text-xs mt-1 font-mono bg-gray-100 p-1 rounded">
+                      <div className="text-xs mt-1 font-mono bg-dark-700 p-1 rounded">
                         space → %20
                       </div>
                     </button>
@@ -221,14 +221,14 @@ export default function URLEncoderPage() {
                       className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
                         encodingType === 'component'
                           ? 'border-teal-500 bg-teal-50 text-teal-700'
-                          : 'border-gray-200 bg-white hover:border-teal-300 hover:bg-teal-50/50 text-gray-700'
+                          : 'border-dark-700 bg-dark-800 hover:border-teal-300 hover:bg-teal-50/50 text-gray-300'
                       }`}
                     >
                       <div className="font-medium mb-1">Component (encodeURIComponent)</div>
                       <div className="text-xs opacity-75">
                         Encodes all special characters
                       </div>
-                      <div className="text-xs mt-1 font-mono bg-gray-100 p-1 rounded">
+                      <div className="text-xs mt-1 font-mono bg-dark-700 p-1 rounded">
                         ? → %3F, & → %26
                       </div>
                     </button>
@@ -239,7 +239,7 @@ export default function URLEncoderPage() {
               {/* Input Section */}
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     {mode === 'encode' ? 'URL to Encode' : 'Encoded URL to Decode'}
                   </label>
                   <textarea
@@ -250,10 +250,10 @@ export default function URLEncoderPage() {
                       : 'Enter encoded URL to decode...\nExample: https%3A//example.com/search%3Fq%3Dhello%20world'
                     }
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors resize-none font-mono text-sm"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-colors resize-none font-mono text-sm"
                   />
                   <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-400">
                       {inputText.length} characters
                     </span>
                     {isProcessing && (
@@ -268,13 +268,13 @@ export default function URLEncoderPage() {
                 {/* Output Section */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-gray-300">
                       {mode === 'encode' ? 'Encoded URL Result' : 'Decoded URL Result'}
                     </label>
                     {outputText && (
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -298,10 +298,10 @@ export default function URLEncoderPage() {
                       : 'Decoded URL will appear here...'
                     }
                     rows={4}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-gray-50 transition-colors resize-none font-mono text-sm"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 bg-dark-800 transition-colors resize-none font-mono text-sm"
                   />
                   <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-400">
                       {outputText.length} characters
                     </span>
                   </div>
@@ -309,9 +309,9 @@ export default function URLEncoderPage() {
 
                 {/* Error Message */}
                 {error && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">
+                  <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-3">
                     <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
-                    <span className="text-red-800 text-sm">{error}</span>
+                    <span className="text-red-400 text-sm">{error}</span>
                   </div>
                 )}
               </div>
@@ -321,19 +321,19 @@ export default function URLEncoderPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* About URL Encoding */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Globe className="h-6 w-6 text-teal-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">About URL Encoding</h3>
+                <h3 className="text-lg font-semibold text-white">About URL Encoding</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <p>
                   URL encoding converts characters into a format that can be transmitted over the Internet safely.
                 </p>
                 <div>
-                  <div className="font-medium text-gray-900">When to Use:</div>
-                  <div className="text-gray-600">
+                  <div className="font-medium text-white">When to Use:</div>
+                  <div className="text-gray-400">
                     • URLs with spaces or special chars<br/>
                     • Form data submission<br/>
                     • API query parameters<br/>
@@ -344,28 +344,28 @@ export default function URLEncoderPage() {
             </div>
 
             {/* Encoding Types */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Link className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Encoding Types</h3>
+                <h3 className="text-lg font-semibold text-white">Encoding Types</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
-                  <div className="font-medium text-gray-900">encodeURI:</div>
-                  <div className="text-gray-600">For complete URLs. Preserves URL structure characters.</div>
+                  <div className="font-medium text-white">encodeURI:</div>
+                  <div className="text-gray-400">For complete URLs. Preserves URL structure characters.</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">encodeURIComponent:</div>
-                  <div className="text-gray-600">For URL parts. Encodes all special characters.</div>
+                  <div className="font-medium text-white">encodeURIComponent:</div>
+                  <div className="text-gray-400">For URL parts. Encodes all special characters.</div>
                 </div>
               </div>
             </div>
 
             {/* Common Encodings */}
-            <div className="bg-gradient-to-br from-teal-50 to-cyan-100 rounded-2xl p-6 border border-teal-200">
-              <h3 className="text-lg font-semibold text-teal-900 mb-4">Common Encodings</h3>
-              <div className="space-y-2 text-sm text-teal-800">
+            <div className="bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-2xl p-6 border border-teal-500/30">
+              <h3 className="text-lg font-semibold text-teal-300 mb-4">Common Encodings</h3>
+              <div className="space-y-2 text-sm text-gray-300">
                 <div className="flex justify-between font-mono">
                   <span>space</span>
                   <span>%20</span>

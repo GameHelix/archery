@@ -159,7 +159,7 @@ export default function UUIDGeneratorPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -174,10 +174,10 @@ export default function UUIDGeneratorPage() {
               <Fingerprint className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             UUID/GUID Generator
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Generate unique identifiers (UUID/GUID) for your applications. Support for multiple UUID versions and bulk generation.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🔑 Cryptographically secure • ⚡ Instant generation • 📋 Bulk operations
@@ -187,16 +187,16 @@ export default function UUIDGeneratorPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Generator Settings */}
               <div className="flex items-center mb-6">
                 <Settings className="h-6 w-6 text-purple-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-gray-900">Generator Settings</h2>
+                <h2 className="text-2xl font-semibold text-white">Generator Settings</h2>
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     UUID Version
                   </label>
                   <div className="space-y-2">
@@ -207,7 +207,7 @@ export default function UUIDGeneratorPage() {
                         className={`w-full p-3 rounded-xl border-2 transition-all duration-200 text-left ${
                           version === key
                             ? 'border-purple-500 bg-purple-50 text-purple-700'
-                            : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50/50 text-gray-700'
+                            : 'border-dark-700 bg-dark-800 hover:border-purple-300 hover:bg-purple-50/50 text-gray-300'
                         }`}
                       >
                         <div className="font-medium">{info.name}</div>
@@ -218,13 +218,13 @@ export default function UUIDGeneratorPage() {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Number of UUIDs
                   </label>
                   <select
                     value={count}
                     onChange={(e) => setCount(parseInt(e.target.value))}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 transition-colors"
                   >
                     <option value={1}>1 UUID</option>
                     <option value={5}>5 UUIDs</option>
@@ -235,10 +235,10 @@ export default function UUIDGeneratorPage() {
                   </select>
 
                   <div className="mt-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Example Format
                     </label>
-                    <div className="p-3 bg-gray-100 rounded-lg font-mono text-sm text-gray-800 break-all">
+                    <div className="p-3 bg-dark-700 rounded-lg font-mono text-sm text-gray-100 break-all">
                       {versionInfo[version].example}
                     </div>
                   </div>
@@ -266,22 +266,22 @@ export default function UUIDGeneratorPage() {
 
             {/* Generated UUIDs */}
             {uuids.length > 0 && (
-              <div className="mt-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+              <div className="mt-6 bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-semibold text-gray-900">
+                  <h2 className="text-2xl font-semibold text-white">
                     Generated UUIDs ({uuids.length})
                   </h2>
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={copyAllUUIDs}
-                      className="px-4 py-2 bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors text-sm flex items-center space-x-1"
+                      className="px-4 py-2 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm flex items-center space-x-1"
                     >
                       <Copy className="h-4 w-4" />
                       <span>Copy All</span>
                     </button>
                     <button
                       onClick={clearHistory}
-                      className="px-4 py-2 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+                      className="px-4 py-2 text-sm text-red-600 hover:text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
                     >
                       Clear All
                     </button>
@@ -290,16 +290,16 @@ export default function UUIDGeneratorPage() {
 
                 <div className="space-y-3 max-h-96 overflow-y-auto">
                   {uuids.map((item) => (
-                    <div key={item.id} className="flex items-center justify-between p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <div key={item.id} className="flex items-center justify-between p-4 bg-dark-800 rounded-xl border border-dark-700">
                       <div className="flex-1 min-w-0">
-                        <div className="font-mono text-sm text-gray-800 break-all">
+                        <div className="font-mono text-sm text-gray-100 break-all">
                           {item.uuid}
                         </div>
                         <div className="flex items-center space-x-4 mt-1">
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-400">
                             {item.version.toUpperCase()}
                           </span>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-400">
                             {formatTimestamp(item.timestamp)}
                           </span>
                         </div>
@@ -331,20 +331,20 @@ export default function UUIDGeneratorPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* About UUIDs */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Fingerprint className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">About UUIDs</h3>
+                <h3 className="text-lg font-semibold text-white">About UUIDs</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <p>
                   UUID (Universally Unique Identifier) is a 128-bit number used to uniquely identify information in computer systems.
                 </p>
                 <div className="space-y-2">
                   <div>
-                    <div className="font-medium text-gray-900">Common Uses:</div>
-                    <div className="text-gray-600">
+                    <div className="font-medium text-white">Common Uses:</div>
+                    <div className="text-gray-400">
                       • Database primary keys<br/>
                       • Session identifiers<br/>
                       • File names<br/>
@@ -356,32 +356,32 @@ export default function UUIDGeneratorPage() {
             </div>
 
             {/* UUID Versions */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Settings className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">UUID Versions</h3>
+                <h3 className="text-lg font-semibold text-white">UUID Versions</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
-                  <div className="font-medium text-gray-900">Version 4:</div>
-                  <div className="text-gray-600">Random UUIDs. Most commonly used.</div>
+                  <div className="font-medium text-white">Version 4:</div>
+                  <div className="text-gray-400">Random UUIDs. Most commonly used.</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Version 1:</div>
-                  <div className="text-gray-600">Time-based UUIDs with MAC address.</div>
+                  <div className="font-medium text-white">Version 1:</div>
+                  <div className="text-gray-400">Time-based UUIDs with MAC address.</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Nil UUID:</div>
-                  <div className="text-gray-600">Special UUID with all zeros.</div>
+                  <div className="font-medium text-white">Nil UUID:</div>
+                  <div className="text-gray-400">Special UUID with all zeros.</div>
                 </div>
               </div>
             </div>
 
             {/* Features */}
-            <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-6 border border-purple-200">
-              <h3 className="text-lg font-semibold text-purple-900 mb-4">Features</h3>
-              <ul className="space-y-2 text-sm text-purple-800">
+            <div className="bg-gradient-to-br from-purple-50 to-pink-100 rounded-2xl p-6 border border-purple-500/30">
+              <h3 className="text-lg font-semibold text-purple-300 mb-4">Features</h3>
+              <ul className="space-y-2 text-sm text-gray-300">
                 <li>✓ Multiple UUID versions</li>
                 <li>✓ Bulk generation up to 100</li>
                 <li>✓ Copy individual or all UUIDs</li>

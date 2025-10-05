@@ -233,7 +233,7 @@ export default function ImageConverterPage() {
   const compressionRatio = totalOriginalSize > 0 ? ((totalOriginalSize - totalConvertedSize) / totalOriginalSize * 100) : 0
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -249,10 +249,10 @@ export default function ImageConverterPage() {
               <ImageIcon className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             JPEG to PNG Converter
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Convert your JPEG images to PNG format instantly with perfect quality preservation.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🔒 Privacy-First • 📱 Mobile-Friendly • ⚡ Instant Conversion • 🎯 Specialized Tool
@@ -261,16 +261,16 @@ export default function ImageConverterPage() {
         </div>
 
         {/* Upload Section */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+        <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
           <div className="flex items-center mb-6">
             <Upload className="h-5 w-5 text-blue-600 mr-2" />
-            <h2 className="text-xl font-semibold text-gray-900">Upload JPEG Images</h2>
+            <h2 className="text-xl font-semibold text-white">Upload JPEG Images</h2>
           </div>
 
           {/* Quality Settings */}
-          <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200">
+          <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-500/30">
             <div className="flex items-center justify-between mb-3">
-              <label className="flex items-center text-sm font-medium text-gray-700">
+              <label className="flex items-center text-sm font-medium text-gray-300">
                 <Settings className="h-4 w-4 mr-2 text-blue-600" />
                 PNG Quality: {quality}%
               </label>
@@ -284,7 +284,7 @@ export default function ImageConverterPage() {
               className="w-full h-3 bg-gradient-to-r from-blue-200 to-indigo-200 rounded-lg appearance-none cursor-pointer"
               disabled={isConverting}
             />
-            <div className="flex justify-between text-xs text-gray-500 mt-2">
+            <div className="flex justify-between text-xs text-gray-400 mt-2">
               <span>Lower size</span>
               <span>Higher quality</span>
             </div>
@@ -294,8 +294,8 @@ export default function ImageConverterPage() {
           <div
             className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-200 ${
               isDragOver
-                ? 'border-blue-500 bg-blue-50'
-                : 'border-gray-300 hover:border-blue-400 hover:bg-blue-25'
+                ? 'border-blue-500 bg-blue-500/20'
+                : 'border-dark-600 hover:border-blue-400 hover:bg-blue-25'
             }`}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -312,15 +312,15 @@ export default function ImageConverterPage() {
             />
             
             <div className="space-y-4">
-              <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto">
+              <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto">
                 <Upload className="h-8 w-8 text-blue-600" />
               </div>
               
               <div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-white mb-2">
                   Drop JPEG files here or click to browse
                 </h3>
-                <p className="text-gray-600 mb-4">
+                <p className="text-gray-400 mb-4">
                   Supports multiple file selection • Maximum quality conversion
                 </p>
                 <button
@@ -332,8 +332,8 @@ export default function ImageConverterPage() {
                 </button>
               </div>
               
-              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
-                <span className="bg-blue-50 px-3 py-1 rounded-full">✨ Client-side conversion</span>
+              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
+                <span className="bg-blue-500/20 px-3 py-1 rounded-full">✨ Client-side conversion</span>
                 <span className="bg-green-50 px-3 py-1 rounded-full">🔒 Privacy protected</span>
                 <span className="bg-purple-50 px-3 py-1 rounded-full">⚡ Instant processing</span>
               </div>
@@ -343,17 +343,17 @@ export default function ImageConverterPage() {
 
         {/* Conversion Results */}
         {images.length > 0 && (
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+          <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center">
                 <ImageIcon className="h-5 w-5 text-blue-600 mr-2" />
-                <h2 className="text-xl font-semibold text-gray-900">Conversion Results</h2>
+                <h2 className="text-xl font-semibold text-white">Conversion Results</h2>
               </div>
               
               <div className="flex items-center gap-4">
                 {completedImages.length > 0 && (
                   <>
-                    <div className="text-sm text-gray-500">
+                    <div className="text-sm text-gray-400">
                       {completedImages.length} of {images.length} completed
                     </div>
                     <button
@@ -377,15 +377,15 @@ export default function ImageConverterPage() {
             {/* Statistics */}
             {completedImages.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
-                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-4 border border-blue-200">
+                <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-xl p-4 border border-blue-500/30">
                   <div className="text-2xl font-bold text-blue-600">{completedImages.length}</div>
-                  <div className="text-sm text-blue-700">Images Converted</div>
+                  <div className="text-sm text-blue-400">Images Converted</div>
                 </div>
-                <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-xl p-4 border border-green-200">
+                <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-xl p-4 border border-green-500/30">
                   <div className="text-2xl font-bold text-green-600">{formatFileSize(totalConvertedSize)}</div>
-                  <div className="text-sm text-green-700">Total Size</div>
+                  <div className="text-sm text-green-400">Total Size</div>
                 </div>
-                <div className="bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl p-4 border border-purple-200">
+                <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-xl p-4 border border-purple-500/30">
                   <div className="text-2xl font-bold text-purple-600">{compressionRatio.toFixed(1)}%</div>
                   <div className="text-sm text-purple-700">Size Change</div>
                 </div>
@@ -395,8 +395,8 @@ export default function ImageConverterPage() {
             {/* Image List */}
             <div className="space-y-4">
               {images.map((image) => (
-                <div key={image.id} className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200">
-                  <div className="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden flex-shrink-0">
+                <div key={image.id} className="flex items-center gap-4 p-4 bg-dark-800 rounded-xl border border-dark-700">
+                  <div className="w-16 h-16 bg-dark-700 rounded-lg overflow-hidden flex-shrink-0">
                     {image.originalUrl && (
                       <img
                         src={image.originalUrl}
@@ -407,8 +407,8 @@ export default function ImageConverterPage() {
                   </div>
                   
                   <div className="flex-1 min-w-0">
-                    <h3 className="font-medium text-gray-900 truncate">{image.name}</h3>
-                    <div className="flex items-center gap-4 text-sm text-gray-500 mt-1">
+                    <h3 className="font-medium text-white truncate">{image.name}</h3>
+                    <div className="flex items-center gap-4 text-sm text-gray-400 mt-1">
                       <span>{formatFileSize(image.originalSize)}</span>
                       {image.status === 'completed' && (
                         <>
@@ -459,8 +459,8 @@ export default function ImageConverterPage() {
         {/* Features & Benefits */}
         <div className="space-y-12">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Why Choose Our JPEG to PNG Converter?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Why Choose Our JPEG to PNG Converter?</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Specialized tool designed specifically for JPEG to PNG conversion with focus on quality, privacy, and ease of use.
             </p>
           </div>
@@ -513,31 +513,31 @@ export default function ImageConverterPage() {
                 icon: '💼',
                 title: 'Professional Grade',
                 description: 'High-quality conversion suitable for professional photography and design work.',
-                color: 'from-gray-50 to-gray-100 border-gray-200'
+                color: 'from-gray-50 to-gray-100 border-dark-700'
               }
             ].map((feature, index) => (
               <div key={index} className={`bg-gradient-to-br ${feature.color} rounded-2xl p-6 border hover:shadow-md transition-all duration-200`}>
                 <div className="text-3xl mb-4">{feature.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-600">{feature.description}</p>
+                <h3 className="font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Technical Details */}
-        <div className="mt-16 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 border border-gray-200">
+        <div className="mt-16 bg-gradient-to-br from-gray-50 to-blue-50 rounded-2xl p-8 border border-dark-700">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Technical Specifications</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">Technical Specifications</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Our converter uses advanced client-side processing to ensure the highest quality conversions.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-3">🔍 Input Formats</h3>
-              <ul className="text-sm text-gray-600 space-y-1">
+              <h3 className="font-semibold text-white mb-3">🔍 Input Formats</h3>
+              <ul className="text-sm text-gray-400 space-y-1">
                 <li>• JPEG (.jpg, .jpeg)</li>
                 <li>• All quality levels</li>
                 <li>• Color and grayscale</li>
@@ -546,8 +546,8 @@ export default function ImageConverterPage() {
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-3">📤 Output Format</h3>
-              <ul className="text-sm text-gray-600 space-y-1">
+              <h3 className="font-semibold text-white mb-3">📤 Output Format</h3>
+              <ul className="text-sm text-gray-400 space-y-1">
                 <li>• PNG (.png)</li>
                 <li>• 24-bit color depth</li>
                 <li>• Alpha channel support</li>
@@ -556,8 +556,8 @@ export default function ImageConverterPage() {
             </div>
             
             <div className="bg-white rounded-xl p-6 shadow-sm">
-              <h3 className="font-semibold text-gray-900 mb-3">⚙️ Processing</h3>
-              <ul className="text-sm text-gray-600 space-y-1">
+              <h3 className="font-semibold text-white mb-3">⚙️ Processing</h3>
+              <ul className="text-sm text-gray-400 space-y-1">
                 <li>• Client-side conversion</li>
                 <li>• Canvas API technology</li>
                 <li>• Quality preservation</li>

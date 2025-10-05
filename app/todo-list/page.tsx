@@ -143,10 +143,10 @@ export default function TodoListPage() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high': return 'bg-red-100 text-red-700 border-red-200'
+      case 'high': return 'bg-red-100 text-red-400 border-red-200'
       case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200'
-      case 'low': return 'bg-green-100 text-green-700 border-green-200'
-      default: return 'bg-gray-100 text-gray-700 border-gray-200'
+      case 'low': return 'bg-green-100 text-green-400 border-green-200'
+      default: return 'bg-dark-700 text-gray-300 border-dark-700'
     }
   }
 
@@ -214,7 +214,7 @@ export default function TodoListPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-teal-50 to-cyan-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -230,10 +230,10 @@ export default function TodoListPage() {
               <CheckSquare className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Free To-Do List App
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Organize your tasks efficiently with our mobile-friendly to-do list app.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               ✅ Priority levels • 📁 Categories • 🔍 Smart search • 📱 Mobile-friendly
@@ -247,10 +247,10 @@ export default function TodoListPage() {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-600">Total Tasks</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-gray-900">{totalTodos}</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-400">Total Tasks</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-white">{totalTodos}</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-100 rounded-2xl flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
                   <Square className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
                 </div>
               </div>
@@ -259,7 +259,7 @@ export default function TodoListPage() {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-600">Active Tasks</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-400">Active Tasks</p>
                   <p className="text-2xl sm:text-3xl font-bold text-orange-600">{activeTodos}</p>
                 </div>
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-2xl flex items-center justify-center">
@@ -271,7 +271,7 @@ export default function TodoListPage() {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-600">Completed</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-400">Completed</p>
                   <p className="text-2xl sm:text-3xl font-bold text-green-600">{completedTodos}</p>
                 </div>
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-2xl flex items-center justify-center">
@@ -283,7 +283,7 @@ export default function TodoListPage() {
             <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-xs sm:text-sm font-medium text-gray-600">Completion</p>
+                  <p className="text-xs sm:text-sm font-medium text-gray-400">Completion</p>
                   <p className="text-2xl sm:text-3xl font-bold text-teal-600">{completionRate}%</p>
                 </div>
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-teal-100 rounded-2xl flex items-center justify-center">
@@ -295,12 +295,12 @@ export default function TodoListPage() {
 
           {/* Main Todo List */}
           <div className="xl:col-span-3">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Add Todo Section */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
                   <Plus className="h-5 w-5 text-teal-600 mr-2" />
-                  <h2 className="text-xl font-semibold text-gray-900">Add New Task</h2>
+                  <h2 className="text-xl font-semibold text-white">Add New Task</h2>
                 </div>
                 
                 <div className="space-y-4">
@@ -312,7 +312,7 @@ export default function TodoListPage() {
                       onKeyDown={(e) => e.key === 'Enter' && addTodo()}
                       placeholder="What needs to be done?"
                       aria-label="Enter new task"
-                      className="flex-1 px-4 py-4 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
+                      className="flex-1 px-4 py-4 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all duration-200"
                     />
                     <button
                       onClick={addTodo}
@@ -327,7 +327,7 @@ export default function TodoListPage() {
                     <select
                       value={newTodoPriority}
                       onChange={(e) => setNewTodoPriority(e.target.value as 'low' | 'medium' | 'high')}
-                      className="px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px]"
+                      className="px-4 py-3 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px]"
                     >
                       <option value="low">🌱 Low Priority</option>
                       <option value="medium">⚡ Medium Priority</option>
@@ -338,7 +338,7 @@ export default function TodoListPage() {
                       value={newTodoCategory}
                       onChange={(e) => setNewTodoCategory(e.target.value)}
                       placeholder="Category"
-                      className="flex-1 px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px]"
+                      className="flex-1 px-4 py-3 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px]"
                     />
                   </div>
                 </div>
@@ -355,13 +355,13 @@ export default function TodoListPage() {
                       onChange={(e) => setSearchQuery(e.target.value)}
                       placeholder="Search tasks or categories..."
                       aria-label="Search tasks"
-                      className="w-full pl-10 pr-4 py-4 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px]"
+                      className="w-full pl-10 pr-4 py-4 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px]"
                     />
                   </div>
                 </div>
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3">
-                  <div className="flex rounded-xl border border-gray-300 overflow-hidden">
+                  <div className="flex rounded-xl border border-dark-600 overflow-hidden">
                     {(['all', 'active', 'completed'] as FilterType[]).map((filterType) => (
                       <button
                         key={filterType}
@@ -369,7 +369,7 @@ export default function TodoListPage() {
                         className={`px-4 py-3 text-sm font-medium capitalize transition-colors min-h-[48px] touch-manipulation flex-1 sm:flex-none ${
                           filter === filterType
                             ? 'bg-teal-600 text-white'
-                            : 'bg-white text-gray-700 hover:bg-teal-50'
+                            : 'bg-white text-gray-300 hover:bg-teal-50'
                         }`}
                       >
                         {filterType}
@@ -380,7 +380,7 @@ export default function TodoListPage() {
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value as SortType)}
-                    className="px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px] w-full sm:w-auto"
+                    className="px-4 py-3 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[48px] w-full sm:w-auto"
                   >
                     <option value="created">Sort by Created</option>
                     <option value="priority">Sort by Priority</option>
@@ -390,7 +390,7 @@ export default function TodoListPage() {
                   {completedTodos > 0 && (
                     <button
                       onClick={clearCompleted}
-                      className="px-4 py-3 bg-red-100 text-red-700 rounded-xl hover:bg-red-200 transition-colors text-sm font-medium min-h-[48px] touch-manipulation w-full sm:w-auto"
+                      className="px-4 py-3 bg-red-100 text-red-400 rounded-xl hover:bg-red-200 transition-colors text-sm font-medium min-h-[48px] touch-manipulation w-full sm:w-auto"
                     >
                       Clear Completed
                     </button>
@@ -405,16 +405,16 @@ export default function TodoListPage() {
                     <div className="w-20 h-20 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                       <CheckSquare className="h-10 w-10 text-teal-600" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                    <h3 className="text-xl font-semibold text-white mb-2">
                       {searchQuery ? 'No matching tasks' : 'Ready to get organized?'}
                     </h3>
-                    <p className="text-gray-600 mb-6 max-w-md mx-auto">
+                    <p className="text-gray-400 mb-6 max-w-md mx-auto">
                       {searchQuery 
                         ? 'Try adjusting your search terms or filters to find what you\'re looking for.' 
                         : 'Create your first task and start being more productive today. You\'ve got this! ✨'}
                     </p>
                     {!searchQuery && (
-                      <div className="space-y-2 text-sm text-gray-500">
+                      <div className="space-y-2 text-sm text-gray-400">
                         <p>💡 <strong>Pro tip:</strong> Use categories to organize your tasks</p>
                         <p>🎯 <strong>Set priorities</strong> to focus on what matters most</p>
                       </div>
@@ -426,8 +426,8 @@ export default function TodoListPage() {
                       key={todo.id}
                       className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                         todo.completed
-                          ? 'bg-gray-50 border-gray-200 opacity-75'
-                          : 'bg-white border-gray-200 hover:border-teal-300 hover:shadow-md'
+                          ? 'bg-dark-800 border-dark-700 opacity-75'
+                          : 'bg-white border-dark-700 hover:border-teal-300 hover:shadow-md'
                       }`}
                     >
                       <div className="flex items-start gap-3">
@@ -436,7 +436,7 @@ export default function TodoListPage() {
                           className={`mt-1 w-8 h-8 rounded-lg border-2 flex items-center justify-center transition-all duration-200 touch-manipulation ${
                             todo.completed
                               ? 'bg-teal-600 border-teal-600 text-white'
-                              : 'border-gray-300 hover:border-teal-500'
+                              : 'border-dark-600 hover:border-teal-500'
                           }`}
                         >
                           {todo.completed && <CheckCircle className="h-5 w-5" />}
@@ -451,12 +451,12 @@ export default function TodoListPage() {
                                 onChange={(e) => setEditingText(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && saveEdit()}
                                 onBlur={saveEdit}
-                                className="flex-1 px-3 py-3 text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[44px]"
+                                className="flex-1 px-3 py-3 text-base border border-dark-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 min-h-[44px]"
                                 autoFocus
                               />
                               <button
                                 onClick={cancelEdit}
-                                className="px-3 py-3 text-gray-500 hover:text-gray-700 min-h-[44px] touch-manipulation"
+                                className="px-3 py-3 text-gray-500 hover:text-gray-300 min-h-[44px] touch-manipulation"
                               >
                                 ✕
                               </button>
@@ -464,7 +464,7 @@ export default function TodoListPage() {
                           ) : (
                             <div>
                               <p
-                                className={`text-gray-900 font-medium break-words ${
+                                className={`text-white font-medium break-words ${
                                   todo.completed ? 'line-through text-gray-500' : ''
                                 }`}
                               >
@@ -474,10 +474,10 @@ export default function TodoListPage() {
                                 <span className={`px-3 py-1 text-xs font-medium rounded-full border ${getPriorityColor(todo.priority)}`}>
                                   {getPriorityIcon(todo.priority)} {todo.priority.toUpperCase()}
                                 </span>
-                                <span className="px-3 py-1 text-xs font-medium bg-blue-100 text-blue-700 rounded-full border border-blue-200">
+                                <span className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/30">
                                   📁 {todo.category}
                                 </span>
-                                <span className="text-xs text-gray-500">
+                                <span className="text-xs text-gray-400">
                                   {todo.createdAt.toLocaleDateString()}
                                 </span>
                               </div>
@@ -510,7 +510,7 @@ export default function TodoListPage() {
                 <div className="mt-6 text-center">
                   <button
                     onClick={clearAll}
-                    className="px-6 py-4 bg-red-500 hover:bg-red-600 text-white font-semibold rounded-xl transition-colors duration-200 min-h-[48px] touch-manipulation w-full sm:w-auto"
+                    className="px-6 py-4 bg-red-500/20 hover:bg-red-600 text-white font-semibold rounded-xl transition-colors duration-200 min-h-[48px] touch-manipulation w-full sm:w-auto"
                   >
                     Clear All Tasks
                   </button>
@@ -522,10 +522,10 @@ export default function TodoListPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* Progress */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Target className="h-6 w-6 text-purple-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Progress</h3>
+                <h3 className="text-lg font-semibold text-white">Progress</h3>
               </div>
               
               <div className="space-y-4">
@@ -534,7 +534,7 @@ export default function TodoListPage() {
                     <span>Completion Rate</span>
                     <span>{completionRate}%</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-3">
+                  <div className="w-full bg-dark-600 rounded-full h-3">
                     <div
                       className="bg-gradient-to-r from-teal-500 to-cyan-500 h-3 rounded-full transition-all duration-300"
                       style={{ width: `${completionRate}%` }}
@@ -542,7 +542,7 @@ export default function TodoListPage() {
                   </div>
                 </div>
 
-                <div className="text-center p-4 bg-teal-50 rounded-xl border border-teal-200">
+                <div className="text-center p-4 bg-teal-50 rounded-xl border border-teal-500/30">
                   <div className="text-2xl font-bold text-teal-600">
                     {activeTodos}
                   </div>
@@ -555,10 +555,10 @@ export default function TodoListPage() {
 
             {/* Categories */}
             {categories.length > 0 && (
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+              <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
                 <div className="flex items-center mb-4">
                   <Settings className="h-6 w-6 text-indigo-600 mr-2" />
-                  <h3 className="text-lg font-semibold text-gray-900">Categories</h3>
+                  <h3 className="text-lg font-semibold text-white">Categories</h3>
                 </div>
                 
                 <div className="space-y-2">
@@ -570,15 +570,15 @@ export default function TodoListPage() {
                       : 0
                     
                     return (
-                      <div key={category} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                      <div key={category} className="flex items-center justify-between p-3 bg-dark-800 rounded-lg">
                         <div className="flex items-center">
-                          <span className="text-sm font-medium text-gray-700">📁 {category}</span>
+                          <span className="text-sm font-medium text-gray-300">📁 {category}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-400">
                             {categoryCompleted}/{categoryTodos.length}
                           </span>
-                          <div className="w-12 bg-gray-200 rounded-full h-2">
+                          <div className="w-12 bg-dark-600 rounded-full h-2">
                             <div
                               className="bg-teal-500 h-2 rounded-full"
                               style={{ width: `${categoryProgress}%` }}
@@ -593,28 +593,28 @@ export default function TodoListPage() {
             )}
 
             {/* Tips */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 border border-blue-200">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">💡 Productivity Tips</h3>
-              <div className="space-y-3 text-sm text-blue-800">
+            <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl p-6 border border-blue-500/30">
+              <h3 className="text-lg font-semibold text-blue-300 mb-4">💡 Productivity Tips</h3>
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
                   <div className="font-medium mb-1">🎯 Prioritize wisely:</div>
-                  <div className="text-xs text-blue-700">Use high priority for urgent tasks only</div>
+                  <div className="text-xs text-blue-400">Use high priority for urgent tasks only</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">📂 Organize by category:</div>
-                  <div className="text-xs text-blue-700">Group similar tasks together</div>
+                  <div className="text-xs text-blue-400">Group similar tasks together</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">🏃 Break large tasks:</div>
-                  <div className="text-xs text-blue-700">Split complex tasks into smaller ones</div>
+                  <div className="text-xs text-blue-400">Split complex tasks into smaller ones</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">📱 Mobile optimized:</div>
-                  <div className="text-xs text-blue-700">Works perfectly on all devices</div>
+                  <div className="text-xs text-blue-400">Works perfectly on all devices</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">✅ Regular cleanup:</div>
-                  <div className="text-xs text-blue-700">Clear completed tasks periodically</div>
+                  <div className="text-xs text-blue-400">Clear completed tasks periodically</div>
                 </div>
               </div>
             </div>

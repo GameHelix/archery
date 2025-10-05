@@ -293,7 +293,7 @@ export default function CSVToSQLPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -308,10 +308,10 @@ export default function CSVToSQLPage() {
               <Database className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             CSV to SQL Converter
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Convert CSV files to SQL INSERT statements. Support for MySQL, PostgreSQL, SQLite, and SQL Server.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🗃️ Auto data types • 💾 Multiple SQL dialects • ⚡ Instant generation
@@ -321,11 +321,11 @@ export default function CSVToSQLPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="mb-8">
                 <div className="flex items-center mb-4">
                   <Settings className="h-5 w-5 text-blue-600 mr-2" />
-                  <h2 className="text-xl font-semibold text-gray-900">SQL Dialect</h2>
+                  <h2 className="text-xl font-semibold text-white">SQL Dialect</h2>
                 </div>
                 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
@@ -335,8 +335,8 @@ export default function CSVToSQLPage() {
                       onClick={() => setSqlDialect(key as SQLDialect)}
                       className={`p-3 rounded-xl border-2 transition-all duration-200 text-center ${
                         sqlDialect === key
-                          ? 'border-blue-500 bg-blue-50 text-blue-700'
-                          : 'border-gray-200 bg-white hover:border-blue-300 hover:bg-blue-50/50 text-gray-700'
+                          ? 'border-blue-500 bg-blue-500/20 text-blue-400'
+                          : 'border-dark-700 bg-dark-800 hover:border-blue-300 hover:bg-blue-500/20 text-gray-300'
                       }`}
                     >
                       <div className="font-medium text-sm">{info.name}</div>
@@ -346,7 +346,7 @@ export default function CSVToSQLPage() {
               </div>
 
               <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
                   <Upload className="h-5 w-5 mr-2 text-blue-600" />
                   Upload CSV Files
                 </h2>
@@ -357,8 +357,8 @@ export default function CSVToSQLPage() {
                   onDrop={handleDrop}
                   className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-300 ${
                     isDragging
-                      ? 'border-blue-500 bg-blue-50 scale-105'
-                      : 'border-gray-300 bg-gray-50 hover:border-blue-400 hover:bg-blue-50/50'
+                      ? 'border-blue-500 bg-blue-500/20 scale-105'
+                      : 'border-dark-600 bg-dark-800 hover:border-blue-400 hover:bg-blue-500/20'
                   }`}
                 >
                   <input
@@ -371,15 +371,15 @@ export default function CSVToSQLPage() {
                   />
                   
                   <div className="space-y-4">
-                    <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto">
+                    <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto">
                       <FileText className="h-8 w-8 text-blue-600" />
                     </div>
                     
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      <h3 className="text-lg font-semibold text-white mb-2">
                         Drop CSV files here or click to browse
                       </h3>
-                      <p className="text-gray-600 text-sm sm:text-base">
+                      <p className="text-gray-400 text-sm sm:text-base">
                         Supports CSV (.csv) files only
                       </p>
                     </div>
@@ -398,7 +398,7 @@ export default function CSVToSQLPage() {
               {files.length > 0 && (
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-white">
                       Files ({files.length})
                     </h3>
                     {files.some(f => f.status === 'pending') && (
@@ -426,18 +426,18 @@ export default function CSVToSQLPage() {
                     {files.map((file) => (
                       <div
                         key={file.id}
-                        className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-300 transition-all duration-200"
+                        className="flex items-center justify-between p-4 bg-dark-800 rounded-xl border border-dark-700 hover:border-blue-300 transition-all duration-200"
                       >
                         <div className="flex items-center space-x-3 flex-1 min-w-0">
-                          <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                          <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
                             <FileText className="h-5 w-5 text-blue-600" />
                           </div>
                           
                           <div className="flex-1 min-w-0">
-                            <p className="text-sm font-medium text-gray-900 truncate">
+                            <p className="text-sm font-medium text-white truncate">
                               {file.name}
                             </p>
-                            <p className="text-xs text-gray-500">
+                            <p className="text-xs text-gray-400">
                               {formatFileSize(file.size)} • Table: {file.tableName}
                             </p>
                           </div>
@@ -506,12 +506,12 @@ export default function CSVToSQLPage() {
               )}
 
               {showPreview && (
-                <div className="mt-6 bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="mt-6 bg-dark-800 rounded-xl p-4 border border-dark-700">
                   <div className="flex items-center justify-between mb-4">
-                    <h4 className="font-semibold text-gray-900">Data Preview</h4>
+                    <h4 className="font-semibold text-white">Data Preview</h4>
                     <button
                       onClick={() => setShowPreview(null)}
-                      className="p-1 text-gray-400 hover:text-gray-600 rounded"
+                      className="p-1 text-gray-400 hover:text-gray-400 rounded"
                     >
                       <X className="h-4 w-4" />
                     </button>
@@ -520,9 +520,9 @@ export default function CSVToSQLPage() {
                     <table className="min-w-full text-xs">
                       <tbody>
                         {files.find(f => f.id === showPreview)?.preview?.map((row, i) => (
-                          <tr key={i} className={i === 0 ? 'bg-blue-50' : 'bg-white'}>
+                          <tr key={i} className={i === 0 ? 'bg-blue-500/20' : 'bg-white'}>
                             {row.map((cell, j) => (
-                              <td key={j} className="px-2 py-1 border border-gray-200 text-gray-700 truncate max-w-32">
+                              <td key={j} className="px-2 py-1 border border-dark-700 text-gray-300 truncate max-w-32">
                                 {cell || '—'}
                               </td>
                             ))}
@@ -535,7 +535,7 @@ export default function CSVToSQLPage() {
               )}
 
               {showSQLOutput && (
-                <div className="mt-6 bg-gray-900 rounded-xl p-4 border border-gray-200">
+                <div className="mt-6 bg-gray-900 rounded-xl p-4 border border-dark-700">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="font-semibold text-white">Generated SQL</h4>
                     <div className="flex items-center space-x-2">
@@ -568,32 +568,32 @@ export default function CSVToSQLPage() {
           </div>
 
           <div className="xl:col-span-1 space-y-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Database className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Supported SQL Dialects</h3>
+                <h3 className="text-lg font-semibold text-white">Supported SQL Dialects</h3>
               </div>
               
               <div className="space-y-3">
                 {Object.entries(dialectInfo).map(([key, info]) => (
-                  <div key={key} className="flex items-start p-3 bg-gray-50 rounded-lg">
-                    <Database className="h-5 w-5 text-gray-600 mr-3 mt-0.5" />
+                  <div key={key} className="flex items-start p-3 bg-dark-800 rounded-lg">
+                    <Database className="h-5 w-5 text-gray-400 mr-3 mt-0.5" />
                     <div>
-                      <div className="text-sm font-medium text-gray-900">{info.name}</div>
-                      <div className="text-xs text-gray-500">{info.syntax}</div>
+                      <div className="text-sm font-medium text-white">{info.name}</div>
+                      <div className="text-xs text-gray-400">{info.syntax}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Check className="h-6 w-6 text-green-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Features</h3>
+                <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               
-              <ul className="space-y-3 text-sm text-gray-700">
+              <ul className="space-y-3 text-sm text-gray-300">
                 <li className="flex items-start">
                   <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   Automatic data type detection
@@ -617,20 +617,20 @@ export default function CSVToSQLPage() {
               </ul>
             </div>
 
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 border border-blue-200">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">Common Use Cases</h3>
-              <div className="space-y-3 text-sm text-blue-800">
+            <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl p-6 border border-blue-500/30">
+              <h3 className="text-lg font-semibold text-blue-300 mb-4">Common Use Cases</h3>
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
                   <div className="font-medium mb-1">Data Migration:</div>
-                  <div className="text-xs text-blue-700">Import CSV data into databases</div>
+                  <div className="text-xs text-blue-400">Import CSV data into databases</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">Database Seeding:</div>
-                  <div className="text-xs text-blue-700">Generate test data for applications</div>
+                  <div className="text-xs text-blue-400">Generate test data for applications</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">ETL Processes:</div>
-                  <div className="text-xs text-blue-700">Transform CSV to SQL for data pipelines</div>
+                  <div className="text-xs text-blue-400">Transform CSV to SQL for data pipelines</div>
                 </div>
               </div>
             </div>

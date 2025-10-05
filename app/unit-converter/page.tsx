@@ -206,7 +206,7 @@ export default function UnitConverterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -222,10 +222,10 @@ export default function UnitConverterPage() {
               <Gauge className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Free Unit Converter
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Convert between different units of measurement instantly and accurately.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               📏 Length • ⚖️ Weight • 🌡️ Temperature • 🪣 Volume • 📐 Area • 🏃 Speed
@@ -233,12 +233,12 @@ export default function UnitConverterPage() {
           </p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+        <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
           {/* Category Selection */}
           <div className="mb-8">
             <div className="flex items-center mb-4">
               <Gauge className="h-5 w-5 text-blue-600 mr-2" />
-              <h2 className="text-xl font-semibold text-gray-900">Select Conversion Type</h2>
+              <h2 className="text-xl font-semibold text-white">Select Conversion Type</h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
               {unitCategories.map((category) => {
@@ -257,7 +257,7 @@ export default function UnitConverterPage() {
                     className={`p-4 text-sm font-medium rounded-xl transition-all duration-200 min-h-[56px] touch-manipulation ${
                       selectedCategory.name === category.name
                         ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg transform scale-105'
-                        : 'bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-300 hover:bg-blue-50'
+                        : 'bg-white border-2 border-dark-700 text-gray-300 hover:border-blue-300 hover:bg-blue-500/20'
                     }`}
                   >
                     <div className="flex flex-col items-center gap-1">
@@ -274,8 +274,8 @@ export default function UnitConverterPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
             {/* From Unit */}
             <div className="space-y-4">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-200">
-                <label className="block text-sm font-medium text-blue-900 mb-3">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-4 border border-blue-500/30">
+                <label className="block text-sm font-medium text-blue-300 mb-3">
                   Convert From
                 </label>
                 <select
@@ -288,7 +288,7 @@ export default function UnitConverterPage() {
                       setToValue(converted)
                     }
                   }}
-                  className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[48px] mb-3"
+                  className="w-full px-4 py-3 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[48px] mb-3"
                   aria-label="Select unit to convert from"
                 >
                   {selectedCategory.units.map((unit) => (
@@ -302,7 +302,7 @@ export default function UnitConverterPage() {
                   value={fromValue}
                   onChange={(e) => handleFromValueChange(e.target.value)}
                   placeholder="Enter value"
-                  className="w-full px-4 py-4 border border-gray-300 rounded-xl text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]"
+                  className="w-full px-4 py-4 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 min-h-[56px]"
                   aria-label="Value to convert"
                 />
               </div>
@@ -321,7 +321,7 @@ export default function UnitConverterPage() {
               {(fromValue || toValue) && (
                 <button
                   onClick={clearValues}
-                  className="px-4 py-2 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg text-sm font-medium text-gray-700 touch-manipulation"
+                  className="px-4 py-2 bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 rounded-xl transition-all duration-200 shadow-md hover:shadow-lg text-sm font-medium text-gray-300 touch-manipulation"
                   title="Clear values"
                   aria-label="Clear all values"
                 >
@@ -332,8 +332,8 @@ export default function UnitConverterPage() {
 
             {/* To Unit */}
             <div className="space-y-4">
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border border-green-200">
-                <label className="block text-sm font-medium text-green-900 mb-3">
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-xl p-4 border border-green-500/30">
+                <label className="block text-sm font-medium text-green-300 mb-3">
                   Convert To
                 </label>
                 <select
@@ -346,7 +346,7 @@ export default function UnitConverterPage() {
                       setToValue(converted)
                     }
                   }}
-                  className="w-full px-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[48px] mb-3"
+                  className="w-full px-4 py-3 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[48px] mb-3"
                   aria-label="Select unit to convert to"
                 >
                   {selectedCategory.units.map((unit) => (
@@ -360,7 +360,7 @@ export default function UnitConverterPage() {
                   value={toValue}
                   onChange={(e) => handleToValueChange(e.target.value)}
                   placeholder="Result"
-                  className="w-full px-4 py-4 border border-gray-300 rounded-xl text-lg bg-green-50/50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[56px]"
+                  className="w-full px-4 py-4 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 text-lg bg-green-50/50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[56px]"
                   aria-label="Conversion result"
                 />
               </div>
@@ -373,12 +373,12 @@ export default function UnitConverterPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Gauge className="h-8 w-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ready to Convert?</h3>
-              <p className="text-gray-600 max-w-md mx-auto mb-4">
+              <h3 className="text-xl font-semibold text-white mb-2">Ready to Convert?</h3>
+              <p className="text-gray-400 max-w-md mx-auto mb-4">
                 Enter a value in either field to see instant conversion results with detailed formulas.
               </p>
-              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
-                <span className="bg-blue-50 px-2 py-1 rounded-full">✨ Real-time conversion</span>
+              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
+                <span className="bg-blue-500/20 px-2 py-1 rounded-full">✨ Real-time conversion</span>
                 <span className="bg-green-50 px-2 py-1 rounded-full">🔄 Bidirectional</span>
                 <span className="bg-purple-50 px-2 py-1 rounded-full">🎯 High precision</span>
               </div>
@@ -387,20 +387,20 @@ export default function UnitConverterPage() {
 
           {/* Conversion Formula */}
           {fromValue && toValue && (
-            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-200">
+            <div className="mt-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-500/30">
               <div className="flex items-center mb-3">
                 <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center mr-3">
                   <span className="text-white font-bold text-sm">=</span>
                 </div>
-                <h3 className="text-lg font-semibold text-blue-900">Conversion Result</h3>
+                <h3 className="text-lg font-semibold text-blue-300">Conversion Result</h3>
               </div>
               <div className="bg-white/80 rounded-xl p-4 border border-blue-300">
-                <p className="text-xl font-mono text-blue-800 text-center">
-                  <span className="font-bold text-blue-900">{fromValue}</span>
-                  <span className="mx-2 text-gray-600">{fromUnit.symbol}</span>
+                <p className="text-xl font-mono text-gray-300 text-center">
+                  <span className="font-bold text-blue-300">{fromValue}</span>
+                  <span className="mx-2 text-gray-400">{fromUnit.symbol}</span>
                   <span className="mx-3 text-2xl">=</span>
-                  <span className="font-bold text-green-700">{toValue}</span>
-                  <span className="ml-2 text-gray-600">{toUnit.symbol}</span>
+                  <span className="font-bold text-green-400">{toValue}</span>
+                  <span className="ml-2 text-gray-400">{toUnit.symbol}</span>
                 </p>
               </div>
             </div>
@@ -410,8 +410,8 @@ export default function UnitConverterPage() {
         {/* Quick Reference & Common Conversions */}
         <div className="mt-12 space-y-8">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Quick Reference Guide</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Quick Reference Guide</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Commonly used conversion formulas and quick reference values for everyday calculations.
             </p>
           </div>
@@ -458,9 +458,9 @@ export default function UnitConverterPage() {
               <div key={index} className={`bg-gradient-to-br ${category.color} rounded-2xl p-6 border shadow-sm hover:shadow-md transition-shadow duration-200`}>
                 <div className="flex items-center mb-4">
                   <span className="text-2xl mr-3">{category.icon}</span>
-                  <h3 className="text-lg font-bold text-gray-900">{category.title}</h3>
+                  <h3 className="text-lg font-bold text-white">{category.title}</h3>
                 </div>
-                <ul className="space-y-2 text-sm text-gray-800">
+                <ul className="space-y-2 text-sm text-gray-100">
                   {category.conversions.map((conversion, idx) => (
                     <li key={idx} className="font-mono bg-white/50 rounded-lg px-3 py-2 hover:bg-white/70 transition-colors">
                       {conversion}
@@ -475,8 +475,8 @@ export default function UnitConverterPage() {
         {/* Features Section */}
         <div className="mt-16 bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl p-8 border border-indigo-200">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Why Use Our Unit Converter?</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">Why Use Our Unit Converter?</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Fast, accurate, and user-friendly conversion tool for all your measurement needs.
             </p>
           </div>
@@ -491,8 +491,8 @@ export default function UnitConverterPage() {
               ].map((feature, index) => (
                 <div key={index} className="text-center bg-white/60 rounded-xl p-6 hover:bg-white/80 transition-colors">
                   <div className="text-3xl mb-3">{feature.icon}</div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                  <p className="text-sm text-gray-600">{feature.desc}</p>
+                  <h3 className="font-semibold text-white mb-2">{feature.title}</h3>
+                  <p className="text-sm text-gray-400">{feature.desc}</p>
                 </div>
               ))
             }

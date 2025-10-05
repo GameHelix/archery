@@ -175,11 +175,11 @@ export default function HashToolsPage() {
 
   const getAlgorithmColor = (algorithm: HashAlgorithm) => {
     switch (algorithm) {
-      case 'MD5': return 'bg-red-100 text-red-800'
-      case 'SHA-1': return 'bg-yellow-100 text-yellow-800'
-      case 'SHA-256': return 'bg-green-100 text-green-800'
-      case 'SHA-512': return 'bg-blue-100 text-blue-800'
-      default: return 'bg-gray-100 text-gray-800'
+      case 'MD5': return 'bg-red-100 text-red-400'
+      case 'SHA-1': return 'bg-yellow-100 text-gray-300'
+      case 'SHA-256': return 'bg-green-100 text-gray-300'
+      case 'SHA-512': return 'bg-blue-500/10 text-gray-300'
+      default: return 'bg-dark-700 text-gray-100'
     }
   }
 
@@ -220,7 +220,7 @@ export default function HashToolsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-slate-50 to-zinc-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -235,10 +235,10 @@ export default function HashToolsPage() {
               <Hash className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             MD5/SHA Hash Generator
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Generate cryptographic hashes using MD5, SHA-1, SHA-256, and SHA-512 algorithms. Hash text or files with multiple algorithms.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🔐 Multiple algorithms • 📁 File support • 🔍 Hash comparison
@@ -249,15 +249,15 @@ export default function HashToolsPage() {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2 space-y-6">
             {/* Hash Generator */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="flex items-center mb-6">
                 <Hash className="h-6 w-6 text-slate-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-gray-900">Hash Generator</h2>
+                <h2 className="text-2xl font-semibold text-white">Hash Generator</h2>
               </div>
 
               {/* Algorithm Selection */}
               <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+                <label className="block text-sm font-medium text-gray-300 mb-3">
                   Select Hash Algorithms
                 </label>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -268,7 +268,7 @@ export default function HashToolsPage() {
                       className={`p-3 rounded-xl border-2 transition-all duration-200 ${
                         selectedAlgorithms.includes(algorithm as HashAlgorithm)
                           ? 'border-slate-500 bg-slate-50 text-slate-700'
-                          : 'border-gray-200 bg-white hover:border-slate-300 hover:bg-slate-50/50 text-gray-700'
+                          : 'border-dark-700 bg-dark-800 hover:border-slate-300 hover:bg-slate-50/50 text-gray-300'
                       }`}
                     >
                       <div className="font-medium text-sm">{algorithm}</div>
@@ -289,7 +289,7 @@ export default function HashToolsPage() {
                     className={`px-4 py-2 rounded-lg transition-colors ${
                       !showFileUpload
                         ? 'bg-slate-100 text-slate-700'
-                        : 'text-gray-600 hover:bg-gray-100'
+                        : 'text-gray-400 hover:bg-dark-700'
                     }`}
                   >
                     <FileText className="h-4 w-4 inline mr-2" />
@@ -300,7 +300,7 @@ export default function HashToolsPage() {
                     className={`px-4 py-2 rounded-lg transition-colors ${
                       showFileUpload
                         ? 'bg-slate-100 text-slate-700'
-                        : 'text-gray-600 hover:bg-gray-100'
+                        : 'text-gray-400 hover:bg-dark-700'
                     }`}
                   >
                     <Upload className="h-4 w-4 inline mr-2" />
@@ -310,7 +310,7 @@ export default function HashToolsPage() {
 
                 {!showFileUpload ? (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Text to Hash
                     </label>
                     <textarea
@@ -318,24 +318,24 @@ export default function HashToolsPage() {
                       onChange={(e) => setInputText(e.target.value)}
                       placeholder="Enter text to generate hash..."
                       rows={4}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors resize-none"
+                      className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors resize-none"
                     />
-                    <div className="mt-2 text-xs text-gray-500">
+                    <div className="mt-2 text-xs text-gray-400">
                       {inputText.length} characters
                     </div>
                   </div>
                 ) : (
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Upload File to Hash
                     </label>
                     <input
                       ref={fileInputRef}
                       type="file"
                       onChange={(e) => e.target.files?.[0] && handleFileUpload(e.target.files[0])}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
+                      className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-slate-500 focus:border-slate-500 transition-colors"
                     />
-                    <div className="mt-2 text-xs text-gray-500">
+                    <div className="mt-2 text-xs text-gray-400">
                       Supports text files, documents, and other file types
                     </div>
                   </div>
@@ -365,14 +365,14 @@ export default function HashToolsPage() {
 
             {/* Hash Results */}
             {hashResults.length > 0 && (
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+              <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-2xl font-semibold text-gray-900">
+                  <h2 className="text-2xl font-semibold text-white">
                     Generated Hashes ({hashResults.length})
                   </h2>
                   <button
                     onClick={clearResults}
-                    className="px-4 py-2 text-sm text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+                    className="px-4 py-2 text-sm text-red-600 hover:text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
                   >
                     Clear All
                   </button>
@@ -380,13 +380,13 @@ export default function HashToolsPage() {
 
                 <div className="space-y-4 max-h-96 overflow-y-auto">
                   {hashResults.map((result, index) => (
-                    <div key={index} className="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                    <div key={index} className="p-4 bg-dark-800 rounded-xl border border-dark-700">
                       <div className="flex items-center justify-between mb-3">
                         <div className="flex items-center space-x-3">
                           <span className={`px-2 py-1 rounded-md text-xs font-medium ${getAlgorithmColor(result.algorithm)}`}>
                             {result.algorithm}
                           </span>
-                          <span className="text-xs text-gray-500">
+                          <span className="text-xs text-gray-400">
                             {formatTimestamp(result.timestamp)}
                           </span>
                           {result.fileName && (
@@ -408,17 +408,17 @@ export default function HashToolsPage() {
 
                       <div className="space-y-2">
                         <div>
-                          <label className="block text-xs font-medium text-gray-600 mb-1">
+                          <label className="block text-xs font-medium text-gray-400 mb-1">
                             {result.inputType === 'file' ? 'File' : 'Input'}:
                           </label>
-                          <div className="text-sm text-gray-800 bg-white p-2 rounded border font-mono break-all">
+                          <div className="text-sm text-gray-100 bg-dark-800 p-2 rounded border font-mono break-all">
                             {result.input}
                           </div>
                         </div>
 
                         <div>
-                          <label className="block text-xs font-medium text-gray-600 mb-1">Hash:</label>
-                          <div className="text-sm text-gray-800 bg-white p-2 rounded border font-mono break-all">
+                          <label className="block text-xs font-medium text-gray-400 mb-1">Hash:</label>
+                          <div className="text-sm text-gray-100 bg-dark-800 p-2 rounded border font-mono break-all">
                             {result.hash}
                           </div>
                         </div>
@@ -430,15 +430,15 @@ export default function HashToolsPage() {
             )}
 
             {/* Hash Comparison */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="flex items-center mb-6">
                 <Eye className="h-6 w-6 text-blue-600 mr-3" />
-                <h2 className="text-2xl font-semibold text-gray-900">Hash Comparison</h2>
+                <h2 className="text-2xl font-semibold text-white">Hash Comparison</h2>
               </div>
 
               <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     First Hash
                   </label>
                   <input
@@ -447,12 +447,12 @@ export default function HashToolsPage() {
                     onChange={(e) => setCompareHash1(e.target.value)}
                     onBlur={compareHashes}
                     placeholder="Enter first hash to compare..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors font-mono text-sm"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors font-mono text-sm"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     Second Hash
                   </label>
                   <input
@@ -461,25 +461,25 @@ export default function HashToolsPage() {
                     onChange={(e) => setCompareHash2(e.target.value)}
                     onBlur={compareHashes}
                     placeholder="Enter second hash to compare..."
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors font-mono text-sm"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors font-mono text-sm"
                   />
                 </div>
 
                 {compareResult !== null && (
                   <div className={`p-4 rounded-xl flex items-center space-x-3 ${
                     compareResult 
-                      ? 'bg-green-50 border border-green-200' 
-                      : 'bg-red-50 border border-red-200'
+                      ? 'bg-green-50 border border-green-500/30' 
+                      : 'bg-red-500/20 border border-red-500/30'
                   }`}>
                     {compareResult ? (
                       <>
                         <Check className="h-5 w-5 text-green-600" />
-                        <span className="text-green-800 font-medium">Hashes match! ✓</span>
+                        <span className="text-gray-300 font-medium">Hashes match! ✓</span>
                       </>
                     ) : (
                       <>
                         <AlertCircle className="h-5 w-5 text-red-600" />
-                        <span className="text-red-800 font-medium">Hashes do not match ✗</span>
+                        <span className="text-red-400 font-medium">Hashes do not match ✗</span>
                       </>
                     )}
                   </div>
@@ -491,20 +491,20 @@ export default function HashToolsPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* Algorithm Info */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Shield className="h-6 w-6 text-slate-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Hash Algorithms</h3>
+                <h3 className="text-lg font-semibold text-white">Hash Algorithms</h3>
               </div>
               
               <div className="space-y-4">
                 {Object.entries(algorithmInfo).map(([algorithm, info]) => (
-                  <div key={algorithm} className="p-3 bg-gray-50 rounded-lg">
+                  <div key={algorithm} className="p-3 bg-dark-800 rounded-lg">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-medium text-gray-900">{algorithm}</span>
-                      <span className="text-sm text-gray-600">{info.bits} bit</span>
+                      <span className="font-medium text-white">{algorithm}</span>
+                      <span className="text-sm text-gray-400">{info.bits} bit</span>
                     </div>
-                    <div className="text-sm text-gray-600">{info.description}</div>
+                    <div className="text-sm text-gray-400">{info.description}</div>
                     {info.deprecated && (
                       <div className="text-xs text-red-600 mt-1 font-medium">
                         ⚠️ Not recommended for security-critical applications
@@ -516,28 +516,28 @@ export default function HashToolsPage() {
             </div>
 
             {/* Use Cases */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Hash className="h-6 w-6 text-green-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Common Use Cases</h3>
+                <h3 className="text-lg font-semibold text-white">Common Use Cases</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
-                  <div className="font-medium text-gray-900">File Integrity:</div>
-                  <div className="text-gray-600">Verify file downloads and transfers</div>
+                  <div className="font-medium text-white">File Integrity:</div>
+                  <div className="text-gray-400">Verify file downloads and transfers</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Password Storage:</div>
-                  <div className="text-gray-600">Hash passwords before storage (use SHA-256+)</div>
+                  <div className="font-medium text-white">Password Storage:</div>
+                  <div className="text-gray-400">Hash passwords before storage (use SHA-256+)</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Data Comparison:</div>
-                  <div className="text-gray-600">Compare large datasets efficiently</div>
+                  <div className="font-medium text-white">Data Comparison:</div>
+                  <div className="text-gray-400">Compare large datasets efficiently</div>
                 </div>
                 <div>
-                  <div className="font-medium text-gray-900">Digital Signatures:</div>
-                  <div className="text-gray-600">Create unique fingerprints</div>
+                  <div className="font-medium text-white">Digital Signatures:</div>
+                  <div className="text-gray-400">Create unique fingerprints</div>
                 </div>
               </div>
             </div>

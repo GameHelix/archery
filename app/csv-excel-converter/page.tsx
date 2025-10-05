@@ -244,7 +244,7 @@ export default function CSVExcelConverterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -260,10 +260,10 @@ export default function CSVExcelConverterPage() {
               <Table className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             CSV/Excel Converter
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Convert between CSV and Excel formats seamlessly. Support for XLSX, XLS, and CSV with live preview.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               📊 Data preview • 🔄 Bidirectional conversion • ⚡ Instant processing
@@ -274,12 +274,12 @@ export default function CSVExcelConverterPage() {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           {/* Main Converter */}
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Conversion Mode Selector */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
                   <Settings className="h-5 w-5 text-purple-600 mr-2" />
-                  <h2 className="text-xl font-semibold text-gray-900">Conversion Mode</h2>
+                  <h2 className="text-xl font-semibold text-white">Conversion Mode</h2>
                 </div>
                 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
@@ -294,7 +294,7 @@ export default function CSVExcelConverterPage() {
                       className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
                         conversionMode === mode.id
                           ? 'border-purple-500 bg-purple-50 text-purple-700'
-                          : 'border-gray-200 bg-white hover:border-purple-300 hover:bg-purple-50/50 text-gray-700'
+                          : 'border-dark-700 bg-dark-800 hover:border-purple-300 hover:bg-purple-50/50 text-gray-300'
                       }`}
                     >
                       <div className="font-medium mb-1">{mode.label}</div>
@@ -306,7 +306,7 @@ export default function CSVExcelConverterPage() {
 
               {/* File Upload Area */}
               <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
                   <Upload className="h-5 w-5 mr-2 text-purple-600" />
                   Upload Spreadsheet Files
                 </h2>
@@ -318,7 +318,7 @@ export default function CSVExcelConverterPage() {
                   className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-300 ${
                     isDragging
                       ? 'border-purple-500 bg-purple-50 scale-105'
-                      : 'border-gray-300 bg-gray-50 hover:border-purple-400 hover:bg-purple-50/50'
+                      : 'border-dark-600 bg-dark-800 hover:border-purple-400 hover:bg-purple-50/50'
                   }`}
                 >
                   <input
@@ -336,10 +336,10 @@ export default function CSVExcelConverterPage() {
                     </div>
                     
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      <h3 className="text-lg font-semibold text-white mb-2">
                         Drop spreadsheet files here or click to browse
                       </h3>
-                      <p className="text-gray-600 text-sm sm:text-base">
+                      <p className="text-gray-400 text-sm sm:text-base">
                         Supports CSV (.csv) and Excel (.xlsx, .xls) files
                       </p>
                     </div>
@@ -359,7 +359,7 @@ export default function CSVExcelConverterPage() {
               {files.length > 0 && (
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-white">
                       Files ({files.length})
                     </h3>
                     {files.some(f => f.status === 'pending') && (
@@ -392,7 +392,7 @@ export default function CSVExcelConverterPage() {
                       return (
                         <div
                           key={file.id}
-                          className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200 hover:border-purple-300 transition-all duration-200"
+                          className="flex items-center justify-between p-4 bg-dark-800 rounded-xl border border-dark-700 hover:border-purple-300 transition-all duration-200"
                         >
                           <div className="flex items-center space-x-3 flex-1 min-w-0">
                             <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -400,10 +400,10 @@ export default function CSVExcelConverterPage() {
                             </div>
                             
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-gray-900 truncate">
+                              <p className="text-sm font-medium text-white truncate">
                                 {file.name}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-gray-400">
                                 {formatFileSize(file.size)} • {formatInfo.name} → {targetFormat}
                               </p>
                             </div>
@@ -472,12 +472,12 @@ export default function CSVExcelConverterPage() {
 
               {/* Data Preview */}
               {showPreview && (
-                <div className="mt-6 bg-gray-50 rounded-xl p-4 border border-gray-200">
+                <div className="mt-6 bg-dark-800 rounded-xl p-4 border border-dark-700">
                   <div className="flex items-center justify-between mb-4">
-                    <h4 className="font-semibold text-gray-900">Data Preview</h4>
+                    <h4 className="font-semibold text-white">Data Preview</h4>
                     <button
                       onClick={() => setShowPreview(null)}
-                      className="p-1 text-gray-400 hover:text-gray-600 rounded"
+                      className="p-1 text-gray-400 hover:text-gray-400 rounded"
                     >
                       <X className="h-4 w-4" />
                     </button>
@@ -488,7 +488,7 @@ export default function CSVExcelConverterPage() {
                         {files.find(f => f.id === showPreview)?.preview?.map((row, i) => (
                           <tr key={i} className={i === 0 ? 'bg-purple-50' : 'bg-white'}>
                             {row.map((cell, j) => (
-                              <td key={j} className="px-2 py-1 border border-gray-200 text-gray-700 truncate max-w-32">
+                              <td key={j} className="px-2 py-1 border border-dark-700 text-gray-300 truncate max-w-32">
                                 {cell || '—'}
                               </td>
                             ))}
@@ -505,22 +505,22 @@ export default function CSVExcelConverterPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* Format Info */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <FileSpreadsheet className="h-6 w-6 text-green-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Supported Formats</h3>
+                <h3 className="text-lg font-semibold text-white">Supported Formats</h3>
               </div>
               
               <div className="space-y-4">
                 {Object.entries(supportedFormats).map(([key, info]) => {
                   const IconComponent = info.icon
                   return (
-                    <div key={key} className="flex items-start p-3 bg-gray-50 rounded-lg">
-                      <IconComponent className="h-5 w-5 text-gray-600 mr-3 mt-0.5" />
+                    <div key={key} className="flex items-start p-3 bg-dark-800 rounded-lg">
+                      <IconComponent className="h-5 w-5 text-gray-400 mr-3 mt-0.5" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">{info.name}</div>
-                        <div className="text-xs text-gray-600 mb-1">{info.extensions}</div>
-                        <div className="text-xs text-gray-500">{info.description}</div>
+                        <div className="text-sm font-medium text-white">{info.name}</div>
+                        <div className="text-xs text-gray-400 mb-1">{info.extensions}</div>
+                        <div className="text-xs text-gray-400">{info.description}</div>
                       </div>
                     </div>
                   )
@@ -529,13 +529,13 @@ export default function CSVExcelConverterPage() {
             </div>
 
             {/* Features */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Check className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Features</h3>
+                <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               
-              <ul className="space-y-3 text-sm text-gray-700">
+              <ul className="space-y-3 text-sm text-gray-300">
                 <li className="flex items-start">
                   <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   Bidirectional conversion
@@ -560,20 +560,20 @@ export default function CSVExcelConverterPage() {
             </div>
 
             {/* Use Cases */}
-            <div className="bg-gradient-to-br from-green-50 to-emerald-100 rounded-2xl p-6 border border-green-200">
-              <h3 className="text-lg font-semibold text-green-900 mb-4">Common Use Cases</h3>
-              <div className="space-y-3 text-sm text-green-800">
+            <div className="bg-gradient-to-br from-green-500/20 to-emerald-500/20 rounded-2xl p-6 border border-green-500/30">
+              <h3 className="text-lg font-semibold text-green-300 mb-4">Common Use Cases</h3>
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
                   <div className="font-medium mb-1">Data Import/Export:</div>
-                  <div className="text-xs text-green-700">Exchange data between systems</div>
+                  <div className="text-xs text-green-400">Exchange data between systems</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">Report Generation:</div>
-                  <div className="text-xs text-green-700">Convert CSV reports to Excel format</div>
+                  <div className="text-xs text-green-400">Convert CSV reports to Excel format</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">Database Exports:</div>
-                  <div className="text-xs text-green-700">Transform database dumps for analysis</div>
+                  <div className="text-xs text-green-400">Transform database dumps for analysis</div>
                 </div>
               </div>
             </div>

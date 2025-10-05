@@ -237,12 +237,12 @@ export default function TimezoneConverterPage() {
 
   if (!isClient || !currentTime) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-100">
+      <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
         <Header />
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
           <div className="text-center">
             <Clock className="w-12 h-12 mx-auto mb-4 text-indigo-600 animate-spin" />
-            <p className="text-gray-600">Loading timezone data...</p>
+            <p className="text-gray-400">Loading timezone data...</p>
           </div>
         </main>
         <Footer />
@@ -251,7 +251,7 @@ export default function TimezoneConverterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-indigo-50 to-purple-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -267,10 +267,10 @@ export default function TimezoneConverterPage() {
               <Clock className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Timezone Converter & World Clock
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Convert time between any global timezones instantly and plan international meetings perfectly.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🌍 World Clock • ⏰ Meeting Planner • 🔄 Real-time Updates • 📱 Mobile-Friendly
@@ -279,30 +279,30 @@ export default function TimezoneConverterPage() {
         </div>
 
         {/* Time Converter */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+        <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
           <div className="flex items-center mb-6">
             <CalendarClock className="h-5 w-5 text-indigo-600 mr-2" />
-            <h2 className="text-xl font-semibold text-gray-900">Time Converter</h2>
+            <h2 className="text-xl font-semibold text-white">Time Converter</h2>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-end">
             {/* From Time */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-300 mb-3">
                 Select Time
               </label>
               <input
                 type="time"
                 value={selectedTime}
                 onChange={(e) => setSelectedTime(e.target.value)}
-                className="w-full px-4 py-4 text-lg border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[56px]"
+                className="w-full px-4 py-4 text-lg border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[56px]"
                 aria-label="Select time to convert"
               />
             </div>
 
             {/* From Timezone */}
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-3">
+              <label className="block text-sm font-medium text-gray-300 mb-3">
                 From Timezone
               </label>
               <select
@@ -311,7 +311,7 @@ export default function TimezoneConverterPage() {
                   const timezone = popularTimezones.find(tz => tz.name === e.target.value)
                   if (timezone) setSelectedTimezone(timezone)
                 }}
-                className="w-full px-4 py-4 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[56px]"
+                className="w-full px-4 py-4 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 min-h-[56px]"
                 aria-label="Select source timezone"
               >
                 {popularTimezones.map((timezone) => (
@@ -337,28 +337,28 @@ export default function TimezoneConverterPage() {
           {/* Conversion Results */}
           {selectedTime && (
             <div className="mt-8 space-y-4">
-              <h3 className="text-lg font-semibold text-gray-900">Converted Times</h3>
+              <h3 className="text-lg font-semibold text-white">Converted Times</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {popularTimezones.slice(0, 6).map((timezone) => {
                   const convertedTime = convertTime(selectedTime, selectedTimezone.name, timezone.name)
                   const timeDiff = getTimeDifference(selectedTimezone.name, timezone.name)
                   
                   return (
-                    <div key={timezone.name} className="bg-white rounded-xl p-4 border border-gray-200 hover:shadow-md transition-shadow">
+                    <div key={timezone.name} className="bg-white rounded-xl p-4 border border-dark-700 hover:shadow-md transition-shadow">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center">
                           <span className="text-lg mr-2">{timezone.flag}</span>
                           <div>
-                            <div className="font-medium text-gray-900">{timezone.city}</div>
-                            <div className="text-xs text-gray-500">{timezone.country}</div>
+                            <div className="font-medium text-white">{timezone.city}</div>
+                            <div className="text-xs text-gray-400">{timezone.country}</div>
                           </div>
                         </div>
                         <div className="text-xs text-indigo-600 bg-indigo-50 px-2 py-1 rounded-full">
                           {timeDiff}
                         </div>
                       </div>
-                      <div className="text-xl font-bold text-gray-900">{convertedTime}</div>
-                      <div className="text-sm text-gray-500">{timezone.label}</div>
+                      <div className="text-xl font-bold text-white">{convertedTime}</div>
+                      <div className="text-sm text-gray-400">{timezone.label}</div>
                     </div>
                   )
                 })}
@@ -368,13 +368,13 @@ export default function TimezoneConverterPage() {
         </div>
 
         {/* World Clock */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+        <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center">
               <Globe className="h-5 w-5 text-indigo-600 mr-2" />
-              <h2 className="text-xl font-semibold text-gray-900">World Clock</h2>
+              <h2 className="text-xl font-semibold text-white">World Clock</h2>
             </div>
-            <div className="text-sm text-gray-500">
+            <div className="text-sm text-gray-400">
               Updates every second
             </div>
           </div>
@@ -389,7 +389,7 @@ export default function TimezoneConverterPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search cities or countries..."
-                  className="w-full pl-10 pr-4 py-3 text-base border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[48px]"
+                  className="w-full pl-10 pr-4 py-3 text-base border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[48px]"
                   aria-label="Search timezones"
                 />
               </div>
@@ -402,12 +402,12 @@ export default function TimezoneConverterPage() {
                     <button
                       key={timezone.name}
                       onClick={() => addWorldClock(timezone)}
-                      className="flex items-center gap-2 p-3 bg-white rounded-lg hover:bg-indigo-50 transition-colors text-left"
+                      className="flex items-center gap-2 p-3 bg-dark-800 rounded-lg hover:bg-indigo-50 transition-colors text-left"
                     >
                       <span className="text-lg">{timezone.flag}</span>
                       <div>
-                        <div className="font-medium text-gray-900 text-sm">{timezone.city}</div>
-                        <div className="text-xs text-gray-500">{timezone.country}</div>
+                        <div className="font-medium text-white text-sm">{timezone.city}</div>
+                        <div className="text-xs text-gray-400">{timezone.country}</div>
                       </div>
                       <Plus className="h-4 w-4 text-indigo-600 ml-auto" />
                     </button>
@@ -420,7 +420,7 @@ export default function TimezoneConverterPage() {
           {/* World Clocks Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {worldClocks.map((clock) => (
-              <div key={clock.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:shadow-lg transition-all duration-200 relative group">
+              <div key={clock.id} className="bg-white rounded-xl p-6 border border-dark-700 hover:shadow-lg transition-all duration-200 relative group">
                 <button
                   onClick={() => removeWorldClock(clock.id)}
                   className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
@@ -431,16 +431,16 @@ export default function TimezoneConverterPage() {
                 <div className="flex items-center mb-3">
                   <span className="text-2xl mr-3">{clock.timezone.flag}</span>
                   <div>
-                    <h3 className="font-semibold text-gray-900">{clock.timezone.city}</h3>
-                    <p className="text-sm text-gray-500">{clock.timezone.country}</p>
+                    <h3 className="font-semibold text-white">{clock.timezone.city}</h3>
+                    <p className="text-sm text-gray-400">{clock.timezone.country}</p>
                   </div>
                 </div>
                 
-                <div className="text-3xl font-bold text-gray-900 mb-1">
+                <div className="text-3xl font-bold text-white mb-1">
                   {clock.time || '--:--'}
                 </div>
                 
-                <div className="text-sm text-gray-600 mb-2">
+                <div className="text-sm text-gray-400 mb-2">
                   {clock.date}
                 </div>
                 
@@ -449,7 +449,7 @@ export default function TimezoneConverterPage() {
                     {clock.timezone.label}
                   </span>
                   {clock.timezone.name !== selectedTimezone.name && (
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-400">
                       {getTimeDifference(selectedTimezone.name, clock.timezone.name)}
                     </span>
                   )}
@@ -463,8 +463,8 @@ export default function TimezoneConverterPage() {
               <div className="w-16 h-16 bg-gradient-to-br from-indigo-100 to-purple-100 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg">
                 <Clock className="h-8 w-8 text-indigo-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Add Your First World Clock</h3>
-              <p className="text-gray-600 max-w-md mx-auto">
+              <h3 className="text-xl font-semibold text-white mb-2">Add Your First World Clock</h3>
+              <p className="text-gray-400 max-w-md mx-auto">
                 Search for cities above to add world clocks and track time across different timezones.
               </p>
             </div>
@@ -474,8 +474,8 @@ export default function TimezoneConverterPage() {
         {/* Features & Tips */}
         <div className="space-y-12">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Timezone Tools & Features</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Timezone Tools & Features</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Everything you need for international time management and global scheduling.
             </p>
           </div>
@@ -521,18 +521,18 @@ export default function TimezoneConverterPage() {
             ].map((feature, index) => (
               <div key={index} className={`bg-gradient-to-br ${feature.color} rounded-2xl p-6 border hover:shadow-md transition-all duration-200`}>
                 <div className="text-3xl mb-4">{feature.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-600">{feature.description}</p>
+                <h3 className="font-semibold text-white mb-2">{feature.title}</h3>
+                <p className="text-sm text-gray-400">{feature.description}</p>
               </div>
             ))}
           </div>
         </div>
 
         {/* Popular Timezones Reference */}
-        <div className="mt-16 bg-gradient-to-br from-gray-50 to-indigo-50 rounded-2xl p-8 border border-gray-200">
+        <div className="mt-16 bg-gradient-to-br from-gray-50 to-indigo-50 rounded-2xl p-8 border border-dark-700">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Popular Timezones Reference</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">Popular Timezones Reference</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Quick reference for the most commonly used timezones around the world.
             </p>
           </div>
@@ -545,11 +545,11 @@ export default function TimezoneConverterPage() {
                   <div className="flex items-center mb-2">
                     <span className="text-lg mr-2">{timezone.flag}</span>
                     <div>
-                      <div className="font-medium text-gray-900 text-sm">{timezone.city}</div>
-                      <div className="text-xs text-gray-500">{timezone.country}</div>
+                      <div className="font-medium text-white text-sm">{timezone.city}</div>
+                      <div className="text-xs text-gray-400">{timezone.country}</div>
                     </div>
                   </div>
-                  <div className="text-lg font-bold text-gray-900 mb-1">
+                  <div className="text-lg font-bold text-white mb-1">
                     {currentTimeInTz.time}
                   </div>
                   <div className="text-xs text-indigo-600">
@@ -564,8 +564,8 @@ export default function TimezoneConverterPage() {
         {/* Pro Tips */}
         <div className="mt-16 bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl p-8 border border-indigo-200">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Pro Tips for Global Time Management</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">Pro Tips for Global Time Management</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Expert advice for working across multiple timezones effectively.
             </p>
           </div>
@@ -579,8 +579,8 @@ export default function TimezoneConverterPage() {
             ].map((tip, index) => (
               <div key={index} className="text-center bg-white/60 rounded-xl p-6 hover:bg-white/80 transition-colors">
                 <div className="text-3xl mb-3">{tip.icon}</div>
-                <h3 className="font-semibold text-gray-900 mb-2">{tip.title}</h3>
-                <p className="text-sm text-gray-600">{tip.desc}</p>
+                <h3 className="font-semibold text-white mb-2">{tip.title}</h3>
+                <p className="text-sm text-gray-400">{tip.desc}</p>
               </div>
             ))}
           </div>

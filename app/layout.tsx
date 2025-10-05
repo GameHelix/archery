@@ -202,7 +202,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="min-h-screen bg-gray-50">
+      <body className="min-h-screen bg-dark-primary dark">
         {children}
       </body>
     </html>

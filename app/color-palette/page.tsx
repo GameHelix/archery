@@ -245,7 +245,7 @@ export default function ColorPalettePage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-purple-50 to-pink-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -261,10 +261,10 @@ export default function ColorPalettePage() {
               <Palette className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Color Palette Generator
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Generate beautiful color palettes using proven color theory principles.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🎨 Color Harmony • 📐 Color Theory • 💾 Export Ready • 📱 Mobile Friendly
@@ -272,17 +272,17 @@ export default function ColorPalettePage() {
           </p>
         </div>
 
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8 mb-8">
+        <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
           {/* Controls */}
           <div className="space-y-6 mb-8">
             <div className="flex items-center mb-4">
               <Sparkles className="h-5 w-5 text-purple-600 mr-2" />
-              <h2 className="text-xl font-semibold text-gray-900">Palette Settings</h2>
+              <h2 className="text-xl font-semibold text-white">Palette Settings</h2>
             </div>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+                <label className="block text-sm font-medium text-gray-300 mb-3">
                   Palette Type
                 </label>
                 <div className="space-y-2">
@@ -300,9 +300,9 @@ export default function ColorPalettePage() {
                         value={option.value}
                         checked={paletteType === option.value}
                         onChange={(e) => setPaletteType(e.target.value as any)}
-                        className="w-4 h-4 text-purple-600 border-gray-300 focus:ring-purple-500"
+                        className="w-4 h-4 text-purple-600 border-dark-600 focus:ring-purple-500"
                       />
-                      <span className="ml-3 flex items-center text-sm text-gray-700">
+                      <span className="ml-3 flex items-center text-sm text-gray-300">
                         <span className="mr-2">{option.emoji}</span>
                         {option.label}
                       </span>
@@ -313,7 +313,7 @@ export default function ColorPalettePage() {
 
               {paletteType !== 'random' && (
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-3">
+                  <label className="block text-sm font-medium text-gray-300 mb-3">
                     Base Color
                   </label>
                   <div className="space-y-3">
@@ -333,7 +333,7 @@ export default function ColorPalettePage() {
                       value={baseColor}
                       onChange={(e) => setBaseColor(e.target.value)}
                       placeholder="#3B82F6"
-                      className="w-full px-4 py-3 text-center font-mono text-sm border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
+                      className="w-full px-4 py-3 text-center font-mono text-sm border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-purple-500"
                       aria-label="Base color hex value"
                     />
                   </div>
@@ -341,7 +341,7 @@ export default function ColorPalettePage() {
               )}
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+                <label className="block text-sm font-medium text-gray-300 mb-3">
                   Palette Size
                 </label>
                 <div className="space-y-3">
@@ -353,7 +353,7 @@ export default function ColorPalettePage() {
                     onChange={(e) => setPaletteSize(parseInt(e.target.value))}
                     className="w-full h-3 bg-gradient-to-r from-purple-200 to-pink-200 rounded-lg appearance-none cursor-pointer"
                   />
-                  <div className="flex justify-between text-xs text-gray-500">
+                  <div className="flex justify-between text-xs text-gray-400">
                     <span>3</span>
                     <span className="font-semibold text-purple-600">{paletteSize} colors</span>
                     <span>10</span>
@@ -393,9 +393,9 @@ export default function ColorPalettePage() {
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <Eye className="h-5 w-5 text-purple-600 mr-2" />
-                  <h3 className="text-xl font-semibold text-gray-900">Generated Palette</h3>
+                  <h3 className="text-xl font-semibold text-white">Generated Palette</h3>
                 </div>
-                <div className="text-sm text-gray-500">
+                <div className="text-sm text-gray-400">
                   {paletteType.charAt(0).toUpperCase() + paletteType.slice(1)} • {palette.length} colors
                 </div>
               </div>
@@ -403,7 +403,7 @@ export default function ColorPalettePage() {
               {/* Color Swatches */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
                 {palette.map((color, index) => (
-                  <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-200">
+                  <div key={index} className="bg-white rounded-2xl overflow-hidden shadow-lg border border-dark-700 hover:shadow-xl transition-all duration-200">
                     <div 
                       className="h-32 w-full cursor-pointer hover:scale-105 transition-transform relative group"
                       style={{ backgroundColor: color.hex }}
@@ -416,7 +416,7 @@ export default function ColorPalettePage() {
                     </div>
                     <div className="p-4 space-y-3">
                       <div className="flex items-center justify-between group">
-                        <span className="text-sm font-mono font-medium text-gray-800">{color.hex.toUpperCase()}</span>
+                        <span className="text-sm font-mono font-medium text-gray-100">{color.hex.toUpperCase()}</span>
                         <button
                           onClick={() => copyColor(color.hex, 'hex')}
                           className={`p-2 rounded-lg transition-all duration-200 ${
@@ -430,7 +430,7 @@ export default function ColorPalettePage() {
                         </button>
                       </div>
                       <div className="flex items-center justify-between group">
-                        <span className="text-xs font-mono text-gray-600">{color.rgb}</span>
+                        <span className="text-xs font-mono text-gray-400">{color.rgb}</span>
                         <button
                           onClick={() => copyColor(color.hex, 'rgb')}
                           className={`p-1.5 rounded-lg transition-all duration-200 ${
@@ -444,7 +444,7 @@ export default function ColorPalettePage() {
                         </button>
                       </div>
                       <div className="flex items-center justify-between group">
-                        <span className="text-xs font-mono text-gray-600">{color.hsl}</span>
+                        <span className="text-xs font-mono text-gray-400">{color.hsl}</span>
                         <button
                           onClick={() => copyColor(color.hex, 'hsl')}
                           className={`p-1.5 rounded-lg transition-all duration-200 ${
@@ -464,7 +464,7 @@ export default function ColorPalettePage() {
 
               {/* Palette Preview */}
               <div className="space-y-4">
-                <h4 className="text-lg font-semibold text-gray-900">Full Palette Preview</h4>
+                <h4 className="text-lg font-semibold text-white">Full Palette Preview</h4>
                 <div className="flex rounded-2xl overflow-hidden h-24 shadow-lg border-4 border-white">
                   {palette.map((color, index) => (
                     <div
@@ -492,14 +492,14 @@ export default function ColorPalettePage() {
               <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                 <Palette className="h-10 w-10 text-purple-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Ready to Create Amazing Colors?</h3>
-              <p className="text-gray-600 max-w-md mx-auto mb-6">
+              <h3 className="text-xl font-semibold text-white mb-2">Ready to Create Amazing Colors?</h3>
+              <p className="text-gray-400 max-w-md mx-auto mb-6">
                 Choose your palette type, adjust settings, and generate beautiful color combinations based on proven color theory principles.
               </p>
-              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-500">
+              <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
                 <span className="bg-purple-50 px-3 py-1 rounded-full">🌈 Color Theory</span>
                 <span className="bg-pink-50 px-3 py-1 rounded-full">🎨 Professional Quality</span>
-                <span className="bg-blue-50 px-3 py-1 rounded-full">📋 Copy & Export</span>
+                <span className="bg-blue-500/20 px-3 py-1 rounded-full">📋 Copy & Export</span>
               </div>
             </div>
           )}
@@ -508,8 +508,8 @@ export default function ColorPalettePage() {
         {/* Color Theory & Tips Section */}
         <div className="space-y-12">
           <div className="text-center">
-            <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">Color Theory Guide</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4">Color Theory Guide</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Understanding color relationships helps create harmonious and effective designs. Each palette type serves different purposes.
             </p>
           </div>
@@ -560,18 +560,18 @@ export default function ColorPalettePage() {
               <div key={index} className={`bg-gradient-to-br ${info.color} rounded-2xl p-6 border shadow-sm hover:shadow-md transition-all duration-200`}>
                 <div className="flex items-center mb-4">
                   <span className="text-3xl mr-3">{info.emoji}</span>
-                  <h3 className="text-lg font-bold text-gray-900">{info.title}</h3>
+                  <h3 className="text-lg font-bold text-white">{info.title}</h3>
                 </div>
-                <p className="text-gray-700 text-sm mb-4 leading-relaxed">{info.description}</p>
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed">{info.description}</p>
                 <div className="space-y-3">
                   <div className="bg-white/60 rounded-xl p-3">
-                    <p className="text-xs text-gray-600 italic">"{info.example}"</p>
+                    <p className="text-xs text-gray-400 italic">"{info.example}"</p>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold text-gray-700 mb-2">Best for:</p>
+                    <p className="text-xs font-semibold text-gray-300 mb-2">Best for:</p>
                     <div className="flex flex-wrap gap-1">
                       {info.useCases.map((useCase, idx) => (
-                        <span key={idx} className="text-xs bg-white/70 px-2 py-1 rounded-full text-gray-600">
+                        <span key={idx} className="text-xs bg-white/70 px-2 py-1 rounded-full text-gray-400">
                           {useCase}
                         </span>
                       ))}
@@ -586,8 +586,8 @@ export default function ColorPalettePage() {
         {/* Pro Tips Section */}
         <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl p-8 border border-indigo-200">
           <div className="text-center mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Pro Design Tips</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold text-white mb-4">Pro Design Tips</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
               Professional advice for using colors effectively in your designs.
             </p>
           </div>
@@ -602,8 +602,8 @@ export default function ColorPalettePage() {
               ].map((tip, index) => (
                 <div key={index} className="text-center bg-white/60 rounded-xl p-6 hover:bg-white/80 transition-colors">
                   <div className="text-3xl mb-3">{tip.icon}</div>
-                  <h3 className="font-semibold text-gray-900 mb-2">{tip.title}</h3>
-                  <p className="text-sm text-gray-600">{tip.desc}</p>
+                  <h3 className="font-semibold text-white mb-2">{tip.title}</h3>
+                  <p className="text-sm text-gray-400">{tip.desc}</p>
                 </div>
               ))
             }

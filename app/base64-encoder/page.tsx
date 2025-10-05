@@ -109,7 +109,7 @@ export default function Base64EncoderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-blue-50 to-cyan-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -124,10 +124,10 @@ export default function Base64EncoderPage() {
               <Code className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             Base64 Encoder/Decoder
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Encode text to Base64 format or decode Base64 strings back to readable text. Support for UTF-8 encoding.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               🔒 Client-side processing • ⚡ Instant results • 📋 Copy to clipboard
@@ -137,16 +137,16 @@ export default function Base64EncoderPage() {
 
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Mode Selector */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-semibold text-gray-900">
+                <h2 className="text-2xl font-semibold text-white">
                   {mode === 'encode' ? 'Encode to Base64' : 'Decode from Base64'}
                 </h2>
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={swapMode}
-                    className="flex items-center space-x-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-200 text-blue-400 rounded-lg transition-colors"
                   >
                     <ArrowRightLeft className="h-4 w-4" />
                     <span className="text-sm font-medium">
@@ -155,7 +155,7 @@ export default function Base64EncoderPage() {
                   </button>
                   <button
                     onClick={clearAll}
-                    className="px-4 py-2 text-sm text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-lg transition-colors"
+                    className="px-4 py-2 text-sm text-gray-400 hover:text-gray-100 hover:bg-dark-700 rounded-lg transition-colors"
                   >
                     Clear All
                   </button>
@@ -165,7 +165,7 @@ export default function Base64EncoderPage() {
               {/* Input Section */}
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-300 mb-2">
                     {mode === 'encode' ? 'Text to Encode' : 'Base64 to Decode'}
                   </label>
                   <textarea
@@ -176,10 +176,10 @@ export default function Base64EncoderPage() {
                       : 'Enter Base64 string to decode...'
                     }
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none font-mono text-sm"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors resize-none font-mono text-sm"
                   />
                   <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-400">
                       {inputText.length} characters
                     </span>
                     {isProcessing && (
@@ -194,13 +194,13 @@ export default function Base64EncoderPage() {
                 {/* Output Section */}
                 <div>
                   <div className="flex items-center justify-between mb-2">
-                    <label className="block text-sm font-medium text-gray-700">
+                    <label className="block text-sm font-medium text-gray-300">
                       {mode === 'encode' ? 'Base64 Encoded Result' : 'Decoded Text'}
                     </label>
                     {outputText && (
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-700 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -224,10 +224,10 @@ export default function Base64EncoderPage() {
                       : 'Decoded text will appear here...'
                     }
                     rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl bg-gray-50 transition-colors resize-none font-mono text-sm"
+                    className="w-full px-4 py-3 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 bg-dark-800 transition-colors resize-none font-mono text-sm"
                   />
                   <div className="flex items-center justify-between mt-2">
-                    <span className="text-xs text-gray-500">
+                    <span className="text-xs text-gray-400">
                       {outputText.length} characters
                     </span>
                   </div>
@@ -235,9 +235,9 @@ export default function Base64EncoderPage() {
 
                 {/* Error Message */}
                 {error && (
-                  <div className="p-4 bg-red-50 border border-red-200 rounded-xl flex items-center space-x-3">
+                  <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-3">
                     <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
-                    <span className="text-red-800 text-sm">{error}</span>
+                    <span className="text-red-400 text-sm">{error}</span>
                   </div>
                 )}
               </div>
@@ -247,20 +247,20 @@ export default function Base64EncoderPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* About Base64 */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Code className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">About Base64</h3>
+                <h3 className="text-lg font-semibold text-white">About Base64</h3>
               </div>
               
-              <div className="space-y-3 text-sm text-gray-700">
+              <div className="space-y-3 text-sm text-gray-300">
                 <p>
                   Base64 is a binary-to-text encoding scheme that represents binary data in an ASCII string format.
                 </p>
                 <div className="space-y-2">
                   <div>
-                    <div className="font-medium text-gray-900">Common Uses:</div>
-                    <div className="text-gray-600">
+                    <div className="font-medium text-white">Common Uses:</div>
+                    <div className="text-gray-400">
                       • Email attachments (MIME)<br/>
                       • Data URLs in web pages<br/>
                       • JSON Web Tokens (JWT)<br/>
@@ -272,13 +272,13 @@ export default function Base64EncoderPage() {
             </div>
 
             {/* Features */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Check className="h-6 w-6 text-green-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Features</h3>
+                <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               
-              <ul className="space-y-3 text-sm text-gray-700">
+              <ul className="space-y-3 text-sm text-gray-300">
                 <li className="flex items-start">
                   <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   Bidirectional conversion
@@ -303,16 +303,16 @@ export default function Base64EncoderPage() {
             </div>
 
             {/* Examples */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-2xl p-6 border border-blue-200">
-              <h3 className="text-lg font-semibold text-blue-900 mb-4">Examples</h3>
-              <div className="space-y-3 text-sm text-blue-800">
+            <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-2xl p-6 border border-blue-500/30">
+              <h3 className="text-lg font-semibold text-blue-300 mb-4">Examples</h3>
+              <div className="space-y-3 text-sm text-gray-300">
                 <div>
                   <div className="font-medium mb-1">Text:</div>
-                  <div className="font-mono text-xs bg-blue-100 p-2 rounded">Hello World!</div>
+                  <div className="font-mono text-xs bg-blue-500/10 p-2 rounded">Hello World!</div>
                 </div>
                 <div>
                   <div className="font-medium mb-1">Base64:</div>
-                  <div className="font-mono text-xs bg-blue-100 p-2 rounded break-all">SGVsbG8gV29ybGQh</div>
+                  <div className="font-mono text-xs bg-blue-500/10 p-2 rounded break-all">SGVsbG8gV29ybGQh</div>
                 </div>
               </div>
             </div>

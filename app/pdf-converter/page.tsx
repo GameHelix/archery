@@ -259,7 +259,7 @@ export default function PDFConverterPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 via-red-50 to-orange-100">
+    <div className="min-h-screen bg-gradient-to-br from-dark-primary via-dark-900 to-dark-800">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(toolStructuredData) }}
@@ -275,10 +275,10 @@ export default function PDFConverterPage() {
               <FileText className="h-8 w-8 sm:h-10 sm:w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
             PDF Converter
           </h1>
-          <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
             Convert your documents and images to PDF format instantly. Support for text files, images, and more.
             <span className="block mt-2 text-sm sm:text-base text-gray-500">
               📄 Multiple formats • 🚀 Instant conversion • 🔒 Secure & private
@@ -289,10 +289,10 @@ export default function PDFConverterPage() {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-6 lg:gap-8">
           {/* Main Converter */}
           <div className="xl:col-span-2">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6 sm:p-8">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* File Upload Area */}
               <div className="mb-8">
-                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center">
+                <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
                   <Upload className="h-5 w-5 mr-2 text-red-600" />
                   Upload Files
                 </h2>
@@ -303,8 +303,8 @@ export default function PDFConverterPage() {
                   onDrop={handleDrop}
                   className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-300 ${
                     isDragging
-                      ? 'border-red-500 bg-red-50 scale-105'
-                      : 'border-gray-300 bg-gray-50 hover:border-red-400 hover:bg-red-50/50'
+                      ? 'border-red-500 bg-red-500/20 scale-105'
+                      : 'border-dark-600 bg-dark-800 hover:border-red-400 hover:bg-red-500/20'
                   }`}
                 >
                   <input
@@ -322,10 +322,10 @@ export default function PDFConverterPage() {
                     </div>
                     
                     <div>
-                      <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                      <h3 className="text-lg font-semibold text-white mb-2">
                         Drop files here or click to browse
                       </h3>
-                      <p className="text-gray-600 text-sm sm:text-base">
+                      <p className="text-gray-400 text-sm sm:text-base">
                         Support for text files, HTML, images (JPG, PNG, GIF, WebP)
                       </p>
                     </div>
@@ -345,7 +345,7 @@ export default function PDFConverterPage() {
               {files.length > 0 && (
                 <div className="mb-8">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-lg font-semibold text-gray-900">
+                    <h3 className="text-lg font-semibold text-white">
                       Files ({files.length})
                     </h3>
                     {files.some(f => f.status === 'pending') && (
@@ -377,7 +377,7 @@ export default function PDFConverterPage() {
                       return (
                         <div
                           key={file.id}
-                          className="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200 hover:border-red-300 transition-all duration-200"
+                          className="flex items-center justify-between p-4 bg-dark-800 rounded-xl border border-dark-700 hover:border-red-300 transition-all duration-200"
                         >
                           <div className="flex items-center space-x-3 flex-1 min-w-0">
                             <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center flex-shrink-0">
@@ -385,10 +385,10 @@ export default function PDFConverterPage() {
                             </div>
                             
                             <div className="flex-1 min-w-0">
-                              <p className="text-sm font-medium text-gray-900 truncate">
+                              <p className="text-sm font-medium text-white truncate">
                                 {file.name}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-xs text-gray-400">
                                 {formatFileSize(file.size)} • {typeInfo?.name || 'Unknown'}
                               </p>
                             </div>
@@ -452,21 +452,21 @@ export default function PDFConverterPage() {
           {/* Sidebar */}
           <div className="xl:col-span-1 space-y-6">
             {/* Supported Formats */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <File className="h-6 w-6 text-green-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Supported Formats</h3>
+                <h3 className="text-lg font-semibold text-white">Supported Formats</h3>
               </div>
               
               <div className="space-y-3">
                 {Object.entries(supportedTypes).map(([type, info]) => {
                   const IconComponent = info.icon
                   return (
-                    <div key={type} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                      <IconComponent className="h-5 w-5 text-gray-600 mr-3" />
+                    <div key={type} className="flex items-center p-3 bg-dark-800 rounded-lg">
+                      <IconComponent className="h-5 w-5 text-gray-400 mr-3" />
                       <div>
-                        <div className="text-sm font-medium text-gray-900">{info.name}</div>
-                        <div className="text-xs text-gray-500">{info.extensions}</div>
+                        <div className="text-sm font-medium text-white">{info.name}</div>
+                        <div className="text-xs text-gray-400">{info.extensions}</div>
                       </div>
                     </div>
                   )
@@ -475,13 +475,13 @@ export default function PDFConverterPage() {
             </div>
 
             {/* Features */}
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl border border-white/20 p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
                 <Zap className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-gray-900">Features</h3>
+                <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               
-              <ul className="space-y-3 text-sm text-gray-700">
+              <ul className="space-y-3 text-sm text-gray-300">
                 <li className="flex items-start">
                   <Check className="h-4 w-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
                   Lightning fast conversion
@@ -506,12 +506,12 @@ export default function PDFConverterPage() {
             </div>
 
             {/* Privacy Notice */}
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-2xl p-6 border border-blue-200">
+            <div className="bg-gradient-to-br from-blue-500/20 to-indigo-500/20 rounded-2xl p-6 border border-blue-500/30">
               <div className="flex items-center mb-3">
                 <AlertCircle className="h-6 w-6 text-blue-600 mr-2" />
-                <h3 className="text-lg font-semibold text-blue-900">100% Private</h3>
+                <h3 className="text-lg font-semibold text-blue-300">100% Private</h3>
               </div>
-              <ul className="space-y-2 text-sm text-blue-800">
+              <ul className="space-y-2 text-sm text-gray-300">
                 <li className="flex items-center">
                   <Check className="h-4 w-4 text-blue-600 mr-2 flex-shrink-0" />
                   All conversions happen in your browser

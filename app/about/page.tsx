@@ -90,7 +90,7 @@ export default function AboutPage() {
         </section>
 
         {/* Mission Section */}
-        <section className="py-16 sm:py-20 bg-white">
+        <section className="py-16 sm:py-20 bg-dark-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
@@ -122,7 +122,7 @@ export default function AboutPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {stats.map((stat, index) => (
-                    <div key={index} className="text-center p-4 bg-white rounded-xl shadow-sm border border-gray-100">
+                    <div key={index} className="text-center p-4 bg-dark-800 rounded-xl shadow-sm border border-gray-100">
                       <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-1">{stat.number}</div>
                       <div className="text-sm font-semibold text-gray-900 mb-1">{stat.label}</div>
                       <div className="text-xs text-gray-600">{stat.description}</div>
@@ -148,7 +148,7 @@ export default function AboutPage() {
               {values.map((value, index) => (
                 <div 
                   key={index}
-                  className="group bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary-200 transition-all duration-300"
+                  className="group bg-dark-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary-200 transition-all duration-300"
                 >
                   <div className={`w-12 h-12 ${value.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <value.icon className="h-6 w-6 text-white" />
@@ -162,7 +162,7 @@ export default function AboutPage() {
         </section>
 
         {/* Technology Section */}
-        <section className="py-16 sm:py-20 bg-white">
+        <section className="py-16 sm:py-20 bg-dark-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
               <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Built with Modern Technology</h2>
