@@ -143,9 +143,9 @@ export default function TodoListPage() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high': return 'bg-red-500/200/20 text-red-400 border-red-200'
-      case 'medium': return 'bg-yellow-500/200/20 text-yellow-700 border-yellow-200'
-      case 'low': return 'bg-green-500/200/20 text-green-400 border-green-200'
+      case 'high': return 'bg-red-500/20 text-red-400 border-red-500/30'
+      case 'medium': return 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30'
+      case 'low': return 'bg-green-500/20 text-green-400 border-green-500/30'
       default: return 'bg-dark-700 text-gray-300 border-dark-700'
     }
   }
@@ -244,19 +244,19 @@ export default function TodoListPage() {
         <div className="grid grid-cols-1 xl:grid-cols-4 gap-6 lg:gap-8">
           {/* Statistics Cards */}
           <div className="xl:col-span-4 grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-lg border border-dark-700 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Total Tasks</p>
                   <p className="text-2xl sm:text-3xl font-bold text-white">{totalTodos}</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/200/10 rounded-2xl flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/20 rounded-2xl flex items-center justify-center">
                   <Square className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-lg border border-dark-700 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Active Tasks</p>
@@ -268,26 +268,26 @@ export default function TodoListPage() {
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-lg border border-dark-700 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Completed</p>
                   <p className="text-2xl sm:text-3xl font-bold text-green-400">{completedTodos}</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/200/20 rounded-2xl flex items-center justify-center">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/20 rounded-2xl flex items-center justify-center">
                   <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
                 </div>
               </div>
             </div>
 
-            <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg border border-white/20 p-4 sm:p-6">
+            <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-lg border border-dark-700 p-4 sm:p-6">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Completion</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-teal-600">{completionRate}%</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-teal-400">{completionRate}%</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-teal-100 rounded-2xl flex items-center justify-center">
-                  <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6 text-teal-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-teal-500/20 rounded-2xl flex items-center justify-center">
+                  <BarChart3 className="h-5 w-5 sm:h-6 sm:w-6 text-teal-400" />
                 </div>
               </div>
             </div>
@@ -299,7 +299,7 @@ export default function TodoListPage() {
               {/* Add Todo Section */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Plus className="h-5 w-5 text-teal-600 mr-2" />
+                  <Plus className="h-5 w-5 text-teal-400 mr-2" />
                   <h2 className="text-xl font-semibold text-white">Add New Task</h2>
                 </div>
                 
@@ -369,7 +369,7 @@ export default function TodoListPage() {
                         className={`px-4 py-3 text-sm font-medium capitalize transition-colors min-h-[48px] touch-manipulation flex-1 sm:flex-none ${
                           filter === filterType
                             ? 'bg-teal-600 text-white'
-                            : 'bg-white text-gray-300 hover:bg-teal-50'
+                            : 'bg-dark-800 text-gray-300 hover:bg-teal-500/20'
                         }`}
                       >
                         {filterType}
@@ -390,7 +390,7 @@ export default function TodoListPage() {
                   {completedTodos > 0 && (
                     <button
                       onClick={clearCompleted}
-                      className="px-4 py-3 bg-red-500/200/20 text-red-400 rounded-xl hover:bg-red-500/200/30 transition-colors text-sm font-medium min-h-[48px] touch-manipulation w-full sm:w-auto"
+                      className="px-4 py-3 bg-red-500/20 text-red-400 rounded-xl hover:bg-red-500/30 transition-colors text-sm font-medium min-h-[48px] touch-manipulation w-full sm:w-auto"
                     >
                       Clear Completed
                     </button>
@@ -402,8 +402,8 @@ export default function TodoListPage() {
               <div className="space-y-3">
                 {sortedTodos.length === 0 ? (
                   <div className="text-center py-16">
-                    <div className="w-20 h-20 bg-gradient-to-br from-teal-100 to-cyan-100 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                      <CheckSquare className="h-10 w-10 text-teal-600" />
+                    <div className="w-20 h-20 bg-gradient-to-br from-teal-500/20 to-cyan-500/20 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg border border-teal-500/30">
+                      <CheckSquare className="h-10 w-10 text-teal-400" />
                     </div>
                     <h3 className="text-xl font-semibold text-white mb-2">
                       {searchQuery ? 'No matching tasks' : 'Ready to get organized?'}
@@ -427,7 +427,7 @@ export default function TodoListPage() {
                       className={`p-4 rounded-xl border-2 transition-all duration-200 ${
                         todo.completed
                           ? 'bg-dark-800 border-dark-700 opacity-75'
-                          : 'bg-white border-dark-700 hover:border-teal-300 hover:shadow-md'
+                          : 'bg-dark-card border-dark-700 hover:border-teal-500/50 hover:shadow-md'
                       }`}
                     >
                       <div className="flex items-start gap-3">
@@ -474,7 +474,7 @@ export default function TodoListPage() {
                                 <span className={`px-3 py-1 text-xs font-medium rounded-full border ${getPriorityColor(todo.priority)}`}>
                                   {getPriorityIcon(todo.priority)} {todo.priority.toUpperCase()}
                                 </span>
-                                <span className="px-3 py-1 text-xs font-medium bg-blue-500/200/10 text-blue-400 rounded-full border border-blue-500/30">
+                                <span className="px-3 py-1 text-xs font-medium bg-blue-500/20 text-blue-400 rounded-full border border-blue-500/30">
                                   📁 {todo.category}
                                 </span>
                                 <span className="text-xs text-gray-400">
@@ -510,7 +510,7 @@ export default function TodoListPage() {
                 <div className="mt-6 text-center">
                   <button
                     onClick={clearAll}
-                    className="px-6 py-4 bg-red-500/200/20 hover:bg-red-600 text-white font-semibold rounded-xl transition-colors duration-200 min-h-[48px] touch-manipulation w-full sm:w-auto"
+                    className="px-6 py-4 bg-red-500/20 hover:bg-red-500/30 text-red-400 hover:text-red-300 font-semibold rounded-xl transition-colors duration-200 min-h-[48px] touch-manipulation w-full sm:w-auto"
                   >
                     Clear All Tasks
                   </button>
@@ -530,7 +530,7 @@ export default function TodoListPage() {
               
               <div className="space-y-4">
                 <div>
-                  <div className="flex justify-between text-sm font-medium mb-2">
+                  <div className="flex justify-between text-sm font-medium mb-2 text-gray-300">
                     <span>Completion Rate</span>
                     <span>{completionRate}%</span>
                   </div>
@@ -542,11 +542,11 @@ export default function TodoListPage() {
                   </div>
                 </div>
 
-                <div className="text-center p-4 bg-teal-50 rounded-xl border border-teal-500/30">
-                  <div className="text-2xl font-bold text-teal-600">
+                <div className="text-center p-4 bg-teal-500/20 rounded-xl border border-teal-500/30">
+                  <div className="text-2xl font-bold text-teal-400">
                     {activeTodos}
                   </div>
-                  <div className="text-sm text-teal-700">
+                  <div className="text-sm text-teal-300">
                     {activeTodos === 1 ? 'Task remaining' : 'Tasks remaining'}
                   </div>
                 </div>
@@ -557,7 +557,7 @@ export default function TodoListPage() {
             {categories.length > 0 && (
               <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
                 <div className="flex items-center mb-4">
-                  <Settings className="h-6 w-6 text-indigo-600 mr-2" />
+                  <Settings className="h-6 w-6 text-indigo-400 mr-2" />
                   <h3 className="text-lg font-semibold text-white">Categories</h3>
                 </div>
                 
