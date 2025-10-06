@@ -54,8 +54,8 @@ export default function BMICalculatorPage() {
 
   const getBMIData = (bmiValue: number) => {
     if (bmiValue < 18.5) return {
-      color: 'text-blue-600',
-      bgColor: 'bg-blue-500/20',
+      color: 'text-blue-400',
+      bgColor: 'bg-blue-500/200/20',
       borderColor: 'border-blue-200',
       icon: '⚡',
       status: 'Underweight',
@@ -63,8 +63,8 @@ export default function BMICalculatorPage() {
       recommendation: 'Consider gaining weight through healthy diet and exercise'
     }
     if (bmiValue < 25) return {
-      color: 'text-green-600',
-      bgColor: 'bg-green-50',
+      color: 'text-green-400',
+      bgColor: 'bg-green-500/20',
       borderColor: 'border-green-200',
       icon: '✅',
       status: 'Normal weight',
@@ -72,8 +72,8 @@ export default function BMICalculatorPage() {
       recommendation: 'Maintain your current lifestyle and weight'
     }
     if (bmiValue < 30) return {
-      color: 'text-yellow-600',
-      bgColor: 'bg-yellow-50',
+      color: 'text-yellow-400',
+      bgColor: 'bg-yellow-500/20',
       borderColor: 'border-yellow-200',
       icon: '⚠️',
       status: 'Overweight',
@@ -81,8 +81,8 @@ export default function BMICalculatorPage() {
       recommendation: 'Consider weight loss through diet and exercise'
     }
     return {
-      color: 'text-red-600',
-      bgColor: 'bg-red-500/20',
+      color: 'text-red-400',
+      bgColor: 'bg-red-500/200/20',
       borderColor: 'border-red-200',
       icon: '🚨',
       status: 'Obese',
@@ -194,12 +194,12 @@ export default function BMICalculatorPage() {
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center">
-                  <Scale className="h-5 w-5 text-orange-600 mr-2" />
+                  <Scale className="h-5 w-5 text-orange-400 mr-2" />
                   <h2 className="text-xl font-semibold text-white">Enter Your Details</h2>
                 </div>
                 <button
                   onClick={() => setShowAdvanced(!showAdvanced)}
-                  className="text-sm text-orange-600 hover:text-orange-400 font-medium"
+                  className="text-sm text-orange-400 hover:text-orange-400 font-medium"
                 >
                   {showAdvanced ? 'Basic' : 'Advanced'}
                 </button>
@@ -208,7 +208,7 @@ export default function BMICalculatorPage() {
               {/* Unit Selection */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Settings className="h-5 w-5 text-purple-600 mr-2" />
+                  <Settings className="h-5 w-5 text-purple-400 mr-2" />
                   <label className="text-lg font-semibold text-white">
                     Measurement System
                   </label>
@@ -218,8 +218,8 @@ export default function BMICalculatorPage() {
                     onClick={() => setUnit('metric')}
                     className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
                       unit === 'metric'
-                        ? 'border-orange-500 bg-orange-50 text-orange-400 shadow-md'
-                        : 'border-dark-700 bg-dark-800 hover:border-orange-300 hover:bg-orange-50/50 text-gray-300 hover:shadow-md'
+                        ? 'border-orange-500 bg-orange-500/20 text-orange-400 shadow-md'
+                        : 'border-dark-700 bg-dark-800 hover:border-orange-300 hover:bg-orange-500/20/50 text-gray-300 hover:shadow-md'
                     }`}
                   >
                     <div className="flex items-center mb-2">
@@ -236,8 +236,8 @@ export default function BMICalculatorPage() {
                     onClick={() => setUnit('imperial')}
                     className={`p-4 rounded-xl border-2 transition-all duration-200 text-left ${
                       unit === 'imperial'
-                        ? 'border-orange-500 bg-orange-50 text-orange-400 shadow-md'
-                        : 'border-dark-700 bg-dark-800 hover:border-orange-300 hover:bg-orange-50/50 text-gray-300 hover:shadow-md'
+                        ? 'border-orange-500 bg-orange-500/20 text-orange-400 shadow-md'
+                        : 'border-dark-700 bg-dark-800 hover:border-orange-300 hover:bg-orange-500/20/50 text-gray-300 hover:shadow-md'
                     }`}
                   >
                     <div className="flex items-center mb-2">
@@ -256,7 +256,7 @@ export default function BMICalculatorPage() {
               {/* Height Input */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <TrendingUp className="h-5 w-5 text-blue-600 mr-2" />
+                  <TrendingUp className="h-5 w-5 text-blue-400 mr-2" />
                   <label className="text-lg font-semibold text-white">
                     Height {unit === 'metric' ? '(cm)' : '(ft/in)'}
                   </label>
@@ -308,7 +308,7 @@ export default function BMICalculatorPage() {
               {/* Weight Input */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Scale className="h-5 w-5 text-green-600 mr-2" />
+                  <Scale className="h-5 w-5 text-green-400 mr-2" />
                   <label className="text-lg font-semibold text-white">
                     Weight {unit === 'metric' ? '(kg)' : '(lbs)'}
                   </label>
@@ -332,7 +332,7 @@ export default function BMICalculatorPage() {
               {showAdvanced && (
                 <div className="mb-8 p-4 bg-dark-800 rounded-xl border border-dark-700">
                   <h3 className="text-lg font-semibold text-white mb-4 flex items-center">
-                    <Users className="h-5 w-5 text-purple-600 mr-2" />
+                    <Users className="h-5 w-5 text-purple-400 mr-2" />
                     Additional Information
                   </h3>
                   <div className="space-y-4">
@@ -360,7 +360,7 @@ export default function BMICalculatorPage() {
                     Healthy Weight Range
                   </h3>
                   <p className="text-2xl font-bold text-green-400">{getIdealWeight()}</p>
-                  <p className="text-sm text-green-600 mt-1">Based on normal BMI range (18.5-24.9)</p>
+                  <p className="text-sm text-green-400 mt-1">Based on normal BMI range (18.5-24.9)</p>
                 </div>
               )}
 
@@ -380,7 +380,7 @@ export default function BMICalculatorPage() {
           <div className="xl:col-span-1 space-y-6">
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-6">
-                <Activity className="h-6 w-6 text-orange-600 mr-2" />
+                <Activity className="h-6 w-6 text-orange-400 mr-2" />
                 <h2 className="text-xl font-semibold text-white">Your BMI Result</h2>
               </div>
               
@@ -432,7 +432,7 @@ export default function BMICalculatorPage() {
                     <div className="space-y-2 text-sm">
                       <div className={`flex justify-between p-3 rounded-xl transition-all duration-200 ${
                         bmi < 18.5 
-                          ? 'bg-blue-500/10 text-gray-300 font-semibold border-2 border-blue-300 shadow-md' 
+                          ? 'bg-blue-500/200/10 text-gray-300 font-semibold border-2 border-blue-300 shadow-md' 
                           : 'bg-dark-800 text-gray-400 border border-dark-700'
                       }`}>
                         <span className="flex items-center">
@@ -443,7 +443,7 @@ export default function BMICalculatorPage() {
                       </div>
                       <div className={`flex justify-between p-3 rounded-xl transition-all duration-200 ${
                         bmi >= 18.5 && bmi < 25 
-                          ? 'bg-green-100 text-gray-300 font-semibold border-2 border-green-300 shadow-md' 
+                          ? 'bg-green-500/200/20 text-gray-300 font-semibold border-2 border-green-300 shadow-md' 
                           : 'bg-dark-800 text-gray-400 border border-dark-700'
                       }`}>
                         <span className="flex items-center">
@@ -454,7 +454,7 @@ export default function BMICalculatorPage() {
                       </div>
                       <div className={`flex justify-between p-3 rounded-xl transition-all duration-200 ${
                         bmi >= 25 && bmi < 30 
-                          ? 'bg-yellow-100 text-gray-300 font-semibold border-2 border-yellow-300 shadow-md' 
+                          ? 'bg-yellow-500/200/20 text-gray-300 font-semibold border-2 border-yellow-300 shadow-md' 
                           : 'bg-dark-800 text-gray-400 border border-dark-700'
                       }`}>
                         <span className="flex items-center">
@@ -465,7 +465,7 @@ export default function BMICalculatorPage() {
                       </div>
                       <div className={`flex justify-between p-3 rounded-xl transition-all duration-200 ${
                         bmi >= 30 
-                          ? 'bg-red-100 text-red-400 font-semibold border-2 border-red-300 shadow-md' 
+                          ? 'bg-red-500/200/20 text-red-400 font-semibold border-2 border-red-300 shadow-md' 
                           : 'bg-dark-800 text-gray-400 border border-dark-700'
                       }`}>
                         <span className="flex items-center">
@@ -507,11 +507,11 @@ export default function BMICalculatorPage() {
               </div>
               
               <div className="space-y-4 text-sm text-gray-300">
-                <div className="p-3 bg-green-50 rounded-lg border border-green-500/30">
+                <div className="p-3 bg-green-500/20 rounded-lg border border-green-500/30">
                   <div className="font-medium text-gray-300 mb-1">🥗 Healthy Diet</div>
                   <div className="text-green-400">Balanced nutrition with fruits, vegetables, and lean proteins</div>
                 </div>
-                <div className="p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                <div className="p-3 bg-blue-500/200/20 rounded-lg border border-blue-500/30">
                   <div className="font-medium text-gray-300 mb-1">🏃 Regular Exercise</div>
                   <div className="text-blue-400">150+ minutes of moderate activity per week</div>
                 </div>
@@ -519,7 +519,7 @@ export default function BMICalculatorPage() {
                   <div className="font-medium text-gray-300 mb-1">😴 Quality Sleep</div>
                   <div className="text-purple-700">7-9 hours of sleep for optimal health</div>
                 </div>
-                <div className="p-3 bg-orange-50 rounded-lg border border-orange-500/30">
+                <div className="p-3 bg-orange-500/20 rounded-lg border border-orange-500/30">
                   <div className="font-medium text-gray-300 mb-1">💧 Stay Hydrated</div>
                   <div className="text-orange-400">8 glasses of water daily</div>
                 </div>
@@ -531,15 +531,15 @@ export default function BMICalculatorPage() {
         {/* Information Section */}
         <div className="mt-12 bg-gradient-to-r from-blue-50 to-indigo-100 rounded-2xl p-6 sm:p-8 border border-blue-500/30">
           <div className="flex items-start">
-            <div className="w-12 h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
-              <Info className="h-6 w-6 text-blue-600" />
+            <div className="w-12 h-12 bg-blue-500/200/10 rounded-2xl flex items-center justify-center mr-4 flex-shrink-0">
+              <Info className="h-6 w-6 text-blue-400" />
             </div>
             <div className="flex-1">
               <h3 className="text-xl font-semibold text-blue-300 mb-6">About BMI & Important Limitations</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-gray-300">
                 <div>
                   <h4 className="font-semibold mb-3 flex items-center">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-2" />
+                    <CheckCircle className="h-5 w-5 text-green-400 mr-2" />
                     What BMI Measures
                   </h4>
                   <ul className="space-y-2 text-sm">
@@ -551,7 +551,7 @@ export default function BMICalculatorPage() {
                 </div>
                 <div>
                   <h4 className="font-semibold mb-3 flex items-center">
-                    <AlertTriangle className="h-5 w-5 text-yellow-600 mr-2" />
+                    <AlertTriangle className="h-5 w-5 text-yellow-400 mr-2" />
                     Important Limitations
                   </h4>
                   <ul className="space-y-2 text-sm">

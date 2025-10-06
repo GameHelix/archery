@@ -172,7 +172,7 @@ export default function HashGeneratorPage() {
             {/* Hash Generator */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="flex items-center mb-6">
-                <Hash className="h-6 w-6 text-red-600 mr-3" />
+                <Hash className="h-6 w-6 text-red-400 mr-3" />
                 <h2 className="text-2xl font-semibold text-white">Generate Hash</h2>
               </div>
 
@@ -244,7 +244,7 @@ export default function HashGeneratorPage() {
             {/* Hash Comparison */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="flex items-center mb-6">
-                <Shield className="h-6 w-6 text-blue-600 mr-3" />
+                <Shield className="h-6 w-6 text-blue-400 mr-3" />
                 <h2 className="text-2xl font-semibold text-white">Compare Hash</h2>
               </div>
 
@@ -295,18 +295,18 @@ export default function HashGeneratorPage() {
 
                 {compareResult !== null && (
                   <div className={`p-4 rounded-xl flex items-center space-x-3 ${
-                    compareResult 
-                      ? 'bg-green-50 border border-green-500/30' 
+                    compareResult
+                      ? 'bg-green-500/20 border border-green-500/30'
                       : 'bg-red-500/20 border border-red-500/30'
                   }`}>
                     {compareResult ? (
                       <>
-                        <Check className="h-5 w-5 text-green-600" />
+                        <Check className="h-5 w-5 text-green-400" />
                         <span className="text-gray-300 font-medium">Password matches the hash!</span>
                       </>
                     ) : (
                       <>
-                        <AlertCircle className="h-5 w-5 text-red-600" />
+                        <AlertCircle className="h-5 w-5 text-red-400" />
                         <span className="text-red-400 font-medium">Password does not match the hash.</span>
                       </>
                     )}
@@ -322,7 +322,7 @@ export default function HashGeneratorPage() {
                   <h2 className="text-2xl font-semibold text-white">Generated Hashes</h2>
                   <button
                     onClick={clearHistory}
-                    className="px-4 py-2 text-sm text-red-600 hover:text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
+                    className="px-4 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/20 rounded-lg transition-colors"
                   >
                     Clear History
                   </button>
@@ -342,7 +342,7 @@ export default function HashGeneratorPage() {
                         </div>
                         <button
                           onClick={() => removeHash(hashResult.id)}
-                          className="p-1 text-gray-400 hover:text-red-600 rounded transition-colors"
+                          className="p-1 text-gray-400 hover:text-red-400 rounded transition-colors"
                         >
                           <AlertCircle className="h-4 w-4" />
                         </button>
@@ -357,10 +357,10 @@ export default function HashGeneratorPage() {
                             </code>
                             <button
                               onClick={() => copyToClipboard(hashResult.password, `${hashResult.id}-password`)}
-                              className="p-1 text-gray-400 hover:text-gray-400 rounded transition-colors"
+                              className="p-1 text-gray-400 hover:text-gray-200 rounded transition-colors"
                             >
-                              {copiedId === `${hashResult.id}-password` ? 
-                                <Check className="h-4 w-4 text-green-600" /> : 
+                              {copiedId === `${hashResult.id}-password` ?
+                                <Check className="h-4 w-4 text-green-400" /> :
                                 <Copy className="h-4 w-4" />
                               }
                             </button>
@@ -375,10 +375,10 @@ export default function HashGeneratorPage() {
                             </code>
                             <button
                               onClick={() => copyToClipboard(hashResult.hash, `${hashResult.id}-hash`)}
-                              className="p-1 text-gray-400 hover:text-gray-400 rounded transition-colors ml-2"
+                              className="p-1 text-gray-400 hover:text-gray-200 rounded transition-colors ml-2"
                             >
-                              {copiedId === `${hashResult.id}-hash` ? 
-                                <Check className="h-4 w-4 text-green-600" /> : 
+                              {copiedId === `${hashResult.id}-hash` ?
+                                <Check className="h-4 w-4 text-green-400" /> :
                                 <Copy className="h-4 w-4" />
                               }
                             </button>
@@ -397,7 +397,7 @@ export default function HashGeneratorPage() {
             {/* Security Info */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Shield className="h-6 w-6 text-green-600 mr-2" />
+                <Shield className="h-6 w-6 text-green-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Security Features</h3>
               </div>
               
@@ -428,7 +428,7 @@ export default function HashGeneratorPage() {
             {/* Salt Rounds Guide */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Settings className="h-6 w-6 text-blue-600 mr-2" />
+                <Settings className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Salt Rounds Guide</h3>
               </div>
               

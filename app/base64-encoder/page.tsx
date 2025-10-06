@@ -146,7 +146,7 @@ export default function Base64EncoderPage() {
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={swapMode}
-                    className="flex items-center space-x-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-200 text-blue-400 rounded-lg transition-colors"
+                    className="flex items-center space-x-2 px-4 py-2 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-lg transition-colors"
                   >
                     <ArrowRightLeft className="h-4 w-4" />
                     <span className="text-sm font-medium">
@@ -183,7 +183,7 @@ export default function Base64EncoderPage() {
                       {inputText.length} characters
                     </span>
                     {isProcessing && (
-                      <div className="flex items-center text-blue-600">
+                      <div className="flex items-center text-blue-400">
                         <RefreshCw className="h-4 w-4 animate-spin mr-1" />
                         <span className="text-xs">Processing...</span>
                       </div>
@@ -200,7 +200,7 @@ export default function Base64EncoderPage() {
                     {outputText && (
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-3 py-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -236,7 +236,7 @@ export default function Base64EncoderPage() {
                 {/* Error Message */}
                 {error && (
                   <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-3">
-                    <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                    <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0" />
                     <span className="text-red-400 text-sm">{error}</span>
                   </div>
                 )}
@@ -249,7 +249,7 @@ export default function Base64EncoderPage() {
             {/* About Base64 */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Code className="h-6 w-6 text-blue-600 mr-2" />
+                <Code className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">About Base64</h3>
               </div>
               
@@ -274,7 +274,7 @@ export default function Base64EncoderPage() {
             {/* Features */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Check className="h-6 w-6 text-green-600 mr-2" />
+                <Check className="h-6 w-6 text-green-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               
@@ -303,7 +303,7 @@ export default function Base64EncoderPage() {
             </div>
 
             {/* Examples */}
-            <div className="bg-gradient-to-br from-blue-50 to-cyan-100 rounded-2xl p-6 border border-blue-500/30">
+            <div className="bg-gradient-to-br from-blue-500/20 to-cyan-500/20 rounded-2xl p-6 border border-blue-500/30">
               <h3 className="text-lg font-semibold text-blue-300 mb-4">Examples</h3>
               <div className="space-y-3 text-sm text-gray-300">
                 <div>

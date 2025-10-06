@@ -143,9 +143,9 @@ export default function TodoListPage() {
 
   const getPriorityColor = (priority: string) => {
     switch (priority) {
-      case 'high': return 'bg-red-100 text-red-400 border-red-200'
-      case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-200'
-      case 'low': return 'bg-green-100 text-green-400 border-green-200'
+      case 'high': return 'bg-red-500/200/20 text-red-400 border-red-200'
+      case 'medium': return 'bg-yellow-500/200/20 text-yellow-700 border-yellow-200'
+      case 'low': return 'bg-green-500/200/20 text-green-400 border-green-200'
       default: return 'bg-dark-700 text-gray-300 border-dark-700'
     }
   }
@@ -250,8 +250,8 @@ export default function TodoListPage() {
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Total Tasks</p>
                   <p className="text-2xl sm:text-3xl font-bold text-white">{totalTodos}</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/10 rounded-2xl flex items-center justify-center">
-                  <Square className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-500/200/10 rounded-2xl flex items-center justify-center">
+                  <Square className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400" />
                 </div>
               </div>
             </div>
@@ -260,10 +260,10 @@ export default function TodoListPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Active Tasks</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-orange-600">{activeTodos}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-orange-400">{activeTodos}</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-100 rounded-2xl flex items-center justify-center">
-                  <Circle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-orange-500/20 rounded-2xl flex items-center justify-center">
+                  <Circle className="h-5 w-5 sm:h-6 sm:w-6 text-orange-400" />
                 </div>
               </div>
             </div>
@@ -272,10 +272,10 @@ export default function TodoListPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-xs sm:text-sm font-medium text-gray-400">Completed</p>
-                  <p className="text-2xl sm:text-3xl font-bold text-green-600">{completedTodos}</p>
+                  <p className="text-2xl sm:text-3xl font-bold text-green-400">{completedTodos}</p>
                 </div>
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-100 rounded-2xl flex items-center justify-center">
-                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-600" />
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-green-500/200/20 rounded-2xl flex items-center justify-center">
+                  <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 text-green-400" />
                 </div>
               </div>
             </div>
@@ -390,7 +390,7 @@ export default function TodoListPage() {
                   {completedTodos > 0 && (
                     <button
                       onClick={clearCompleted}
-                      className="px-4 py-3 bg-red-100 text-red-400 rounded-xl hover:bg-red-200 transition-colors text-sm font-medium min-h-[48px] touch-manipulation w-full sm:w-auto"
+                      className="px-4 py-3 bg-red-500/200/20 text-red-400 rounded-xl hover:bg-red-500/200/30 transition-colors text-sm font-medium min-h-[48px] touch-manipulation w-full sm:w-auto"
                     >
                       Clear Completed
                     </button>
@@ -474,7 +474,7 @@ export default function TodoListPage() {
                                 <span className={`px-3 py-1 text-xs font-medium rounded-full border ${getPriorityColor(todo.priority)}`}>
                                   {getPriorityIcon(todo.priority)} {todo.priority.toUpperCase()}
                                 </span>
-                                <span className="px-3 py-1 text-xs font-medium bg-blue-500/10 text-blue-400 rounded-full border border-blue-500/30">
+                                <span className="px-3 py-1 text-xs font-medium bg-blue-500/200/10 text-blue-400 rounded-full border border-blue-500/30">
                                   📁 {todo.category}
                                 </span>
                                 <span className="text-xs text-gray-400">
@@ -488,13 +488,13 @@ export default function TodoListPage() {
                         <div className="flex items-center gap-2">
                           <button
                             onClick={() => startEditing(todo.id, todo.text)}
-                            className="p-3 text-gray-400 hover:text-blue-600 rounded-lg transition-colors touch-manipulation min-h-[44px] min-w-[44px]"
+                            className="p-3 text-gray-400 hover:text-blue-400 rounded-lg transition-colors touch-manipulation min-h-[44px] min-w-[44px]"
                           >
                             <Edit3 className="h-5 w-5" />
                           </button>
                           <button
                             onClick={() => deleteTodo(todo.id)}
-                            className="p-3 text-gray-400 hover:text-red-600 rounded-lg transition-colors touch-manipulation min-h-[44px] min-w-[44px]"
+                            className="p-3 text-gray-400 hover:text-red-400 rounded-lg transition-colors touch-manipulation min-h-[44px] min-w-[44px]"
                           >
                             <Trash2 className="h-5 w-5" />
                           </button>
@@ -510,7 +510,7 @@ export default function TodoListPage() {
                 <div className="mt-6 text-center">
                   <button
                     onClick={clearAll}
-                    className="px-6 py-4 bg-red-500/20 hover:bg-red-600 text-white font-semibold rounded-xl transition-colors duration-200 min-h-[48px] touch-manipulation w-full sm:w-auto"
+                    className="px-6 py-4 bg-red-500/200/20 hover:bg-red-600 text-white font-semibold rounded-xl transition-colors duration-200 min-h-[48px] touch-manipulation w-full sm:w-auto"
                   >
                     Clear All Tasks
                   </button>
@@ -524,7 +524,7 @@ export default function TodoListPage() {
             {/* Progress */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Target className="h-6 w-6 text-purple-600 mr-2" />
+                <Target className="h-6 w-6 text-purple-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Progress</h3>
               </div>
               

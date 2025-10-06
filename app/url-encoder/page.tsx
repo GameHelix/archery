@@ -179,7 +179,7 @@ export default function URLEncoderPage() {
                   </button>
                   <button
                     onClick={loadSampleURL}
-                    className="px-4 py-2 text-sm text-blue-600 hover:text-blue-400 hover:bg-blue-500/20 rounded-lg transition-colors"
+                    className="px-4 py-2 text-sm text-blue-400 hover:text-blue-400 hover:bg-blue-500/200/20 rounded-lg transition-colors"
                   >
                     Load Sample
                   </button>
@@ -274,7 +274,7 @@ export default function URLEncoderPage() {
                     {outputText && (
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-3 py-1 bg-green-500/200/20 hover:bg-green-500/200/30 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -309,8 +309,8 @@ export default function URLEncoderPage() {
 
                 {/* Error Message */}
                 {error && (
-                  <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-center space-x-3">
-                    <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0" />
+                  <div className="p-4 bg-red-500/200/20 border border-red-500/30 rounded-xl flex items-center space-x-3">
+                    <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0" />
                     <span className="text-red-400 text-sm">{error}</span>
                   </div>
                 )}
@@ -346,7 +346,7 @@ export default function URLEncoderPage() {
             {/* Encoding Types */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Link className="h-6 w-6 text-blue-600 mr-2" />
+                <Link className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Encoding Types</h3>
               </div>
               

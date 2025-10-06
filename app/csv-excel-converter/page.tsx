@@ -298,7 +298,7 @@ export default function CSVExcelConverterPage() {
               {/* Conversion Mode Selector */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Settings className="h-5 w-5 text-purple-600 mr-2" />
+                  <Settings className="h-5 w-5 text-purple-400 mr-2" />
                   <h2 className="text-xl font-semibold text-white">Conversion Mode</h2>
                 </div>
                 
@@ -327,7 +327,7 @@ export default function CSVExcelConverterPage() {
               {/* File Upload Area */}
               <div className="mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Upload className="h-5 w-5 mr-2 text-purple-600" />
+                  <Upload className="h-5 w-5 mr-2 text-purple-400" />
                   Upload Spreadsheet Files
                 </h2>
                 
@@ -351,8 +351,8 @@ export default function CSVExcelConverterPage() {
                   />
                   
                   <div className="space-y-4">
-                    <div className="w-16 h-16 bg-purple-100 rounded-2xl flex items-center justify-center mx-auto">
-                      <Table className="h-8 w-8 text-purple-600" />
+                    <div className="w-16 h-16 bg-purple-500/20 rounded-2xl flex items-center justify-center mx-auto">
+                      <Table className="h-8 w-8 text-purple-400" />
                     </div>
                     
                     <div>
@@ -415,8 +415,8 @@ export default function CSVExcelConverterPage() {
                           className="flex items-center justify-between p-4 bg-dark-800 rounded-xl border border-dark-700 hover:border-purple-300 transition-all duration-200"
                         >
                           <div className="flex items-center space-x-3 flex-1 min-w-0">
-                            <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                              <IconComponent className="h-5 w-5 text-purple-600" />
+                            <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                              <IconComponent className="h-5 w-5 text-purple-400" />
                             </div>
                             
                             <div className="flex-1 min-w-0">
@@ -432,7 +432,7 @@ export default function CSVExcelConverterPage() {
                           <div className="flex items-center space-x-2 ml-4">
                             <button
                               onClick={() => setShowPreview(showPreview === file.id ? null : file.id)}
-                              className="p-2 text-gray-400 hover:text-purple-600 rounded-lg transition-colors"
+                              className="p-2 text-gray-400 hover:text-purple-400 rounded-lg transition-colors"
                               title="Preview data"
                             >
                               <Eye className="h-4 w-4" />
@@ -448,7 +448,7 @@ export default function CSVExcelConverterPage() {
                             )}
                             
                             {file.status === 'processing' && (
-                              <div className="flex items-center text-blue-600">
+                              <div className="flex items-center text-blue-400">
                                 <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-600 border-t-transparent mr-2"></div>
                                 <span className="text-xs font-medium">Processing...</span>
                               </div>
@@ -456,7 +456,7 @@ export default function CSVExcelConverterPage() {
                             
                             {file.status === 'completed' && (
                               <div className="flex items-center space-x-2">
-                                <div className="flex items-center text-green-600">
+                                <div className="flex items-center text-green-400">
                                   <Check className="h-4 w-4 mr-1" />
                                   <span className="text-xs font-medium">Ready</span>
                                 </div>
@@ -470,7 +470,7 @@ export default function CSVExcelConverterPage() {
                             )}
                             
                             {file.status === 'error' && (
-                              <div className="flex items-center text-red-600">
+                              <div className="flex items-center text-red-400">
                                 <AlertCircle className="h-4 w-4 mr-1" />
                                 <span className="text-xs font-medium">Error</span>
                               </div>
@@ -478,7 +478,7 @@ export default function CSVExcelConverterPage() {
                             
                             <button
                               onClick={() => removeFile(file.id)}
-                              className="p-1 text-gray-400 hover:text-red-600 rounded-lg transition-colors"
+                              className="p-1 text-gray-400 hover:text-red-400 rounded-lg transition-colors"
                             >
                               <X className="h-4 w-4" />
                             </button>
@@ -527,7 +527,7 @@ export default function CSVExcelConverterPage() {
             {/* Format Info */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <FileSpreadsheet className="h-6 w-6 text-green-600 mr-2" />
+                <FileSpreadsheet className="h-6 w-6 text-green-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Supported Formats</h3>
               </div>
               
@@ -551,7 +551,7 @@ export default function CSVExcelConverterPage() {
             {/* Features */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Check className="h-6 w-6 text-blue-600 mr-2" />
+                <Check className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               

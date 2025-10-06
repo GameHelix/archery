@@ -237,7 +237,7 @@ export default function UnitConverterPage() {
           {/* Category Selection */}
           <div className="mb-8">
             <div className="flex items-center mb-4">
-              <Gauge className="h-5 w-5 text-blue-600 mr-2" />
+              <Gauge className="h-5 w-5 text-blue-400 mr-2" />
               <h2 className="text-xl font-semibold text-white">Select Conversion Type</h2>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
@@ -257,7 +257,7 @@ export default function UnitConverterPage() {
                     className={`p-4 text-sm font-medium rounded-xl transition-all duration-200 min-h-[56px] touch-manipulation ${
                       selectedCategory.name === category.name
                         ? 'bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg transform scale-105'
-                        : 'bg-white border-2 border-dark-700 text-gray-300 hover:border-blue-300 hover:bg-blue-500/20'
+                        : 'bg-white border-2 border-dark-700 text-gray-300 hover:border-blue-300 hover:bg-blue-500/200/20'
                     }`}
                   >
                     <div className="flex flex-col items-center gap-1">
@@ -316,7 +316,7 @@ export default function UnitConverterPage() {
                 title="Swap units"
                 aria-label="Swap conversion units"
               >
-                <ArrowLeftRight className="h-6 w-6 text-blue-600" />
+                <ArrowLeftRight className="h-6 w-6 text-blue-400" />
               </button>
               {(fromValue || toValue) && (
                 <button
@@ -360,7 +360,7 @@ export default function UnitConverterPage() {
                   value={toValue}
                   onChange={(e) => handleToValueChange(e.target.value)}
                   placeholder="Result"
-                  className="w-full px-4 py-4 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 text-lg bg-green-50/50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[56px]"
+                  className="w-full px-4 py-4 border border-dark-600 rounded-xl bg-dark-800 text-gray-100 placeholder-gray-500 text-lg bg-green-500/20/50 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 min-h-[56px]"
                   aria-label="Conversion result"
                 />
               </div>
@@ -371,15 +371,15 @@ export default function UnitConverterPage() {
           {!fromValue && !toValue && (
             <div className="mt-8 text-center py-12">
               <div className="w-16 h-16 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-3xl flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <Gauge className="h-8 w-8 text-blue-600" />
+                <Gauge className="h-8 w-8 text-blue-400" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Ready to Convert?</h3>
               <p className="text-gray-400 max-w-md mx-auto mb-4">
                 Enter a value in either field to see instant conversion results with detailed formulas.
               </p>
               <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
-                <span className="bg-blue-500/20 px-2 py-1 rounded-full">✨ Real-time conversion</span>
-                <span className="bg-green-50 px-2 py-1 rounded-full">🔄 Bidirectional</span>
+                <span className="bg-blue-500/200/20 px-2 py-1 rounded-full">✨ Real-time conversion</span>
+                <span className="bg-green-500/20 px-2 py-1 rounded-full">🔄 Bidirectional</span>
                 <span className="bg-purple-50 px-2 py-1 rounded-full">🎯 High precision</span>
               </div>
             </div>

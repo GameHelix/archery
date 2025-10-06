@@ -241,7 +241,7 @@ export default function PasswordGeneratorPage() {
                       <span className="text-sm font-medium text-gray-300">Security Level</span>
                       <div className="flex items-center space-x-2">
                         <Shield className={`h-4 w-4 ${strengthInfo.strength === 'Strong' ? 'text-green-500' : strengthInfo.strength === 'Good' ? 'text-blue-500' : strengthInfo.strength === 'Fair' ? 'text-yellow-500' : 'text-red-500'}`} />
-                        <span className={`text-sm font-semibold ${strengthInfo.strength === 'Strong' ? 'text-green-600' : strengthInfo.strength === 'Good' ? 'text-blue-600' : strengthInfo.strength === 'Fair' ? 'text-yellow-600' : 'text-red-600'}`}>
+                        <span className={`text-sm font-semibold ${strengthInfo.strength === 'Strong' ? 'text-green-400' : strengthInfo.strength === 'Good' ? 'text-blue-400' : strengthInfo.strength === 'Fair' ? 'text-yellow-400' : 'text-red-400'}`}>
                           {strengthInfo.strength}
                         </span>
                       </div>
@@ -256,7 +256,7 @@ export default function PasswordGeneratorPage() {
                 )}
 
                 {copied && (
-                  <div className="mt-3 flex items-center text-green-600 font-medium animate-fade-in">
+                  <div className="mt-3 flex items-center text-green-400 font-medium animate-fade-in">
                     <Check className="h-4 w-4 mr-2" />
                     Password copied successfully!
                   </div>
@@ -268,7 +268,7 @@ export default function PasswordGeneratorPage() {
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-semibold text-white">Password Length</h3>
                   <div className="flex items-center space-x-2">
-                    <span className="text-2xl font-bold text-primary-600">{length}</span>
+                    <span className="text-2xl font-bold text-primary-400">{length}</span>
                     <span className="text-sm text-gray-400">characters</span>
                   </div>
                 </div>
@@ -281,7 +281,7 @@ export default function PasswordGeneratorPage() {
                     onChange={(e) => setLength(parseInt(e.target.value))}
                     className="w-full h-3 bg-dark-700 rounded-lg appearance-none cursor-pointer slider focus:outline-none focus:ring-4 focus:ring-primary-500/20"
                     style={{
-                      background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${((length - 4) / (128 - 4)) * 100}%, #E5E7EB ${((length - 4) / (128 - 4)) * 100}%, #E5E7EB 100%)`
+                      background: `linear-gradient(to right, #3B82F6 0%, #3B82F6 ${((length - 4) / (128 - 4)) * 100}%, #4B5563 ${((length - 4) / (128 - 4)) * 100}%, #4B5563 100%)`
                     }}
                   />
                   <div className="flex justify-between text-xs text-gray-400">

@@ -184,7 +184,7 @@ export default function QRGeneratorPage() {
               {/* Quick Templates */}
               <div className="mb-8">
                 <div className="flex items-center mb-5 sm:mb-6">
-                  <Smartphone className="h-5 w-5 sm:h-6 sm:w-6 text-purple-600 mr-2 sm:mr-3" />
+                  <Smartphone className="h-5 w-5 sm:h-6 sm:w-6 text-purple-400 mr-2 sm:mr-3" />
                   <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">Choose QR Code Type</h2>
                 </div>
 
@@ -258,7 +258,7 @@ export default function QRGeneratorPage() {
                         QR Code Size
                       </label>
                       <div className="flex items-center space-x-2">
-                        <span className="text-2xl font-bold text-purple-600">{size}</span>
+                        <span className="text-2xl font-bold text-purple-400">{size}</span>
                         <span className="text-sm text-gray-400">px</span>
                       </div>
                     </div>
@@ -271,7 +271,7 @@ export default function QRGeneratorPage() {
                       onChange={(e) => setSize(parseInt(e.target.value))}
                       className="w-full h-3 bg-gradient-to-r from-gray-200 to-gray-300 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-4 focus:ring-purple-500/20"
                       style={{
-                        background: `linear-gradient(to right, #8B5CF6 0%, #8B5CF6 ${((size - 128) / (512 - 128)) * 100}%, #E5E7EB ${((size - 128) / (512 - 128)) * 100}%, #E5E7EB 100%)`
+                        background: `linear-gradient(to right, #8B5CF6 0%, #8B5CF6 ${((size - 128) / (512 - 128)) * 100}%, #4B5563 ${((size - 128) / (512 - 128)) * 100}%, #4B5563 100%)`
                       }}
                     />
                     <div className="flex justify-between text-xs text-gray-400 mt-1">
@@ -414,7 +414,7 @@ export default function QRGeneratorPage() {
             {/* Usage Tips */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <AlertCircle className="h-6 w-6 text-blue-600 mr-2" />
+                <AlertCircle className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Pro Tips</h3>
               </div>
               <ul className="space-y-3 text-sm text-gray-300">
@@ -443,15 +443,15 @@ export default function QRGeneratorPage() {
               <div className="space-y-3 text-sm">
                 <div>
                   <div className="font-medium text-gray-300 mb-1">Website:</div>
-                  <code className="text-xs bg-green-100 px-2 py-1 rounded text-green-400 break-all">https://swissknife.site</code>
+                  <code className="text-xs bg-green-500/20 px-2 py-1 rounded text-green-400 break-all">https://swissknife.site</code>
                 </div>
                 <div>
                   <div className="font-medium text-gray-300 mb-1">WiFi:</div>
-                  <code className="text-xs bg-green-100 px-2 py-1 rounded text-green-400 break-all">WIFI:T:WPA;S:MyWiFi;P:Password123;;</code>
+                  <code className="text-xs bg-green-500/20 px-2 py-1 rounded text-green-400 break-all">WIFI:T:WPA;S:MyWiFi;P:Password123;;</code>
                 </div>
                 <div>
                   <div className="font-medium text-gray-300 mb-1">Contact:</div>
-                  <code className="text-xs bg-green-100 px-2 py-1 rounded text-green-400 break-all">tel:+1-555-123-4567</code>
+                  <code className="text-xs bg-green-500/20 px-2 py-1 rounded text-green-400 break-all">tel:+1-555-123-4567</code>
                 </div>
               </div>
             </div>

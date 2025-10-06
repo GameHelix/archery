@@ -73,8 +73,8 @@ export default function TextToolsPage() {
 
   const tabs = [
     { id: 'case', label: 'Case Conversion', icon: Type, color: 'bg-purple-500' },
-    { id: 'analysis', label: 'Text Analysis', icon: FileText, color: 'bg-blue-500/20' },
-    { id: 'manipulation', label: 'Text Manipulation', icon: Settings, color: 'bg-green-500' },
+    { id: 'analysis', label: 'Text Analysis', icon: FileText, color: 'bg-blue-500/200/20' },
+    { id: 'manipulation', label: 'Text Manipulation', icon: Settings, color: 'bg-green-500/200' },
   ]
 
   const toolStructuredData = {
@@ -140,7 +140,7 @@ export default function TextToolsPage() {
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <Zap className="h-5 w-5 text-purple-600 mr-2" />
+                    <Zap className="h-5 w-5 text-purple-400 mr-2" />
                     <label className="text-xl font-semibold text-white">
                       Input Text
                     </label>
@@ -149,9 +149,9 @@ export default function TextToolsPage() {
                     <button
                       onClick={() => setShowPreview(!showPreview)}
                       className={`p-2 rounded-lg transition-all duration-200 ${
-                        showPreview 
-                          ? 'bg-purple-100 text-purple-700 shadow-md' 
-                          : 'bg-dark-700 text-gray-400 hover:bg-purple-50 hover:text-purple-600'
+                        showPreview
+                          ? 'bg-purple-500/20 text-purple-400 shadow-md'
+                          : 'bg-dark-700 text-gray-400 hover:bg-purple-500/10 hover:text-purple-400'
                       }`}
                       title={showPreview ? 'Hide preview' : 'Show live preview'}
                     >
@@ -159,7 +159,7 @@ export default function TextToolsPage() {
                     </button>
                     <button
                       onClick={clearText}
-                      className="p-2 bg-dark-700 text-gray-400 hover:bg-red-500/20 hover:text-red-600 rounded-lg transition-all duration-200"
+                      className="p-2 bg-dark-700 text-gray-400 hover:bg-red-500/200/20 hover:text-red-400 rounded-lg transition-all duration-200"
                       title="Clear text"
                     >
                       <RotateCcw className="h-4 w-4" />
@@ -183,12 +183,12 @@ export default function TextToolsPage() {
                 
                 {/* Live Preview */}
                 {showPreview && inputText && (
-                  <div className="mt-4 p-4 bg-purple-50 rounded-xl border border-purple-500/30">
+                  <div className="mt-4 p-4 bg-purple-500/10 rounded-xl border border-purple-500/30">
                     <h4 className="text-sm font-medium text-gray-300 mb-2 flex items-center">
                       <Eye className="h-4 w-4 mr-1" />
                       Live Preview
                     </h4>
-                    <div className="text-sm text-purple-700 bg-dark-800 p-3 rounded-lg font-mono whitespace-pre-wrap break-words max-h-32 overflow-y-auto">
+                    <div className="text-sm text-gray-300 bg-dark-800 p-3 rounded-lg font-mono whitespace-pre-wrap break-words max-h-32 overflow-y-auto">
                       {inputText}
                     </div>
                   </div>
@@ -206,13 +206,13 @@ export default function TextToolsPage() {
                         onClick={() => setActiveTab(tab.id)}
                         className={`p-4 rounded-xl border-2 transition-all duration-200 text-left group ${
                           activeTab === tab.id
-                            ? 'border-purple-500 bg-purple-50 text-purple-700 shadow-md'
-                            : 'border-dark-700 bg-dark-800 hover:border-purple-300 hover:bg-purple-50/50 text-gray-300 hover:shadow-md'
+                            ? 'border-purple-500 bg-purple-500/20 text-white shadow-md'
+                            : 'border-dark-700 bg-dark-800 hover:border-purple-300 hover:bg-purple-500/10 text-gray-300 hover:shadow-md'
                         }`}
                       >
                         <div className="flex items-center mb-2">
                           <div className={`w-8 h-8 rounded-lg flex items-center justify-center mr-3 transition-colors ${
-                            activeTab === tab.id ? 'bg-purple-200' : 'bg-dark-700 group-hover:bg-purple-100'
+                            activeTab === tab.id ? 'bg-purple-500/30 text-purple-400' : 'bg-dark-700 group-hover:bg-purple-500/20 text-gray-400'
                           }`}>
                             <IconComponent className="h-4 w-4" />
                           </div>
@@ -228,11 +228,11 @@ export default function TextToolsPage() {
               {activeTab === 'case' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                   {[
-                    { label: 'UPPERCASE', func: toUpperCase, desc: 'CONVERTS ALL TEXT TO UPPERCASE', color: 'border-red-200 bg-red-500/20' },
-                    { label: 'lowercase', func: toLowerCase, desc: 'converts all text to lowercase', color: 'border-blue-200 bg-blue-500/20' },
-                    { label: 'Title Case', func: toTitleCase, desc: 'Converts Text To Title Case Format', color: 'border-green-200 bg-green-50' },
+                    { label: 'UPPERCASE', func: toUpperCase, desc: 'CONVERTS ALL TEXT TO UPPERCASE', color: 'border-red-200 bg-red-500/200/20' },
+                    { label: 'lowercase', func: toLowerCase, desc: 'converts all text to lowercase', color: 'border-blue-200 bg-blue-500/200/20' },
+                    { label: 'Title Case', func: toTitleCase, desc: 'Converts Text To Title Case Format', color: 'border-green-200 bg-green-500/20' },
                     { label: 'camelCase', func: toCamelCase, desc: 'convertsTextToCamelCaseFormat', color: 'border-purple-200 bg-purple-50' },
-                    { label: 'snake_case', func: toSnakeCase, desc: 'converts_text_to_snake_case_format', color: 'border-yellow-200 bg-yellow-50' },
+                    { label: 'snake_case', func: toSnakeCase, desc: 'converts_text_to_snake_case_format', color: 'border-yellow-200 bg-yellow-500/20' },
                     { label: 'kebab-case', func: toKebabCase, desc: 'converts-text-to-kebab-case-format', color: 'border-indigo-200 bg-indigo-50' },
                   ].map((item, index) => {
                     const result = item.func()
@@ -249,8 +249,8 @@ export default function TextToolsPage() {
                             disabled={!inputText}
                             className={`ml-3 p-2 rounded-lg transition-all duration-200 ${
                               isActive
-                                ? 'bg-green-500 text-white shadow-md'
-                                : 'bg-white text-gray-400 hover:bg-dark-800 hover:text-purple-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md'
+                                ? 'bg-green-500/200 text-white shadow-md'
+                                : 'bg-white text-gray-400 hover:bg-dark-800 hover:text-purple-400 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md'
                             }`}
                             title={isActive ? 'Copied!' : 'Copy to clipboard'}
                           >
@@ -318,7 +318,7 @@ export default function TextToolsPage() {
                           <div className="text-xs text-gray-400">~200 WPM</div>
                         </div>
                         <div className="bg-white rounded-lg p-4 shadow-sm">
-                          <div className="text-2xl font-bold text-purple-600">
+                          <div className="text-2xl font-bold text-purple-400">
                             {Math.ceil(getCharCount() / 5)}
                           </div>
                           <div className="text-sm text-gray-300">Avg. keystrokes</div>
@@ -341,11 +341,11 @@ export default function TextToolsPage() {
               {activeTab === 'manipulation' && (
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                   {[
-                    { label: 'Reverse Text', func: reverseText, icon: '🔄', desc: 'Reverses the entire text', color: 'border-red-200 bg-red-500/20' },
-                    { label: 'Remove Extra Spaces', func: removeExtraSpaces, icon: '✂️', desc: 'Cleans up multiple spaces', color: 'border-blue-200 bg-blue-500/20' },
-                    { label: 'Remove Duplicate Lines', func: removeDuplicateLines, icon: '🗂️', desc: 'Removes repeated lines', color: 'border-green-200 bg-green-50' },
+                    { label: 'Reverse Text', func: reverseText, icon: '🔄', desc: 'Reverses the entire text', color: 'border-red-200 bg-red-500/200/20' },
+                    { label: 'Remove Extra Spaces', func: removeExtraSpaces, icon: '✂️', desc: 'Cleans up multiple spaces', color: 'border-blue-200 bg-blue-500/200/20' },
+                    { label: 'Remove Duplicate Lines', func: removeDuplicateLines, icon: '🗂️', desc: 'Removes repeated lines', color: 'border-green-200 bg-green-500/20' },
                     { label: 'Sort Lines', func: sortLines, icon: '🔤', desc: 'Sorts lines alphabetically', color: 'border-purple-200 bg-purple-50' },
-                    { label: 'Shuffle Lines', func: shuffleLines, icon: '🎲', desc: 'Randomizes line order', color: 'border-yellow-200 bg-yellow-50' },
+                    { label: 'Shuffle Lines', func: shuffleLines, icon: '🎲', desc: 'Randomizes line order', color: 'border-yellow-200 bg-yellow-500/20' },
                   ].map((item, index) => {
                     const result = item.func()
                     const isActive = copiedItem === item.label
@@ -373,8 +373,8 @@ export default function TextToolsPage() {
                               disabled={!inputText || !result}
                               className={`p-2 rounded-lg transition-all duration-200 ${
                                 isActive
-                                  ? 'bg-green-500 text-white shadow-md'
-                                  : 'bg-white text-gray-400 hover:bg-dark-800 hover:text-purple-600 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md'
+                                  ? 'bg-green-500/200 text-white shadow-md'
+                                  : 'bg-white text-gray-400 hover:bg-dark-800 hover:text-purple-400 disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md'
                               }`}
                               title={isActive ? 'Copied!' : 'Copy to clipboard'}
                             >
@@ -408,7 +408,7 @@ export default function TextToolsPage() {
             {/* Quick Actions */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Zap className="h-6 w-6 text-orange-600 mr-2" />
+                <Zap className="h-6 w-6 text-orange-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Quick Actions</h3>
               </div>
               
@@ -433,7 +433,7 @@ export default function TextToolsPage() {
             {/* Tool Features */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Settings className="h-6 w-6 text-purple-600 mr-2" />
+                <Settings className="h-6 w-6 text-purple-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               

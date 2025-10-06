@@ -324,7 +324,7 @@ export default function CSVToSQLPage() {
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Settings className="h-5 w-5 text-blue-600 mr-2" />
+                  <Settings className="h-5 w-5 text-blue-400 mr-2" />
                   <h2 className="text-xl font-semibold text-white">SQL Dialect</h2>
                 </div>
                 
@@ -335,8 +335,8 @@ export default function CSVToSQLPage() {
                       onClick={() => setSqlDialect(key as SQLDialect)}
                       className={`p-3 rounded-xl border-2 transition-all duration-200 text-center ${
                         sqlDialect === key
-                          ? 'border-blue-500 bg-blue-500/20 text-blue-400'
-                          : 'border-dark-700 bg-dark-800 hover:border-blue-300 hover:bg-blue-500/20 text-gray-300'
+                          ? 'border-blue-500 bg-blue-500/200/20 text-blue-400'
+                          : 'border-dark-700 bg-dark-800 hover:border-blue-300 hover:bg-blue-500/200/20 text-gray-300'
                       }`}
                     >
                       <div className="font-medium text-sm">{info.name}</div>
@@ -347,7 +347,7 @@ export default function CSVToSQLPage() {
 
               <div className="mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center">
-                  <Upload className="h-5 w-5 mr-2 text-blue-600" />
+                  <Upload className="h-5 w-5 mr-2 text-blue-400" />
                   Upload CSV Files
                 </h2>
                 
@@ -357,8 +357,8 @@ export default function CSVToSQLPage() {
                   onDrop={handleDrop}
                   className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-300 ${
                     isDragging
-                      ? 'border-blue-500 bg-blue-500/20 scale-105'
-                      : 'border-dark-600 bg-dark-800 hover:border-blue-400 hover:bg-blue-500/20'
+                      ? 'border-blue-500 bg-blue-500/200/20 scale-105'
+                      : 'border-dark-600 bg-dark-800 hover:border-blue-400 hover:bg-blue-500/200/20'
                   }`}
                 >
                   <input
@@ -371,8 +371,8 @@ export default function CSVToSQLPage() {
                   />
                   
                   <div className="space-y-4">
-                    <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto">
-                      <FileText className="h-8 w-8 text-blue-600" />
+                    <div className="w-16 h-16 bg-blue-500/200/10 rounded-2xl flex items-center justify-center mx-auto">
+                      <FileText className="h-8 w-8 text-blue-400" />
                     </div>
                     
                     <div>
@@ -429,8 +429,8 @@ export default function CSVToSQLPage() {
                         className="flex items-center justify-between p-4 bg-dark-800 rounded-xl border border-dark-700 hover:border-blue-300 transition-all duration-200"
                       >
                         <div className="flex items-center space-x-3 flex-1 min-w-0">
-                          <div className="w-10 h-10 bg-blue-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                            <FileText className="h-5 w-5 text-blue-600" />
+                          <div className="w-10 h-10 bg-blue-500/200/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                            <FileText className="h-5 w-5 text-blue-400" />
                           </div>
                           
                           <div className="flex-1 min-w-0">
@@ -446,7 +446,7 @@ export default function CSVToSQLPage() {
                         <div className="flex items-center space-x-2 ml-4">
                           <button
                             onClick={() => setShowPreview(showPreview === file.id ? null : file.id)}
-                            className="p-2 text-gray-400 hover:text-blue-600 rounded-lg transition-colors"
+                            className="p-2 text-gray-400 hover:text-blue-400 rounded-lg transition-colors"
                             title="Preview data"
                           >
                             <Eye className="h-4 w-4" />
@@ -462,7 +462,7 @@ export default function CSVToSQLPage() {
                           )}
                           
                           {file.status === 'processing' && (
-                            <div className="flex items-center text-blue-600">
+                            <div className="flex items-center text-blue-400">
                               <div className="animate-spin rounded-full h-4 w-4 border-2 border-blue-600 border-t-transparent mr-2"></div>
                               <span className="text-xs font-medium">Processing...</span>
                             </div>
@@ -486,7 +486,7 @@ export default function CSVToSQLPage() {
                           )}
                           
                           {file.status === 'error' && (
-                            <div className="flex items-center text-red-600">
+                            <div className="flex items-center text-red-400">
                               <AlertCircle className="h-4 w-4 mr-1" />
                               <span className="text-xs font-medium">Error</span>
                             </div>
@@ -494,7 +494,7 @@ export default function CSVToSQLPage() {
                           
                           <button
                             onClick={() => removeFile(file.id)}
-                            className="p-1 text-gray-400 hover:text-red-600 rounded-lg transition-colors"
+                            className="p-1 text-gray-400 hover:text-red-400 rounded-lg transition-colors"
                           >
                             <X className="h-4 w-4" />
                           </button>
@@ -520,7 +520,7 @@ export default function CSVToSQLPage() {
                     <table className="min-w-full text-xs">
                       <tbody>
                         {files.find(f => f.id === showPreview)?.preview?.map((row, i) => (
-                          <tr key={i} className={i === 0 ? 'bg-blue-500/20' : 'bg-white'}>
+                          <tr key={i} className={i === 0 ? 'bg-blue-500/200/20' : 'bg-white'}>
                             {row.map((cell, j) => (
                               <td key={j} className="px-2 py-1 border border-dark-700 text-gray-300 truncate max-w-32">
                                 {cell || '—'}
@@ -570,7 +570,7 @@ export default function CSVToSQLPage() {
           <div className="xl:col-span-1 space-y-6">
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Database className="h-6 w-6 text-blue-600 mr-2" />
+                <Database className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Supported SQL Dialects</h3>
               </div>
               
@@ -589,7 +589,7 @@ export default function CSVToSQLPage() {
 
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Check className="h-6 w-6 text-green-600 mr-2" />
+                <Check className="h-6 w-6 text-green-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               

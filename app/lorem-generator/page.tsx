@@ -205,7 +205,7 @@ export default function LoremGeneratorPage() {
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Generator Settings */}
               <div className="flex items-center mb-6">
-                <Settings className="h-6 w-6 text-yellow-600 mr-3" />
+                <Settings className="h-6 w-6 text-yellow-400 mr-3" />
                 <h2 className="text-2xl font-semibold text-white">Generator Settings</h2>
               </div>
 
@@ -225,8 +225,8 @@ export default function LoremGeneratorPage() {
                         onClick={() => setGenerationType(type.id as GenerationType)}
                         className={`w-full p-3 rounded-xl border-2 transition-all duration-200 text-left ${
                           generationType === type.id
-                            ? 'border-yellow-500 bg-yellow-50 text-yellow-700'
-                            : 'border-dark-700 bg-dark-800 hover:border-yellow-300 hover:bg-yellow-500/10 text-gray-300'
+                            ? 'border-yellow-500 bg-yellow-500/20 text-yellow-700'
+                            : 'border-dark-700 bg-dark-800 hover:border-yellow-300 hover:bg-yellow-500/200/10 text-gray-300'
                         }`}
                       >
                         <div className="font-medium">{type.label}</div>
@@ -258,7 +258,7 @@ export default function LoremGeneratorPage() {
                         type="checkbox"
                         checked={startWithLorem}
                         onChange={(e) => setStartWithLorem(e.target.checked)}
-                        className="rounded border-dark-600 text-yellow-600 focus:ring-yellow-500"
+                        className="rounded border-dark-600 text-yellow-400 focus:ring-yellow-500"
                       />
                       <span className="text-sm text-gray-300">Start with "Lorem ipsum"</span>
                     </label>
@@ -297,7 +297,7 @@ export default function LoremGeneratorPage() {
                     <div className="flex items-center space-x-2">
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-4 py-2 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-4 py-2 bg-green-500/200/20 hover:bg-green-500/200/30 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -340,7 +340,7 @@ export default function LoremGeneratorPage() {
             {/* About Lorem Ipsum */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <FileText className="h-6 w-6 text-yellow-600 mr-2" />
+                <FileText className="h-6 w-6 text-yellow-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">About Lorem Ipsum</h3>
               </div>
               
@@ -363,7 +363,7 @@ export default function LoremGeneratorPage() {
             {/* Generator Options */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Settings className="h-6 w-6 text-blue-600 mr-2" />
+                <Settings className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Generator Options</h3>
               </div>
               

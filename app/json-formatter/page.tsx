@@ -226,7 +226,7 @@ export default function JSONFormatterPage() {
                 <div className="flex items-center space-x-2">
                   <button
                     onClick={loadSampleJSON}
-                    className="px-3 py-1 text-sm text-blue-600 hover:text-blue-400 hover:bg-blue-500/20 rounded-lg transition-colors"
+                    className="px-3 py-1 text-sm text-blue-400 hover:text-blue-400 hover:bg-blue-500/200/20 rounded-lg transition-colors"
                   >
                     Load Sample
                   </button>
@@ -253,8 +253,8 @@ export default function JSONFormatterPage() {
                       onClick={() => setMode(modeOption.id as FormatMode)}
                       className={`p-3 rounded-xl border-2 transition-all duration-200 ${
                         mode === modeOption.id
-                          ? 'border-green-500 bg-green-50 text-green-400'
-                          : 'border-dark-700 bg-dark-800 hover:border-green-300 hover:bg-green-50/50 text-gray-300'
+                          ? 'border-green-500 bg-green-500/20 text-green-400'
+                          : 'border-dark-700 bg-dark-800 hover:border-green-300 hover:bg-green-500/20/50 text-gray-300'
                       }`}
                     >
                       <div className="flex items-center justify-center mb-1">
@@ -294,7 +294,7 @@ export default function JSONFormatterPage() {
                     </label>
                     {isValid !== null && (
                       <div className={`flex items-center space-x-1 text-sm ${
-                        isValid ? 'text-green-600' : 'text-red-600'
+                        isValid ? 'text-green-400' : 'text-red-400'
                       }`}>
                         {isValid ? (
                           <>
@@ -322,7 +322,7 @@ export default function JSONFormatterPage() {
                       {inputText.length} characters
                     </span>
                     {isProcessing && (
-                      <div className="flex items-center text-green-600">
+                      <div className="flex items-center text-green-400">
                         <RefreshCw className="h-4 w-4 animate-spin mr-1" />
                         <span className="text-xs">Processing...</span>
                       </div>
@@ -340,7 +340,7 @@ export default function JSONFormatterPage() {
                     {outputText && (
                       <button
                         onClick={copyToClipboard}
-                        className="flex items-center space-x-1 px-3 py-1 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm"
+                        className="flex items-center space-x-1 px-3 py-1 bg-green-500/200/20 hover:bg-green-500/200/30 text-green-400 rounded-lg transition-colors text-sm"
                       >
                         {copied ? (
                           <>
@@ -373,8 +373,8 @@ export default function JSONFormatterPage() {
 
                 {/* Error Message */}
                 {error && (
-                  <div className="p-4 bg-red-500/20 border border-red-500/30 rounded-xl flex items-start space-x-3">
-                    <AlertCircle className="h-5 w-5 text-red-600 flex-shrink-0 mt-0.5" />
+                  <div className="p-4 bg-red-500/200/20 border border-red-500/30 rounded-xl flex items-start space-x-3">
+                    <AlertCircle className="h-5 w-5 text-red-400 flex-shrink-0 mt-0.5" />
                     <div>
                       <div className="text-red-400 text-sm font-medium mb-1">Syntax Error</div>
                       <div className="text-red-400 text-sm">{error}</div>
@@ -384,7 +384,7 @@ export default function JSONFormatterPage() {
 
                 {/* JSON Statistics */}
                 {jsonStats && (
-                  <div className="p-4 bg-blue-500/20 border border-blue-500/30 rounded-xl">
+                  <div className="p-4 bg-blue-500/200/20 border border-blue-500/30 rounded-xl">
                     <div className="text-gray-300 text-sm font-medium mb-2">JSON Structure</div>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm text-blue-400">
                       <div>
@@ -415,7 +415,7 @@ export default function JSONFormatterPage() {
             {/* About JSON */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Braces className="h-6 w-6 text-green-600 mr-2" />
+                <Braces className="h-6 w-6 text-green-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">About JSON</h3>
               </div>
               
@@ -438,7 +438,7 @@ export default function JSONFormatterPage() {
             {/* Features */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Check className="h-6 w-6 text-blue-600 mr-2" />
+                <Check className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Features</h3>
               </div>
               

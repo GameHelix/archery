@@ -423,7 +423,7 @@ export default function TimezoneConverterPage() {
               <div key={clock.id} className="bg-white rounded-xl p-6 border border-dark-700 hover:shadow-lg transition-all duration-200 relative group">
                 <button
                   onClick={() => removeWorldClock(clock.id)}
-                  className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-600 opacity-0 group-hover:opacity-100 transition-opacity"
+                  className="absolute top-2 right-2 p-1 text-gray-400 hover:text-red-400 opacity-0 group-hover:opacity-100 transition-opacity"
                 >
                   <X className="h-4 w-4" />
                 </button>

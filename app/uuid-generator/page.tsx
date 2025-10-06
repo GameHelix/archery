@@ -190,7 +190,7 @@ export default function UUIDGeneratorPage() {
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8">
               {/* Generator Settings */}
               <div className="flex items-center mb-6">
-                <Settings className="h-6 w-6 text-purple-600 mr-3" />
+                <Settings className="h-6 w-6 text-purple-400 mr-3" />
                 <h2 className="text-2xl font-semibold text-white">Generator Settings</h2>
               </div>
 
@@ -274,14 +274,14 @@ export default function UUIDGeneratorPage() {
                   <div className="flex items-center space-x-2">
                     <button
                       onClick={copyAllUUIDs}
-                      className="px-4 py-2 bg-green-100 hover:bg-green-200 text-green-400 rounded-lg transition-colors text-sm flex items-center space-x-1"
+                      className="px-4 py-2 bg-green-500/200/20 hover:bg-green-500/200/30 text-green-400 rounded-lg transition-colors text-sm flex items-center space-x-1"
                     >
                       <Copy className="h-4 w-4" />
                       <span>Copy All</span>
                     </button>
                     <button
                       onClick={clearHistory}
-                      className="px-4 py-2 text-sm text-red-600 hover:text-red-400 hover:bg-red-500/20 rounded-lg transition-colors"
+                      className="px-4 py-2 text-sm text-red-400 hover:text-red-400 hover:bg-red-500/200/20 rounded-lg transition-colors"
                     >
                       Clear All
                     </button>
@@ -307,16 +307,16 @@ export default function UUIDGeneratorPage() {
                       <div className="flex items-center space-x-2 ml-4">
                         <button
                           onClick={() => copyToClipboard(item.uuid, item.id)}
-                          className="p-2 text-gray-400 hover:text-green-600 rounded-lg transition-colors"
+                          className="p-2 text-gray-400 hover:text-green-400 rounded-lg transition-colors"
                         >
                           {copiedId === item.id ? 
-                            <Check className="h-4 w-4 text-green-600" /> : 
+                            <Check className="h-4 w-4 text-green-400" /> : 
                             <Copy className="h-4 w-4" />
                           }
                         </button>
                         <button
                           onClick={() => removeUUID(item.id)}
-                          className="p-2 text-gray-400 hover:text-red-600 rounded-lg transition-colors"
+                          className="p-2 text-gray-400 hover:text-red-400 rounded-lg transition-colors"
                         >
                           <Trash2 className="h-4 w-4" />
                         </button>
@@ -333,7 +333,7 @@ export default function UUIDGeneratorPage() {
             {/* About UUIDs */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Fingerprint className="h-6 w-6 text-purple-600 mr-2" />
+                <Fingerprint className="h-6 w-6 text-purple-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">About UUIDs</h3>
               </div>
               
@@ -358,7 +358,7 @@ export default function UUIDGeneratorPage() {
             {/* UUID Versions */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Settings className="h-6 w-6 text-blue-600 mr-2" />
+                <Settings className="h-6 w-6 text-blue-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">UUID Versions</h3>
               </div>
               

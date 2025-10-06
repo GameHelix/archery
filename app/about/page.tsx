@@ -67,7 +67,7 @@ export default function AboutPage() {
   ]
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-dark-900">
       <Header />
       
       <main>
@@ -93,23 +93,23 @@ export default function AboutPage() {
         <section className="py-16 sm:py-20 bg-dark-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                To democratize access to essential online tools while respecting user privacy and 
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Our Mission</h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed">
+                To democratize access to essential online tools while respecting user privacy and
                 maintaining the highest standards of security and performance.
               </p>
             </div>
 
-            <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl p-8 sm:p-12 border border-gray-100 shadow-sm">
+            <div className="bg-gradient-to-br from-dark-700 to-dark-600 rounded-2xl p-8 sm:p-12 border border-dark-500 shadow-sm">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Why SwissKnife?</h3>
-                  <p className="text-gray-700 mb-4 leading-relaxed">
-                    In a world where online tools often come with privacy concerns, subscription fees, 
+                  <h3 className="text-2xl font-bold text-white mb-4">Why SwissKnife?</h3>
+                  <p className="text-gray-200 mb-4 leading-relaxed">
+                    In a world where online tools often come with privacy concerns, subscription fees,
                     or complex interfaces, we saw the need for something different.
                   </p>
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    SwissKnife was born from the belief that essential tools should be free, fast, 
+                  <p className="text-gray-200 mb-6 leading-relaxed">
+                    SwissKnife was born from the belief that essential tools should be free, fast,
                     and respect your privacy. Every tool is designed with these principles at its core.
                   </p>
                   <Link 
@@ -122,10 +122,10 @@ export default function AboutPage() {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {stats.map((stat, index) => (
-                    <div key={index} className="text-center p-4 bg-dark-800 rounded-xl shadow-sm border border-gray-100">
-                      <div className="text-2xl sm:text-3xl font-bold text-primary-600 mb-1">{stat.number}</div>
-                      <div className="text-sm font-semibold text-gray-900 mb-1">{stat.label}</div>
-                      <div className="text-xs text-gray-600">{stat.description}</div>
+                    <div key={index} className="text-center p-4 bg-dark-800 rounded-xl shadow-sm border border-dark-500">
+                      <div className="text-2xl sm:text-3xl font-bold text-primary-400 mb-1">{stat.number}</div>
+                      <div className="text-sm font-semibold text-gray-100 mb-1">{stat.label}</div>
+                      <div className="text-xs text-gray-300">{stat.description}</div>
                     </div>
                   ))}
                 </div>
@@ -135,26 +135,26 @@ export default function AboutPage() {
         </section>
 
         {/* Values Section */}
-        <section className="py-16 sm:py-20 bg-gray-50">
+        <section className="py-16 sm:py-20 bg-dark-900">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Our Values</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Our Values</h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                 Everything we build is guided by these core principles
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {values.map((value, index) => (
-                <div 
+                <div
                   key={index}
-                  className="group bg-dark-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:border-primary-200 transition-all duration-300"
+                  className="group bg-dark-800 rounded-2xl p-6 sm:p-8 shadow-sm border border-dark-600 hover:shadow-lg hover:border-primary-500 transition-all duration-300"
                 >
                   <div className={`w-12 h-12 ${value.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
                     <value.icon className="h-6 w-6 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                  <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                  <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{value.description}</p>
                 </div>
               ))}
             </div>
@@ -165,52 +165,52 @@ export default function AboutPage() {
         <section className="py-16 sm:py-20 bg-dark-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">Built with Modern Technology</h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">Built with Modern Technology</h2>
+              <p className="text-lg text-gray-300 max-w-3xl mx-auto">
                 We use cutting-edge web technologies to deliver fast, reliable, and secure tools.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-6 sm:p-8 border border-blue-200">
-                <h3 className="text-xl font-bold text-blue-900 mb-4">Frontend Technologies</h3>
-                <ul className="space-y-2 text-blue-800">
+              <div className="bg-gradient-to-br from-blue-900 to-blue-800 rounded-2xl p-6 sm:p-8 border border-blue-700">
+                <h3 className="text-xl font-bold text-blue-100 mb-4">Frontend Technologies</h3>
+                <ul className="space-y-2 text-blue-200">
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
                     Next.js 14 with App Router
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
                     React 18 with TypeScript
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
                     Tailwind CSS for styling
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-blue-400 rounded-full mr-3"></div>
                     Progressive Web App (PWA)
                   </li>
                 </ul>
               </div>
 
-              <div className="bg-gradient-to-br from-green-50 to-green-100 rounded-2xl p-6 sm:p-8 border border-green-200">
-                <h3 className="text-xl font-bold text-green-900 mb-4">Privacy & Security</h3>
-                <ul className="space-y-2 text-green-800">
+              <div className="bg-gradient-to-br from-green-900 to-green-800 rounded-2xl p-6 sm:p-8 border border-green-700">
+                <h3 className="text-xl font-bold text-green-100 mb-4">Privacy & Security</h3>
+                <ul className="space-y-2 text-green-200">
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                     Client-side processing only
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                     HTTPS encryption everywhere
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                     No data collection or storage
                   </li>
                   <li className="flex items-center">
-                    <div className="w-2 h-2 bg-green-500 rounded-full mr-3"></div>
+                    <div className="w-2 h-2 bg-green-400 rounded-full mr-3"></div>
                     Privacy-focused architecture
                   </li>
                 </ul>
@@ -220,11 +220,11 @@ export default function AboutPage() {
         </section>
 
         {/* Future Section */}
-        <section className="py-16 sm:py-20 bg-gradient-to-br from-gray-50 to-gray-100">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-dark-900 to-dark-800">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">What's Next?</h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed">
-              We're constantly working on new tools and improvements. Our roadmap includes advanced 
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-6">What's Next?</h2>
+            <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              We're constantly working on new tools and improvements. Our roadmap includes advanced
               document converters, image manipulation tools, and much more.
             </p>
             

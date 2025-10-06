@@ -37,11 +37,11 @@ export default function TipCalculatorPage() {
   }
 
   const getTipQuality = (percent: number) => {
-    if (percent >= 25) return { label: 'Excellent', color: 'text-green-600', bg: 'bg-green-50', icon: '🌟' }
-    if (percent >= 20) return { label: 'Great', color: 'text-blue-600', bg: 'bg-blue-500/20', icon: '👏' }
-    if (percent >= 18) return { label: 'Good', color: 'text-purple-600', bg: 'bg-purple-50', icon: '👍' }
-    if (percent >= 15) return { label: 'Standard', color: 'text-yellow-600', bg: 'bg-yellow-50', icon: '👌' }
-    return { label: 'Below Average', color: 'text-orange-600', bg: 'bg-orange-50', icon: '🤔' }
+    if (percent >= 25) return { label: 'Excellent', color: 'text-green-400', bg: 'bg-green-500/20', icon: '🌟' }
+    if (percent >= 20) return { label: 'Great', color: 'text-blue-400', bg: 'bg-blue-500/200/20', icon: '👏' }
+    if (percent >= 18) return { label: 'Good', color: 'text-purple-400', bg: 'bg-purple-50', icon: '👍' }
+    if (percent >= 15) return { label: 'Standard', color: 'text-yellow-400', bg: 'bg-yellow-500/20', icon: '👌' }
+    return { label: 'Below Average', color: 'text-orange-400', bg: 'bg-orange-500/20', icon: '🤔' }
   }
 
   const tipQuality = getTipQuality(tipPercent)
@@ -152,7 +152,7 @@ export default function TipCalculatorPage() {
               <div className="mb-8">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center">
-                    <Percent className="h-5 w-5 text-purple-600 mr-2" />
+                    <Percent className="h-5 w-5 text-purple-400 mr-2" />
                     <label className="text-xl font-semibold text-white">
                       Tip Percentage
                     </label>
@@ -212,7 +212,7 @@ export default function TipCalculatorPage() {
               {/* Number of People */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Users className="h-5 w-5 text-green-600 mr-2" />
+                  <Users className="h-5 w-5 text-green-400 mr-2" />
                   <label className="text-xl font-semibold text-white">
                     Split Between
                   </label>
@@ -248,7 +248,7 @@ export default function TipCalculatorPage() {
               {/* Options */}
               <div className="mb-8">
                 <div className="flex items-center mb-4">
-                  <Settings className="h-5 w-5 text-orange-600 mr-2" />
+                  <Settings className="h-5 w-5 text-orange-400 mr-2" />
                   <label className="text-xl font-semibold text-white">
                     Options
                   </label>
@@ -256,7 +256,7 @@ export default function TipCalculatorPage() {
                 <div className="bg-dark-800 rounded-xl p-4">
                   <label className="flex items-center justify-between cursor-pointer">
                     <div className="flex items-center">
-                      <TrendingUp className="h-5 w-5 text-blue-600 mr-2" />
+                      <TrendingUp className="h-5 w-5 text-blue-400 mr-2" />
                       <div>
                         <div className="font-medium text-white">Round Up Tip</div>
                         <div className="text-sm text-gray-400">Round tip to nearest dollar</div>
@@ -266,7 +266,7 @@ export default function TipCalculatorPage() {
                       type="checkbox"
                       checked={roundUpTip}
                       onChange={(e) => setRoundUpTip(e.target.checked)}
-                      className="w-5 h-5 text-blue-600 rounded focus:ring-blue-500"
+                      className="w-5 h-5 text-blue-400 rounded focus:ring-blue-500"
                     />
                   </label>
                 </div>
@@ -283,7 +283,7 @@ export default function TipCalculatorPage() {
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     <div className="bg-white rounded-xl p-4 shadow-sm">
                       <div className="text-sm text-gray-400 mb-1">Tip Amount</div>
-                      <div className="text-2xl font-bold text-purple-600">
+                      <div className="text-2xl font-bold text-purple-400">
                         {formatCurrency(finalTipAmount)}
                       </div>
                       <div className="text-xs text-gray-400">
@@ -316,7 +316,7 @@ export default function TipCalculatorPage() {
                         </div>
                         <div className="bg-white rounded-lg p-3 shadow-sm text-center">
                           <div className="text-sm text-gray-400 mb-1">Tip</div>
-                          <div className="text-lg font-bold text-purple-600">
+                          <div className="text-lg font-bold text-purple-400">
                             {formatCurrency(perPersonTip)}
                           </div>
                         </div>
@@ -349,16 +349,16 @@ export default function TipCalculatorPage() {
             {/* Quick Tips */}
             <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6">
               <div className="flex items-center mb-4">
-                <Lightbulb className="h-6 w-6 text-yellow-600 mr-2" />
+                <Lightbulb className="h-6 w-6 text-yellow-400 mr-2" />
                 <h3 className="text-lg font-semibold text-white">Tipping Guide</h3>
               </div>
               
               <div className="space-y-4 text-sm text-gray-300">
-                <div className="p-3 bg-green-50 rounded-lg border border-green-500/30">
+                <div className="p-3 bg-green-500/20 rounded-lg border border-green-500/30">
                   <div className="font-medium text-gray-300 mb-1">🍽️ Restaurants</div>
                   <div className="text-green-400">15-20% for good service, 18-25% for excellent</div>
                 </div>
-                <div className="p-3 bg-blue-500/20 rounded-lg border border-blue-500/30">
+                <div className="p-3 bg-blue-500/200/20 rounded-lg border border-blue-500/30">
                   <div className="font-medium text-gray-300 mb-1">🍕 Delivery</div>
                   <div className="text-blue-400">15-20% minimum, more for bad weather</div>
                 </div>
@@ -366,7 +366,7 @@ export default function TipCalculatorPage() {
                   <div className="font-medium text-gray-300 mb-1">🍺 Bars</div>
                   <div className="text-purple-700">$1-2 per drink or 15-20% of tab</div>
                 </div>
-                <div className="p-3 bg-orange-50 rounded-lg border border-orange-500/30">
+                <div className="p-3 bg-orange-500/20 rounded-lg border border-orange-500/30">
                   <div className="font-medium text-gray-300 mb-1">✂️ Services</div>
                   <div className="text-orange-400">Hair: 15-25%, Taxi: 10-15%</div>
                 </div>

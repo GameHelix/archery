@@ -263,7 +263,7 @@ export default function ImageConverterPage() {
         {/* Upload Section */}
         <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
           <div className="flex items-center mb-6">
-            <Upload className="h-5 w-5 text-blue-600 mr-2" />
+            <Upload className="h-5 w-5 text-blue-400 mr-2" />
             <h2 className="text-xl font-semibold text-white">Upload JPEG Images</h2>
           </div>
 
@@ -271,7 +271,7 @@ export default function ImageConverterPage() {
           <div className="mb-6 p-4 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-500/30">
             <div className="flex items-center justify-between mb-3">
               <label className="flex items-center text-sm font-medium text-gray-300">
-                <Settings className="h-4 w-4 mr-2 text-blue-600" />
+                <Settings className="h-4 w-4 mr-2 text-blue-400" />
                 PNG Quality: {quality}%
               </label>
             </div>
@@ -294,7 +294,7 @@ export default function ImageConverterPage() {
           <div
             className={`relative border-2 border-dashed rounded-2xl p-8 sm:p-12 text-center transition-all duration-200 ${
               isDragOver
-                ? 'border-blue-500 bg-blue-500/20'
+                ? 'border-blue-500 bg-blue-500/200/20'
                 : 'border-dark-600 hover:border-blue-400 hover:bg-blue-25'
             }`}
             onDragOver={handleDragOver}
@@ -312,8 +312,8 @@ export default function ImageConverterPage() {
             />
             
             <div className="space-y-4">
-              <div className="w-16 h-16 bg-blue-500/10 rounded-2xl flex items-center justify-center mx-auto">
-                <Upload className="h-8 w-8 text-blue-600" />
+              <div className="w-16 h-16 bg-blue-500/200/10 rounded-2xl flex items-center justify-center mx-auto">
+                <Upload className="h-8 w-8 text-blue-400" />
               </div>
               
               <div>
@@ -333,8 +333,8 @@ export default function ImageConverterPage() {
               </div>
               
               <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
-                <span className="bg-blue-500/20 px-3 py-1 rounded-full">✨ Client-side conversion</span>
-                <span className="bg-green-50 px-3 py-1 rounded-full">🔒 Privacy protected</span>
+                <span className="bg-blue-500/200/20 px-3 py-1 rounded-full">✨ Client-side conversion</span>
+                <span className="bg-green-500/20 px-3 py-1 rounded-full">🔒 Privacy protected</span>
                 <span className="bg-purple-50 px-3 py-1 rounded-full">⚡ Instant processing</span>
               </div>
             </div>
@@ -346,7 +346,7 @@ export default function ImageConverterPage() {
           <div className="bg-dark-card backdrop-blur-sm rounded-2xl shadow-xl border border-dark-700 hover:border-primary-500/50 transition-all duration-300 p-6 sm:p-8 mb-8">
             <div className="flex items-center justify-between mb-6">
               <div className="flex items-center">
-                <ImageIcon className="h-5 w-5 text-blue-600 mr-2" />
+                <ImageIcon className="h-5 w-5 text-blue-400 mr-2" />
                 <h2 className="text-xl font-semibold text-white">Conversion Results</h2>
               </div>
               
@@ -378,15 +378,15 @@ export default function ImageConverterPage() {
             {completedImages.length > 0 && (
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
                 <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/20 rounded-xl p-4 border border-blue-500/30">
-                  <div className="text-2xl font-bold text-blue-600">{completedImages.length}</div>
+                  <div className="text-2xl font-bold text-blue-400">{completedImages.length}</div>
                   <div className="text-sm text-blue-400">Images Converted</div>
                 </div>
                 <div className="bg-gradient-to-br from-green-500/20 to-green-600/20 rounded-xl p-4 border border-green-500/30">
-                  <div className="text-2xl font-bold text-green-600">{formatFileSize(totalConvertedSize)}</div>
+                  <div className="text-2xl font-bold text-green-400">{formatFileSize(totalConvertedSize)}</div>
                   <div className="text-sm text-green-400">Total Size</div>
                 </div>
                 <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/20 rounded-xl p-4 border border-purple-500/30">
-                  <div className="text-2xl font-bold text-purple-600">{compressionRatio.toFixed(1)}%</div>
+                  <div className="text-2xl font-bold text-purple-400">{compressionRatio.toFixed(1)}%</div>
                   <div className="text-sm text-purple-700">Size Change</div>
                 </div>
               </div>
@@ -413,7 +413,7 @@ export default function ImageConverterPage() {
                       {image.status === 'completed' && (
                         <>
                           <span>→</span>
-                          <span className="text-green-600 font-medium">{formatFileSize(image.convertedSize)}</span>
+                          <span className="text-green-400 font-medium">{formatFileSize(image.convertedSize)}</span>
                         </>
                       )}
                     </div>
@@ -421,7 +421,7 @@ export default function ImageConverterPage() {
                   
                   <div className="flex items-center gap-2">
                     {image.status === 'converting' && (
-                      <div className="flex items-center text-blue-600">
+                      <div className="flex items-center text-blue-400">
                         <div className="w-4 h-4 border-2 border-blue-600 border-t-transparent rounded-full animate-spin mr-2"></div>
                         <span className="text-sm">Converting...</span>
                       </div>
@@ -429,7 +429,7 @@ export default function ImageConverterPage() {
                     
                     {image.status === 'completed' && (
                       <>
-                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <CheckCircle className="h-5 w-5 text-green-400" />
                         <button
                           onClick={() => downloadImage(image)}
                           className="px-3 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors min-h-[40px] touch-manipulation"
@@ -440,12 +440,12 @@ export default function ImageConverterPage() {
                     )}
                     
                     {image.status === 'error' && (
-                      <AlertCircle className="h-5 w-5 text-red-600" />
+                      <AlertCircle className="h-5 w-5 text-red-400" />
                     )}
                     
                     <button
                       onClick={() => removeImage(image.id)}
-                      className="p-2 text-gray-400 hover:text-red-600 rounded-lg transition-colors min-h-[40px] min-w-[40px] touch-manipulation"
+                      className="p-2 text-gray-400 hover:text-red-400 rounded-lg transition-colors min-h-[40px] min-w-[40px] touch-manipulation"
                     >
                       <X className="h-4 w-4" />
                     </button>

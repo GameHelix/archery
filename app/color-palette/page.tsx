@@ -276,7 +276,7 @@ export default function ColorPalettePage() {
           {/* Controls */}
           <div className="space-y-6 mb-8">
             <div className="flex items-center mb-4">
-              <Sparkles className="h-5 w-5 text-purple-600 mr-2" />
+              <Sparkles className="h-5 w-5 text-purple-400 mr-2" />
               <h2 className="text-xl font-semibold text-white">Palette Settings</h2>
             </div>
             
@@ -300,7 +300,7 @@ export default function ColorPalettePage() {
                         value={option.value}
                         checked={paletteType === option.value}
                         onChange={(e) => setPaletteType(e.target.value as any)}
-                        className="w-4 h-4 text-purple-600 border-dark-600 focus:ring-purple-500"
+                        className="w-4 h-4 text-purple-400 border-dark-600 focus:ring-purple-500"
                       />
                       <span className="ml-3 flex items-center text-sm text-gray-300">
                         <span className="mr-2">{option.emoji}</span>
@@ -355,7 +355,7 @@ export default function ColorPalettePage() {
                   />
                   <div className="flex justify-between text-xs text-gray-400">
                     <span>3</span>
-                    <span className="font-semibold text-purple-600">{paletteSize} colors</span>
+                    <span className="font-semibold text-purple-400">{paletteSize} colors</span>
                     <span>10</span>
                   </div>
                 </div>
@@ -392,7 +392,7 @@ export default function ColorPalettePage() {
             <div className="space-y-6">
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
-                  <Eye className="h-5 w-5 text-purple-600 mr-2" />
+                  <Eye className="h-5 w-5 text-purple-400 mr-2" />
                   <h3 className="text-xl font-semibold text-white">Generated Palette</h3>
                 </div>
                 <div className="text-sm text-gray-400">
@@ -421,8 +421,8 @@ export default function ColorPalettePage() {
                           onClick={() => copyColor(color.hex, 'hex')}
                           className={`p-2 rounded-lg transition-all duration-200 ${
                             copiedColor === `${color.hex}-hex` 
-                              ? 'bg-green-100 text-green-600' 
-                              : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
+                              ? 'bg-green-500/200/20 text-green-400' 
+                              : 'text-gray-400 hover:text-purple-400 hover:bg-purple-50'
                           }`}
                           title="Copy HEX"
                         >
@@ -435,8 +435,8 @@ export default function ColorPalettePage() {
                           onClick={() => copyColor(color.hex, 'rgb')}
                           className={`p-1.5 rounded-lg transition-all duration-200 ${
                             copiedColor === `${color.hex}-rgb` 
-                              ? 'bg-green-100 text-green-600' 
-                              : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
+                              ? 'bg-green-500/200/20 text-green-400' 
+                              : 'text-gray-400 hover:text-purple-400 hover:bg-purple-50'
                           }`}
                           title="Copy RGB"
                         >
@@ -449,8 +449,8 @@ export default function ColorPalettePage() {
                           onClick={() => copyColor(color.hex, 'hsl')}
                           className={`p-1.5 rounded-lg transition-all duration-200 ${
                             copiedColor === `${color.hex}-hsl` 
-                              ? 'bg-green-100 text-green-600' 
-                              : 'text-gray-400 hover:text-purple-600 hover:bg-purple-50'
+                              ? 'bg-green-500/200/20 text-green-400' 
+                              : 'text-gray-400 hover:text-purple-400 hover:bg-purple-50'
                           }`}
                           title="Copy HSL"
                         >
@@ -490,7 +490,7 @@ export default function ColorPalettePage() {
           {palette.length === 0 && (
             <div className="text-center py-16">
               <div className="w-20 h-20 bg-gradient-to-br from-purple-100 to-pink-100 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                <Palette className="h-10 w-10 text-purple-600" />
+                <Palette className="h-10 w-10 text-purple-400" />
               </div>
               <h3 className="text-xl font-semibold text-white mb-2">Ready to Create Amazing Colors?</h3>
               <p className="text-gray-400 max-w-md mx-auto mb-6">
@@ -499,7 +499,7 @@ export default function ColorPalettePage() {
               <div className="flex flex-wrap justify-center gap-2 text-xs text-gray-400">
                 <span className="bg-purple-50 px-3 py-1 rounded-full">🌈 Color Theory</span>
                 <span className="bg-pink-50 px-3 py-1 rounded-full">🎨 Professional Quality</span>
-                <span className="bg-blue-500/20 px-3 py-1 rounded-full">📋 Copy & Export</span>
+                <span className="bg-blue-500/200/20 px-3 py-1 rounded-full">📋 Copy & Export</span>
               </div>
             </div>
           )}
