@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* ── Custom neon theme utilities ─────────────────────────────────────────── */
+
+/* Neon purple text glow */
+.neon-text {
+  color: #c084fc;
+  text-shadow:
+    0 0 8px rgba(192, 132, 252, 0.8),
+    0 0 20px rgba(192, 132, 252, 0.5),
+    0 0 40px rgba(192, 132, 252, 0.25);
+}
+
+/* Neon CTA button */
+.neon-button {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  border: none;
+  box-shadow:
+    0 0 12px rgba(168, 85, 247, 0.6),
+    0 0 30px rgba(168, 85, 247, 0.3);
+}
+
+.neon-button:hover {
+  box-shadow:
+    0 0 18px rgba(168, 85, 247, 0.8),
+    0 0 40px rgba(168, 85, 247, 0.4);
+}
+
+/* Glassmorphism panel */
+.glass-panel {
+  background: rgba(15, 12, 41, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(192, 132, 252, 0.15);
+}
+
+/* Smooth scrolling & box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  background: #080614;
+  color: #e2e8f0;
+  overflow-x: hidden;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Canvas should never overflow */
+canvas {
+  display: block;
+  max-width: 100%;
+}
